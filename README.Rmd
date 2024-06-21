@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# CohortConstructor <img src="man/figures/logo.png" align="right" height="180"/>
+# phenotypeR <img src="man/figures/logo.png" align="right" height="180"/>
 
 # phenotypeR
 
@@ -35,6 +35,7 @@ This is a basic example which shows you how to solve a common problem:
 ```{r, message=FALSE}
 library(CDMConnector)
 library(phenotypeR)
+library(CohortConstructor)
 library(dplyr)
 
 con <- DBI::dbConnect(duckdb::duckdb(dbdir = CDMConnector::eunomia_dir()))
@@ -42,7 +43,7 @@ cdm <- CDMConnector::cdm_from_con(con = con,
                       cdm_schema = "main",
                       write_schema = "main")
 
-cdm$gibleed <- CohortConstructor::conceptCohort(cdm = cdm,
+cdm$gibleed <- conceptCohort(cdm = cdm,
                                    conceptSet = list(gibleed = 192671L),
                                    name = "gibleed")
 
