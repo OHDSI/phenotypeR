@@ -1,5 +1,8 @@
 ---
 output: github_document
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -15,13 +18,25 @@ knitr::opts_chunk$set(
 
 # phenotypeR <img src="man/figures/logo.png" align="right" height="180"/>
 
-# phenotypeR
-
 <!-- badges: start -->
+
 [![R-CMD-check](https://github.com/oxford-pharmacoepi/phenotypeR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/oxford-pharmacoepi/phenotypeR/actions/workflows/R-CMD-check.yaml)
+[![Lifecycle:Experimental](https://img.shields.io/badge/Lifecycle-Experimental-339999)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+
 <!-- badges: end -->
 
-The goal of phenotypeR is to ...
+The phenotypeR package takes a cohort table in a cdm reference and runs
+a series of analyses, including summaries of:  
+- code counts in the cdm,  
+- counts of codes that could have led to cohort inclusion,  
+- cohort overlap and timing (when there is more than one cohort),  
+- trends in incidence and prevalence,  
+- the demographics of the individuals in a cohort, and    
+- the cohort compared to indivduals matched on age and sex.  
+
+Once you have obtained the results, you can view them in  
+- a shiny application, and/ or  
+- a parameterised report  
 
 ## Installation
 
@@ -51,7 +66,5 @@ cdm$gibleed <- conceptCohort(cdm = cdm,
 result <- cdm$gibleed |>
    phenotypeCohort()
 
-result |> 
-  glimpse()
-
+result
 ```
