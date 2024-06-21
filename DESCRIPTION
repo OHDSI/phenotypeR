@@ -1,0 +1,23 @@
+Package: phenotypeR
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.0.900
+Author: Who wrote it
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: Apache License (>= 2)
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+RoxygenNote: 7.3.1
+Imports: 
+    CohortCharacteristics,
+    cli,
+    dplyr,
+    dplyr,
+    omopgenerics,
+    PatientProfiles,
+    magrittr
