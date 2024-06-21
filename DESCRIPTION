@@ -20,4 +20,5 @@ Imports:
     dplyr,
     omopgenerics,
     PatientProfiles,
-    magrittr
+    magrittr,
+    omock
