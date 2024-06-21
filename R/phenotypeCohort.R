@@ -2,7 +2,7 @@
 #'
 #' @param cohort Cohort table
 #'
-#' @return
+#' @return A summarised result
 #' @export
 #'
 #' @examples

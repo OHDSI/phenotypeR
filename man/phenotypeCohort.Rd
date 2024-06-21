@@ -2,13 +2,16 @@
 % Please edit documentation in R/phenotypeCohort.R
 \name{phenotypeCohort}
 \alias{phenotypeCohort}
-\title{phenotypeCohort}
+\title{Phenotype a set of cohorts}
 \usage{
 phenotypeCohort(cohort)
 }
 \arguments{
 \item{cohort}{Cohort table}
 }
+\value{
+A summarised result
+}
 \description{
-phenotypeCohort
+Phenotype a set of cohorts
 }
