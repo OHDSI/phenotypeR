@@ -53,10 +53,30 @@ phenotypeCohort <- function(cohort){
   }
 
 
-  # cli::cli_bullets(c("*" = "{.strong Generating the match sample}"))
-  # cdm$sample <- cdm[[cohort_table]]  |>
-  #   slice_sample(n = 1000, by = cohort_definition_id) |>
-  #   compute()
+  cli::cli_bullets(c("*" = "{.strong Generating a age and sex matched cohorts}"))
+  matchedCohortTable <- paste0(omopgenerics::tableName(cdm[[cohortName]]),
+                               "_matched")
+  cdm[[matchedCohortTable]] <- CohortConstructor::matchCohorts(cdm[[cohortName]],
+                                                               name = matchedCohortTable)
+
+
+  cli::cli_bullets(c("*" = "{.strong Running large scale characterisation}"))
+
+
+  results[["lsc"]] <- CohortCharacteristics::summariseLargeScaleCharacteristics(
+    cohort = cdm[[matchedCohortTable]],
+    window = list(c(-Inf, -366), c(-365, -31),
+                  c(-30, -1), c(0, 0),
+                  c(1, 30), c(31, 365),
+                  c(366, Inf)),
+    eventInWindow = c("condition_occurrence"),
+    # eventInWindow = c("condition_occurrence", "visit_occurrence",
+    #                   "measurement", "procedure_occurrence",
+    #                   "observation"),
+    episodeInWindow = c("drug_exposure"),
+    minimumFrequency = 0.0005
+  )
+
 
   results <- omopgenerics::bind(results)
 

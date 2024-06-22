@@ -1,7 +1,9 @@
 test_that("run with a single cohort", {
   cdm_local <- omock::mockCdmReference() |>
-    omock::mockPerson(nPerson = 10) |>
+    omock::mockPerson(nPerson = 100) |>
     omock::mockObservationPeriod() |>
+    omock::mockConditionOccurrence() |>
+    omock::mockDrugExposure() |>
     omock::mockCohort(name = "my_cohort")
 
   db <- DBI::dbConnect(duckdb::duckdb())
@@ -19,9 +21,12 @@ test_that("run with a single cohort", {
 
 test_that("run with multiple cohorts", {
   cdm_local <- omock::mockCdmReference() |>
-    omock::mockPerson(nPerson = 10) |>
+    omock::mockPerson(nPerson = 100) |>
     omock::mockObservationPeriod() |>
-    omock::mockCohort(name = "my_cohort", numberCohorts = 2)
+    omock::mockConditionOccurrence() |>
+    omock::mockDrugExposure() |>
+    omock::mockCohort(name = "my_cohort",
+                      numberCohorts = 2)
   db <- DBI::dbConnect(duckdb::duckdb())
   cdm <- CDMConnector::copyCdmTo(con = db, cdm = cdm_local,
                                  schema ="main", overwrite = TRUE)
