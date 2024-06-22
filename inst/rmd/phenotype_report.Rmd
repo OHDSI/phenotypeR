@@ -1,7 +1,7 @@
 ---
 title: "`r params$title`"
 output: html_document
-date: "2024-06-22"
+date: "`r Sys.Date()`"
 params:
   title: title
   result: result
@@ -24,6 +24,23 @@ summary(result)
 
 ```{r}
 omopgenerics::settings(result)
+```
+
+# Cohort overlap
+
+```{r}
+if(any("cohort_overlap" == omopgenerics::settings(result) |> 
+   dplyr::pull("result_type")) == TRUE){
+CohortCharacteristics::plotCohortOverlap(result)
+}
+```
+
+
+```{r}
+if(any("cohort_timing" == omopgenerics::settings(result) |> 
+   dplyr::pull("result_type")) == TRUE){
+CohortCharacteristics::plotCohortTiming(result)
+}
 ```
 
 # Demographics

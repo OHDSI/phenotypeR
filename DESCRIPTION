@@ -20,6 +20,7 @@ RoxygenNote: 7.3.1
 Imports: 
     CDMConnector,
     CohortCharacteristics,
+    CohortConstructor,
     cli,
     dplyr,
     here,
@@ -27,5 +28,6 @@ Imports:
     magrittr,
     PatientProfiles,
     rmarkdown,
-    rlang
+    rlang,
+    visOmopResults
 URL: https://oxford-pharmacoepi.github.io/phenotypeR/

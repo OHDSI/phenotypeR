@@ -15,6 +15,8 @@ reportPhenotype <- function(result,
                          package = "phenotypeR")
 
     cohortNames <- result |>
+      visOmopResults::addSettings() |>
+      omopgenerics::filter(.data$result_type == "summarised_characteristics") |>
       dplyr::filter(.data$group_level != "overall") |>
       dplyr::select("group_level") |>
       dplyr::distinct() |>

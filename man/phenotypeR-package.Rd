@@ -10,4 +10,11 @@
 
 More about what it does (maybe more than one line) Use four spaces when indenting paragraphs within the Description.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://oxford-pharmacoepi.github.io/phenotypeR/}
+}
+
+}
 \keyword{internal}
