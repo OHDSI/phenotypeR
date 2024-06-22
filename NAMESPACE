@@ -2,4 +2,6 @@
 
 export("%>%")
 export(phenotypeCohort)
+export(reportPhenotype)
+export(shinyPhenotype)
 importFrom(magrittr,"%>%")
