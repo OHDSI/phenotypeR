@@ -1,0 +1,31 @@
+---
+title: "`r params$title`"
+output: html_document
+date: "2024-06-22"
+params:
+  title: title
+  result: result
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Result overview
+
+```{r}
+summary(result)
+```
+
+
+```{r}
+settings(result)
+```
+
+# Demographics
+
+```{r}
+CohortCharacteristics::tableCharacteristics(result)
+```
+
+

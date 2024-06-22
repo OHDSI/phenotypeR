@@ -29,12 +29,12 @@ phenotypeCohort <- function(cohort){
     CohortCharacteristics::summariseCharacteristics(
       strata = c("sex"),
       ageGroup = age_groups,
-      tableIntersectCount = list(
-        "Number visits prior year" = list(
-          tableName = "visit_occurrence",
-          window = c(-365, -1)
-        )
-      ),
+      # tableIntersectCount = list(
+      #   "Number visits prior year" = list(
+      #     tableName = "visit_occurrence",
+      #     window = c(-365, -1)
+      #   )
+      # ),
       otherVariables = "days_in_cohort",
       otherVariablesEstimates = c("min", "q25", "median", "q75", "max")
     )

@@ -1,6 +1,9 @@
 test_that("run with a single cohort", {
-  cdm_local <- omock::mockPerson(nPerson = 10) |>
+  cdm <- omock::mockCdmReference() |>
+    omock::mockPerson(nPerson = 10) |>
+    omock::mockObservationPeriod() |>
     omock::mockCohort(name = "my_cohort")
+
   db <- DBI::dbConnect(duckdb::duckdb())
   cdm <- CDMConnector::copyCdmTo(con = db, cdm = cdm_local,
                           schema ="main", overwrite = TRUE)
