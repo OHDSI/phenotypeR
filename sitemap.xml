@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/404.html</loc>
+  </url>
+  <url>
+    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/authors.html</loc>
+  </url>
+  <url>
+    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/index.html</loc>
+  </url>
+  <url>
+    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/phenotypeCohort.html</loc>
+  </url>
+  <url>
+    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/phenotypeR-package.html</loc>
+  </url>
+  <url>
+    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/pipe.html</loc>
+  </url>
+  <url>
+    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/reportPhenotype.html</loc>
+  </url>
+  <url>
+    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/shinyPhenotype.html</loc>
+  </url>
+</urlset>
