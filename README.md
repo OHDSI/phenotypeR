@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+> **This package is under development and not yet ready for use.**
+
 [![R-CMD-check](https://github.com/oxford-pharmacoepi/phenotypeR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/oxford-pharmacoepi/phenotypeR/actions/workflows/R-CMD-check.yaml)
 [![Lifecycle:Experimental](https://img.shields.io/badge/Lifecycle-Experimental-339999)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 
@@ -38,7 +40,6 @@ library(CDMConnector)
 library(phenotypeR)
 library(CohortConstructor)
 library(dplyr)
-#> Warning: package 'dplyr' was built under R version 4.2.3
 
 con <- DBI::dbConnect(duckdb::duckdb(dbdir = CDMConnector::eunomia_dir()))
 cdm <- CDMConnector::cdm_from_con(con = con,
