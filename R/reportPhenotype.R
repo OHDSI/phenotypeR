@@ -2,19 +2,20 @@
 #' Create a report summarising your phenotyping results
 #'
 #' @param result A summarised result
+#' @param directory Directory where to save report
 #'
 #' @return A report
 #' @export
 #'
 #' @examples
 reportPhenotype <- function(result,
-                            dir = here::here()){
+                            directory = here::here()){
 
     input <- system.file("rmd", "phenotype_report.Rmd",
                          package = "phenotypeR")
 
     cohortNames <- result |>
-      dplyr::filter(group_level != "overall") |>
+      dplyr::filter(.data$group_level != "overall") |>
       dplyr::select("group_level") |>
       dplyr::distinct() |>
       dplyr::pull()
@@ -25,6 +26,6 @@ reportPhenotype <- function(result,
                       params = list(title = workingTitle,
                                     result = result),
                       output_file = "report.html",
-                      output_dir = dir,
+                      output_dir = directory,
                       clean = TRUE)
 }

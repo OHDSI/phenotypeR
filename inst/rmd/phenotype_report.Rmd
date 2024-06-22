@@ -11,6 +11,10 @@ params:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r}
+library(gt)
+```
+
 ## Result overview
 
 ```{r}
@@ -19,7 +23,7 @@ summary(result)
 
 
 ```{r}
-settings(result)
+omopgenerics::settings(result)
 ```
 
 # Demographics

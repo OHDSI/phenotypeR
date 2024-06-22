@@ -1,6 +1,6 @@
 Package: phenotypeR
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Phenotype a set of cohorts in data mapped to a the OMOP common data model
 Version: 0.0.900
 Author: Who wrote it
 Maintainer: The package maintainer <yourself@somewhere.net>
@@ -10,10 +10,11 @@ License: Apache License (>= 2)
 Encoding: UTF-8
 LazyData: true
 Suggests: 
-    testthat (>= 3.0.0),
-    omock,
     duckdb,
-    DBI
+    DBI,
+    gt,
+    omock,
+    testthat (>= 3.0.0)
 Config/testthat/edition: 3
 RoxygenNote: 7.3.1
 Imports: 
@@ -21,6 +22,9 @@ Imports:
     CohortCharacteristics,
     cli,
     dplyr,
+    here,
     omopgenerics,
+    magrittr,
     PatientProfiles,
-    magrittr
+    rmarkdown,
+    rlang

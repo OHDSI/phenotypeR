@@ -9,7 +9,7 @@ test_that("basic working example with one cohort", {
   cdm <- CDMConnector::copyCdmTo(con = db, cdm = cdm_local,
                                  schema ="main", overwrite = TRUE)
   my_result <- cdm$my_cohort |> phenotypeCohort()
-  reportPhenotype(result = my_result)
+  expect_no_error(reportPhenotype(result = my_result))
 
 })
 

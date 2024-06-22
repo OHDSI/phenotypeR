@@ -4,10 +4,12 @@
 \alias{reportPhenotype}
 \title{Create a report summarising your phenotyping results}
 \usage{
-reportPhenotype(result)
+reportPhenotype(result, directory = here::here())
 }
 \arguments{
 \item{result}{A summarised result}
+
+\item{directory}{Directory where to save report}
 }
 \value{
 A report

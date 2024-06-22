@@ -1,5 +1,5 @@
 test_that("run with a single cohort", {
-  cdm <- omock::mockCdmReference() |>
+  cdm_local <- omock::mockCdmReference() |>
     omock::mockPerson(nPerson = 10) |>
     omock::mockObservationPeriod() |>
     omock::mockCohort(name = "my_cohort")
@@ -18,13 +18,14 @@ test_that("run with a single cohort", {
 })
 
 test_that("run with multiple cohorts", {
-  cdm_local <- omock::mockPerson(nPerson = 10) |>
-    omock::mockCohort(name = "cohort",
-                      numberCohorts = 2)
+  cdm_local <- omock::mockCdmReference() |>
+    omock::mockPerson(nPerson = 10) |>
+    omock::mockObservationPeriod() |>
+    omock::mockCohort(name = "my_cohort", numberCohorts = 2)
   db <- DBI::dbConnect(duckdb::duckdb())
   cdm <- CDMConnector::copyCdmTo(con = db, cdm = cdm_local,
                                  schema ="main", overwrite = TRUE)
-  expect_no_error(result <- cdm$cohort |>
+  expect_no_error(result <- cdm$my_cohort |>
                     phenotypeCohort())
 
   # cohort and timing and overlap should have been estimated
