@@ -19,10 +19,13 @@
     <loc>https://oxford-pharmacoepi.github.io/phenotypeR/index.html</loc>
   </url>
   <url>
-    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/index.html</loc>
+    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/codelistDiagnostics.html</loc>
   </url>
   <url>
-    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/phenotypeCohort.html</loc>
+    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/cohortDiagnostics.html</loc>
+  </url>
+  <url>
+    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/index.html</loc>
   </url>
   <url>
     <loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/phenotypeR-package.html</loc>
@@ -31,9 +34,9 @@
     <loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/pipe.html</loc>
   </url>
   <url>
-    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/reportPhenotype.html</loc>
+    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/reportDiagnostics.html</loc>
   </url>
   <url>
-    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/shinyPhenotype.html</loc>
+    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/shinyDiagnostics.html</loc>
   </url>
 </urlset>
