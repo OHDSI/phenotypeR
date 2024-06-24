@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @examples
-reportPhenotype <- function(result,
+reportDiagnostics <- function(result,
                             directory = here::here()){
 
     input <- system.file("rmd", "phenotype_report.Rmd",

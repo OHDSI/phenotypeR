@@ -21,9 +21,16 @@ library(gt)
 summary(result)
 ```
 
-
 ```{r}
 omopgenerics::settings(result)
+```
+
+# Index event breakdown
+```{r}
+if(any("cohort_code_use" == omopgenerics::settings(result) |> 
+   dplyr::pull("result_type")) == TRUE){
+CodelistGenerator::tableCohortCodeUse(result = result)
+}
 ```
 
 # Cohort overlap
