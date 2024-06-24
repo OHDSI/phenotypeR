@@ -1,4 +1,5 @@
-#' Phenotype a set of cohorts
+
+#' Run cohort-level diagnostics
 #'
 #' @param cohort Cohort table
 #'
@@ -6,10 +7,13 @@
 #' @export
 #'
 #' @examples
-phenotypeCohort <- function(cohort){
+cohortDiagnostics <- function(cohort){
 
   cdm <- omopgenerics::cdmReference(cohort)
   cohortName <- omopgenerics::tableName(cohort)
+  cohortIds <- omopgenerics::settings(cohort) |>
+    dplyr::select("cohort_definition_id") |>
+    dplyr::pull()
 
   results <- list()
 
@@ -17,14 +21,19 @@ phenotypeCohort <- function(cohort){
                       function(k, x1 = seq(0, 110, 5), x2 = seq(4, 120, 5)) {
                         c(x1[k], x2[k])})
 
-  cli::cli_bullets(c("*" = "Getting cdm summary"))
-  results[["cdm_summary"]] <- summary(cdm)
+  cli::cli_bullets(c("*" = "Getting cohort counts"))
+  results[["cohort_counts"]] <- cdm[[cohortName]] |>
+    CohortCharacteristics::summariseCohortCount()
+
+  cli::cli_bullets(c("*" = "Getting cohort attrition"))
+  results[["cohort_counts"]] <- cdm[[cohortName]] |>
+    CohortCharacteristics::summariseCohortAttrition()
 
   cli::cli_bullets(c("*" = "Getting cohort summary"))
   results[["cohort_summary"]] <- cdm[[cohortName]] %>%
     dplyr::mutate(days_in_cohort = as.integer(!!CDMConnector::datediff(
       start = "cohort_start_date", end = "cohort_end_date", interval = "day"
-                                                          ))) |>
+    ))) |>
     PatientProfiles::addDemographics() |>
     CohortCharacteristics::summariseCharacteristics(
       strata = c("sex"),
@@ -40,14 +49,14 @@ phenotypeCohort <- function(cohort){
     )
 
   if(length(omopgenerics::settings(cdm[[cohortName]]) |>
-     dplyr::pull("cohort_definition_id")) > 1){
-  cli::cli_bullets(c("*" = "Getting cohort overlap"))
-  results[["cohort_overlap"]] <- CohortCharacteristics::summariseCohortOverlap(
-    cdm[[cohortName]])
+            dplyr::pull("cohort_definition_id")) > 1){
+    cli::cli_bullets(c("*" = "Getting cohort overlap"))
+    results[["cohort_overlap"]] <- CohortCharacteristics::summariseCohortOverlap(
+      cdm[[cohortName]])
 
-  cli::cli_bullets(c("*" = "Getting cohort timing"))
-  results[["cohort_timing"]] <- CohortCharacteristics::summariseCohortTiming(cdm[[cohortName]],
-                        density = TRUE)
+    cli::cli_bullets(c("*" = "Getting cohort timing"))
+    results[["cohort_timing"]] <- CohortCharacteristics::summariseCohortTiming(cdm[[cohortName]],
+                                                                               density = TRUE)
   } else {
     cli::cli_bullets(c("*" = "Only one cohort in settings - skipping cohort overlap and timing"))
   }
@@ -77,7 +86,7 @@ phenotypeCohort <- function(cohort){
     minimumFrequency = 0.0005
   )
 
-
+  results <- vctrs::list_drop_empty(results)
   results <- omopgenerics::bind(results)
 
   results

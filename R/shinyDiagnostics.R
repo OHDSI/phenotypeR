@@ -7,6 +7,6 @@
 #' @export
 #'
 #' @examples
-shinyPhenotype <- function(result){
+shinyDiagnostics <- function(result){
 
 }

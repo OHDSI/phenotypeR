@@ -10,8 +10,8 @@ test_that("basic working example with one cohort", {
   db <- DBI::dbConnect(duckdb::duckdb())
   cdm <- CDMConnector::copyCdmTo(con = db, cdm = cdm_local,
                                  schema ="main", overwrite = TRUE)
-  my_result <- cdm$my_cohort |> phenotypeCohort()
-  expect_no_error(reportPhenotype(result = my_result))
+  my_result <- cdm$my_cohort |> cohortDiagnostics()
+  expect_no_error(reportDiagnostics(result = my_result))
 
 })
 
@@ -28,7 +28,7 @@ test_that("basic working example with two cohorts", {
   db <- DBI::dbConnect(duckdb::duckdb())
   cdm <- CDMConnector::copyCdmTo(con = db, cdm = cdm_local,
                                  schema ="main", overwrite = TRUE)
-  my_result <- cdm$my_cohort |> phenotypeCohort()
-  expect_no_error(reportPhenotype(result = my_result))
+  my_result <- cdm$my_cohort |> cohortDiagnostics()
+  expect_no_error(reportDiagnostics(result = my_result))
 
 })

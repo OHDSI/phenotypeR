@@ -10,7 +10,7 @@ test_that("run with a single cohort", {
   cdm <- CDMConnector::copyCdmTo(con = db, cdm = cdm_local,
                           schema ="main", overwrite = TRUE)
   expect_no_error(result <- cdm$my_cohort |>
-    phenotypeCohort())
+    cohortDiagnostics())
 
   # cohort and timing and overlap should have been skipped
   expect_false(any("cohort_overlap" ==
@@ -31,7 +31,7 @@ test_that("run with multiple cohorts", {
   cdm <- CDMConnector::copyCdmTo(con = db, cdm = cdm_local,
                                  schema ="main", overwrite = TRUE)
   expect_no_error(result <- cdm$my_cohort |>
-                    phenotypeCohort())
+                    cohortDiagnostics())
 
   # cohort and timing and overlap should have been estimated
   expect_true(any("cohort_overlap" ==
