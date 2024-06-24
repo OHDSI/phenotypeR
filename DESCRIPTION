@@ -32,6 +32,7 @@ Imports:
     PatientProfiles,
     rmarkdown,
     rlang,
+    vctrs,
     visOmopResults
 URL: https://oxford-pharmacoepi.github.io/phenotypeR/
 VignetteBuilder: knitr
