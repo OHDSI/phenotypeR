@@ -4,13 +4,7 @@
 \alias{cohortDiagnostics}
 \title{Run cohort-level diagnostics}
 \usage{
-cohortDiagnostics(
-  cohort,
-  strata = list(),
-  matchCohort = TRUE,
-  cohortCharacteristics = TRUE,
-  largeScaleCharacteristics = TRUE
-)
+cohortDiagnostics(cohort, strata = list(), matchCohort = TRUE, nSample = NULL)
 }
 \arguments{
 \item{cohort}{Cohort table in a cdm reference}
@@ -18,7 +12,11 @@ cohortDiagnostics(
 \item{strata}{A list of variables to stratify results. These variables must
 have been added as additional columns in the cohort table.}
 
-\item{largeScaleCharacteristics}{}
+\item{matchCohort}{TRUE or FALSE. If TRUE age and sex matched cohorts will
+be added for each cohort in the cohort table}
+
+\item{nSample}{The number of people to take a random sample for running
+large scale characteristics}
 }
 \value{
 A summarised result

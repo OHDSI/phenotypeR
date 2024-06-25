@@ -3,9 +3,10 @@
 #' @param cohort Cohort table in a cdm reference
 #' @param strata A list of variables to stratify results. These variables must
 #' have been added as additional columns in the cohort table.
-#' @param matchCohort
-#' @param cohortCharacteristics
-#' @param largeScaleCharacteristics
+#' @param matchCohort TRUE or FALSE. If TRUE age and sex matched cohorts will
+#' be added for each cohort in the cohort table
+#' @param nSample The number of people to take a random sample for running
+#' large scale characteristics
 #'
 #' @return A summarised result
 #' @export
@@ -14,8 +15,7 @@
 cohortDiagnostics <- function(cohort,
                               strata = list(),
                               matchCohort = TRUE,
-                              cohortCharacteristics = TRUE,
-                              largeScaleCharacteristics = TRUE){
+                              nSample = NULL){
 
   cdm <- omopgenerics::cdmReference(cohort)
   cohortName <- omopgenerics::tableName(cohort)
@@ -44,7 +44,6 @@ cohortDiagnostics <- function(cohort,
                                                    density = TRUE)
     }
 
-  if(isTRUE(cohortCharacteristics)){
     cli::cli_bullets(c("*" = "Getting cohort summary"))
     results[["cohort_summary"]] <- cdm[[cohortName]] %>%
       dplyr::mutate(days_in_cohort = as.integer(!!CDMConnector::datediff(
@@ -62,7 +61,6 @@ cohortDiagnostics <- function(cohort,
         otherVariables = "days_in_cohort",
         otherVariablesEstimates = c("min", "q25", "median", "q75", "max")
       )
-  }
 
   cli::cli_bullets(c("*" = "{.strong Generating a age and sex matched cohorts}"))
   matchedCohortTable <- paste0(omopgenerics::tableName(cdm[[cohortName]]),
