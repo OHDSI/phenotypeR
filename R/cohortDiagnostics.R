@@ -1,13 +1,21 @@
-
 #' Run cohort-level diagnostics
 #'
-#' @param cohort Cohort table
+#' @param cohort Cohort table in a cdm reference
+#' @param strata A list of variables to stratify results. These variables must
+#' have been added as additional columns in the cohort table.
+#' @param matchCohort TRUE or FALSE. If TRUE age and sex matched cohorts will
+#' be added for each cohort in the cohort table
+#' @param nSample The number of people to take a random sample for running
+#' large scale characteristics
 #'
 #' @return A summarised result
 #' @export
 #'
 #' @examples
-cohortDiagnostics <- function(cohort){
+cohortDiagnostics <- function(cohort,
+                              strata = list(),
+                              matchCohort = TRUE,
+                              nSample = NULL){
 
   cdm <- omopgenerics::cdmReference(cohort)
   cohortName <- omopgenerics::tableName(cohort)
@@ -17,50 +25,42 @@ cohortDiagnostics <- function(cohort){
 
   results <- list()
 
-  age_groups = lapply(as.list(1:length(seq(0, 110, 5))),
-                      function(k, x1 = seq(0, 110, 5), x2 = seq(4, 120, 5)) {
-                        c(x1[k], x2[k])})
-
   cli::cli_bullets(c("*" = "Getting cohort counts"))
   results[["cohort_counts"]] <- cdm[[cohortName]] |>
-    CohortCharacteristics::summariseCohortCount()
+    CohortCharacteristics::summariseCohortCount(strata = strata)
 
   cli::cli_bullets(c("*" = "Getting cohort attrition"))
   results[["cohort_counts"]] <- cdm[[cohortName]] |>
     CohortCharacteristics::summariseCohortAttrition()
 
-  cli::cli_bullets(c("*" = "Getting cohort summary"))
-  results[["cohort_summary"]] <- cdm[[cohortName]] %>%
-    dplyr::mutate(days_in_cohort = as.integer(!!CDMConnector::datediff(
-      start = "cohort_start_date", end = "cohort_end_date", interval = "day"
-    ))) |>
-    PatientProfiles::addDemographics() |>
-    CohortCharacteristics::summariseCharacteristics(
-      strata = c("sex"),
-      ageGroup = age_groups,
-      # tableIntersectCount = list(
-      #   "Number visits prior year" = list(
-      #     tableName = "visit_occurrence",
-      #     window = c(-365, -1)
-      #   )
-      # ),
-      otherVariables = "days_in_cohort",
-      otherVariablesEstimates = c("min", "q25", "median", "q75", "max")
-    )
-
-  if(length(omopgenerics::settings(cdm[[cohortName]]) |>
-            dplyr::pull("cohort_definition_id")) > 1){
+  if(length(cohortIds) > 1){
     cli::cli_bullets(c("*" = "Getting cohort overlap"))
-    results[["cohort_overlap"]] <- CohortCharacteristics::summariseCohortOverlap(
-      cdm[[cohortName]])
+    results[["cohort_overlap"]] <-  cdm[[cohortName]] |>
+      CohortCharacteristics::summariseCohortOverlap(strata = strata)
 
     cli::cli_bullets(c("*" = "Getting cohort timing"))
-    results[["cohort_timing"]] <- CohortCharacteristics::summariseCohortTiming(cdm[[cohortName]],
-                                                                               density = TRUE)
-  } else {
-    cli::cli_bullets(c("*" = "Only one cohort in settings - skipping cohort overlap and timing"))
-  }
+    results[["cohort_timing"]] <- cdm[[cohortName]] |>
+      CohortCharacteristics::summariseCohortTiming(strata = strata,
+                                                   density = TRUE)
+    }
 
+    cli::cli_bullets(c("*" = "Getting cohort summary"))
+    results[["cohort_summary"]] <- cdm[[cohortName]] %>%
+      dplyr::mutate(days_in_cohort = as.integer(!!CDMConnector::datediff(
+        start = "cohort_start_date", end = "cohort_end_date", interval = "day"
+      ))) |>
+      PatientProfiles::addDemographics() |>
+      CohortCharacteristics::summariseCharacteristics(
+        strata = strata,
+        # tableIntersectCount = list(
+        #   "Number visits prior year" = list(
+        #     tableName = "visit_occurrence",
+        #     window = c(-365, -1)
+        #   )
+        # ),
+        otherVariables = "days_in_cohort",
+        otherVariablesEstimates = c("min", "q25", "median", "q75", "max")
+      )
 
   cli::cli_bullets(c("*" = "{.strong Generating a age and sex matched cohorts}"))
   matchedCohortTable <- paste0(omopgenerics::tableName(cdm[[cohortName]]),
@@ -74,6 +74,7 @@ cohortDiagnostics <- function(cohort){
 
   results[["lsc"]] <- CohortCharacteristics::summariseLargeScaleCharacteristics(
     cohort = cdm[[matchedCohortTable]],
+    strata = strata,
     window = list(c(-Inf, -366), c(-365, -31),
                   c(-30, -1), c(0, 0),
                   c(1, 30), c(31, 365),
@@ -86,8 +87,9 @@ cohortDiagnostics <- function(cohort){
     minimumFrequency = 0.0005
   )
 
-  results <- vctrs::list_drop_empty(results)
-  results <- omopgenerics::bind(results)
+  results <- results |>
+    vctrs::list_drop_empty() |>
+    omopgenerics::bind()
 
   results
 }

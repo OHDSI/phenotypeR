@@ -30,6 +30,7 @@ Imports:
     omopgenerics,
     magrittr,
     PatientProfiles,
+    purrr,
     rmarkdown,
     rlang,
     vctrs,

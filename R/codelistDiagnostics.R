@@ -1,7 +1,8 @@
 
 #' Run codelist-level diagnostics
 #'
-#' @param cohort Cohort table
+#' @param cohort A cohort table in a cdm reference. The cohort_codelist
+#' attribute must be populated.
 #'
 #' @return A summarised result
 #' @export
@@ -15,14 +16,32 @@ codelistDiagnostics <- function(cohort){
     dplyr::select("cohort_definition_id") |>
     dplyr::pull()
 
+  if(is.null(attr(cdm, "cohort_codelist"))){
+    cli::cli_warn(message =
+                    c("cohort_codelist attribute for cohort not found",
+                      "- returning an empty result"))
+    return(omopgenerics::emptySummarisedResult())
+  }
 
   results <- list()
-
-  age_groups = lapply(as.list(1:length(seq(0, 110, 5))),
-                      function(k, x1 = seq(0, 110, 5), x2 = seq(4, 120, 5)) {
-                        c(x1[k], x2[k])})
+  results[[1]] <- omopgenerics::emptySummarisedResult()
 
   cli::cli_bullets(c("*" = "Getting code counts in database"))
+
+  cl <- length(cohortIds) - 1
+  all_codelists <- omopgenerics::cohortCodelist(cdm[[cohortName]],
+                                                cohortIds[[1]])
+  for(i in seq_along(cl)){
+    all_codelists <- purrr::flatten(list(
+      all_codelists,
+      omopgenerics::cohortCodelist(cdm[[cohortName]], cohortIds[[i+1]])
+    )) |>
+      omopgenerics::newCodelist()
+  }
+  results[[paste0("code_use")]] <- CodelistGenerator::summariseCodeUse(
+    all_codelists, cdm = cdm)
+
+  omopgenerics::cohortCodelist(cdm[[cohortName]], cohortIds[[i]])
 
   cli::cli_bullets(c("*" = "Getting index event breakdown"))
   for(i in seq_along(cohortIds)){
@@ -33,17 +52,22 @@ codelistDiagnostics <- function(cohort){
       cohortId = cohortIds[[i]],
       timing = "entry",
       countBy = c("record", "person"),
-      byConcept = TRUE,
-      byYear = FALSE,
-      bySex = FALSE,
-      ageGroup = NULL
+      byConcept = TRUE
     )
   }
 
   cli::cli_bullets(c("*" = "Getting orphan concepts"))
+  for(i in seq_along(cohortIds)){
+    results[[paste0("index_event_", i)]] <- CodelistGenerator::summariseOrphanCodes(
+      x = all_codelists,
+      cdm = cdm,
+      domains = CodelistGenerator::getDomains(cdm)
+    )
+  }
 
-  results <- vctrs::list_drop_empty(results)
-  results <- omopgenerics::bind(results)
+  results <- results |>
+    vctrs::list_drop_empty() |>
+    omopgenerics::bind(results)
 
   results
 }
