@@ -27,30 +27,25 @@ knitr::opts_chunk$set(
 
 <!-- badges: end -->
 
-The phenotypeR package takes a cohort table in a cdm reference and runs
-a series of analyses, including summaries of:  
-- code counts in the cdm,  
-- counts of codes that could have led to cohort inclusion,  
-- cohort overlap and timing (when there is more than one cohort),  
-- trends in incidence and prevalence,  
-- the demographics of the individuals in a cohort, and    
-- the cohort compared to indivduals matched on age and sex.  
+The phenotypeR package supports the assessment of cohorts 
 
-Once you have obtained the results, you can view them in  
-- a shiny application, and/ or  
-- a parameterised report  
+Codelist-level diagnostics help to answer questions like what concepts from our codelist are used in the database? What concepts were present led to individuals' entry in the cohort? Are there any concepts being used in the database that we didn't include in our codelist but maybe we should have?
+
+Cohort-level diagnostics help to answer questions like how many individuals did we include in our cohort and how many were excluded because of our inclusion criteria? If we have multiple cohorts, is there overlap between them and when do people enter one cohort relative to another? What is the incidence of cohort entry and what is the prevalence of the cohort in the database? What are the characteristics of those people in the cohort, and how do they compare to people similar in terms of age and sex?
 
 ## Installation
 
-You can install the development version of phenotypeR like so:
+You can install phenotypeR from GitHub:
 
-.....
+```{r, eval = FALSE}
+# install.packages("remotes")
+remotes::install_github("oxford-pharmacoepi/phenotypeR")
+```
 
-## Example
-
-This is a basic example which shows you how to solve a common problem:
+## Codelist diagnostics
 
 ```{r, message=FALSE}
+library(omopgenerics)
 library(CDMConnector)
 library(phenotypeR)
 library(CohortConstructor)
@@ -65,8 +60,26 @@ cdm$gibleed <- conceptCohort(cdm = cdm,
                                    conceptSet = list(gibleed = 192671L),
                                    name = "gibleed")
 
-result <- cdm$gibleed |>
-   phenotypeCohort()
+gibleed_code_diag <- cdm$gibleed |>
+   codelistDiagnostics()
+gibleed_code_diag |> 
+  glimpse()
+```
 
-result
+## Cohort diagnostics
+
+```{r, message=FALSE}
+gibleed_cohort_diag <- cdm$gibleed |>
+   cohortDiagnostics()
+gibleed_cohort_diag |> 
+  glimpse()
+```
+
+
+## Combining results
+```{r, message=FALSE}
+diagnostics <- bind(gibleed_cohort_diag) |> 
+  suppress(minCellCount = 5)
+diagnostics |> 
+  glimpse()
 ```

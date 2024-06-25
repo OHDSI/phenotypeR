@@ -37,6 +37,9 @@ test_that("run with multiple cohorts", {
   expect_true(any("cohort_overlap" ==
                      omopgenerics::settings(result) |>
                      dplyr::pull("result_type")))
+  expect_true(any("cohort_timing" ==
+                    omopgenerics::settings(result) |>
+                    dplyr::pull("result_type")))
 })
 
 test_that("check all expected analyses are present in results", {

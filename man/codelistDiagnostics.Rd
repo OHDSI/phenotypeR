@@ -7,7 +7,8 @@
 codelistDiagnostics(cohort)
 }
 \arguments{
-\item{cohort}{Cohort table}
+\item{cohort}{A cohort table in a cdm reference. The cohort_codelist
+attribute must be populated.}
 }
 \value{
 A summarised result

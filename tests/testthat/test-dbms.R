@@ -14,18 +14,21 @@ test_that("postgres test", {
                      prefix = "incp_")
   )
 
-  cdm$gi_bleed <- CohortConstructor::conceptCohort(cdm = cdm,
-                                                  conceptSet = list("gi_bleed" = 192671),
-                                                  name = "gi_bleed")
-  drug_codes <- CodelistGenerator::getDrugIngredientCodes(cdm,
-                                       name = c("diclofenac",
-                                                "acetaminophen"))
-  cdm$drugs <- CohortConstructor::conceptCohort(cdm = cdm,
-                                                   conceptSet = drug_codes,
-                                                   name = "drugs")
-  cdm <- omopgenerics::bind(cdm$gi_bleed, cdm$drugs, name = "my_cohort")
+  cdm$asthma <- CohortConstructor::conceptCohort(cdm = cdm,
+                                                  conceptSet = list("asthma" = 317009),
+                                                  name = "asthma")
+  diclofenac_codes <- CodelistGenerator::getDrugIngredientCodes(cdm,
+                                       name = c("diclofenac"))
+  cdm$diclofenac <- CohortConstructor::conceptCohort(cdm = cdm,
+                                                conceptSet = diclofenac_codes,
+                                                name = "diclofenac")
+  cdm <- omopgenerics::bind(cdm$asthma, cdm$diclofenac, name = "my_cohort")
 
   result_code_diag <- codelistDiagnostics(cdm$my_cohort)
+  expect_true("cohort_code_use" %in%
+              omopgenerics::settings(result_code_diag)$result_type)
+
+
   result_cohort_diag <- cohortDiagnostics(cdm$my_cohort)
   expect_no_error(reportDiagnostics(result = result_code_diag))
   expect_no_error(shinyDiagnostics(result = result_cohort_diag))
