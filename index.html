@@ -49,6 +49,8 @@
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="articles/a01_Introduction.html">Introduction</a>
+    <a class="dropdown-item" href="articles/a02_CodelistDiagnostics.html">Codelist diagnostics</a>
+    <a class="dropdown-item" href="articles/a03_CohortDiagnostics.html">Cohort diagnostics</a>
   </div>
 </li>
       </ul>
@@ -72,28 +74,23 @@
 
 
 <!-- badges: end -->
-<p>The phenotypeR package takes a cohort table in a cdm reference and runs a series of analyses, including summaries of:<br>
-- code counts in the cdm,<br>
-- counts of codes that could have led to cohort inclusion,<br>
-- cohort overlap and timing (when there is more than one cohort),<br>
-- trends in incidence and prevalence,<br>
-- the demographics of the individuals in a cohort, and<br>
-- the cohort compared to indivduals matched on age and sex.</p>
-<p>Once you have obtained the results, you can view them in<br>
-- a shiny application, and/ or<br>
-- a parameterised report</p>
+<p>The phenotypeR package supports the assessment of cohorts</p>
+<p>Codelist-level diagnostics help to answer questions like what concepts from our codelist are used in the database? What concepts were present led to individuals’ entry in the cohort? Are there any concepts being used in the database that we didn’t include in our codelist but maybe we should have?</p>
+<p>Cohort-level diagnostics help to answer questions like how many individuals did we include in our cohort and how many were excluded because of our inclusion criteria? If we have multiple cohorts, is there overlap between them and when do people enter one cohort relative to another? What is the incidence of cohort entry and what is the prevalence of the cohort in the database? What are the characteristics of those people in the cohort, and how do they compare to people similar in terms of age and sex?</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the development version of phenotypeR like so:</p>
-<p>…..</p>
+<p>You can install phenotypeR from GitHub:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"oxford-pharmacoepi/phenotypeR"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+<h2 id="codelist-diagnostics">Codelist diagnostics<a class="anchor" aria-label="anchor" href="#codelist-diagnostics"></a>
 </h2>
-<p>This is a basic example which shows you how to solve a common problem:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://darwin-eu.github.io/CDMConnector/" class="external-link">CDMConnector</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://darwin-eu-dev.github.io/omopgenerics/" class="external-link">omopgenerics</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://darwin-eu.github.io/CDMConnector/" class="external-link">CDMConnector</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://oxford-pharmacoepi.github.io/phenotypeR/">phenotypeR</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ohdsi.github.io/CohortConstructor/" class="external-link">CohortConstructor</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
@@ -107,27 +104,73 @@
 <span>                                   conceptSet <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>gibleed <span class="op">=</span> <span class="fl">192671L</span><span class="op">)</span>,</span>
 <span>                                   name <span class="op">=</span> <span class="st">"gibleed"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">result</span> <span class="op">&lt;-</span> <span class="va">cdm</span><span class="op">$</span><span class="va">gibleed</span> <span class="op">|&gt;</span></span>
-<span>   <span class="fu">phenotypeCohort</span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">result</span></span>
-<span><span class="co">#&gt; # A tibble: 180 × 13</span></span>
-<span><span class="co">#&gt;    result_id cdm_name            group_name group_level strata_name strata_level</span></span>
-<span><span class="co">#&gt;        &lt;int&gt; &lt;chr&gt;               &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;       </span></span>
-<span><span class="co">#&gt;  1         1 Synthea synthetic … overall    overall     overall     overall     </span></span>
-<span><span class="co">#&gt;  2         1 Synthea synthetic … overall    overall     overall     overall     </span></span>
-<span><span class="co">#&gt;  3         1 Synthea synthetic … overall    overall     overall     overall     </span></span>
-<span><span class="co">#&gt;  4         1 Synthea synthetic … overall    overall     overall     overall     </span></span>
-<span><span class="co">#&gt;  5         1 Synthea synthetic … overall    overall     overall     overall     </span></span>
-<span><span class="co">#&gt;  6         1 Synthea synthetic … overall    overall     overall     overall     </span></span>
-<span><span class="co">#&gt;  7         1 Synthea synthetic … overall    overall     overall     overall     </span></span>
-<span><span class="co">#&gt;  8         1 Synthea synthetic … overall    overall     overall     overall     </span></span>
-<span><span class="co">#&gt;  9         1 Synthea synthetic … overall    overall     overall     overall     </span></span>
-<span><span class="co">#&gt; 10         1 Synthea synthetic … overall    overall     overall     overall     </span></span>
-<span><span class="co">#&gt; # ℹ 170 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 7 more variables: variable_name &lt;chr&gt;, variable_level &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   estimate_name &lt;chr&gt;, estimate_type &lt;chr&gt;, estimate_value &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   additional_name &lt;chr&gt;, additional_level &lt;chr&gt;</span></span></code></pre></div>
+<span><span class="va">gibleed_code_diag</span> <span class="op">&lt;-</span> <span class="va">cdm</span><span class="op">$</span><span class="va">gibleed</span> <span class="op">|&gt;</span></span>
+<span>   <span class="fu"><a href="reference/codelistDiagnostics.html">codelistDiagnostics</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">gibleed_code_diag</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 4</span></span>
+<span><span class="co">#&gt; Columns: 13</span></span>
+<span><span class="co">#&gt; $ result_id        &lt;int&gt; 1, 1, 1, 1</span></span>
+<span><span class="co">#&gt; $ cdm_name         &lt;chr&gt; "Synthea synthetic health database", "Synthea synthet…</span></span>
+<span><span class="co">#&gt; $ group_name       &lt;chr&gt; "cohort_name &amp;&amp;&amp; codelist_name", "cohort_name &amp;&amp;&amp; cod…</span></span>
+<span><span class="co">#&gt; $ group_level      &lt;chr&gt; "gibleed &amp;&amp;&amp; gibleed", "gibleed &amp;&amp;&amp; gibleed", "giblee…</span></span>
+<span><span class="co">#&gt; $ strata_name      &lt;chr&gt; "overall", "overall", "overall", "overall"</span></span>
+<span><span class="co">#&gt; $ strata_level     &lt;chr&gt; "overall", "overall", "overall", "overall"</span></span>
+<span><span class="co">#&gt; $ variable_name    &lt;chr&gt; "overall", "Gastrointestinal hemorrhage", "overall", …</span></span>
+<span><span class="co">#&gt; $ variable_level   &lt;chr&gt; NA, "192671", NA, "192671"</span></span>
+<span><span class="co">#&gt; $ estimate_name    &lt;chr&gt; "record_count", "record_count", "person_count", "pers…</span></span>
+<span><span class="co">#&gt; $ estimate_type    &lt;chr&gt; "integer", "integer", "integer", "integer"</span></span>
+<span><span class="co">#&gt; $ estimate_value   &lt;chr&gt; "479", "479", "479", "479"</span></span>
+<span><span class="co">#&gt; $ additional_name  &lt;chr&gt; "overall", "source_concept_name &amp;&amp;&amp; source_concept_id…</span></span>
+<span><span class="co">#&gt; $ additional_level &lt;chr&gt; "overall", "Gastrointestinal hemorrhage, unspecified …</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="cohort-diagnostics">Cohort diagnostics<a class="anchor" aria-label="anchor" href="#cohort-diagnostics"></a>
+</h2>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gibleed_cohort_diag</span> <span class="op">&lt;-</span> <span class="va">cdm</span><span class="op">$</span><span class="va">gibleed</span> <span class="op">|&gt;</span></span>
+<span>   <span class="fu"><a href="reference/cohortDiagnostics.html">cohortDiagnostics</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">gibleed_cohort_diag</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 1,814</span></span>
+<span><span class="co">#&gt; Columns: 13</span></span>
+<span><span class="co">#&gt; $ result_id        &lt;int&gt; 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,…</span></span>
+<span><span class="co">#&gt; $ cdm_name         &lt;chr&gt; "Synthea synthetic health database", "Synthea synthet…</span></span>
+<span><span class="co">#&gt; $ group_name       &lt;chr&gt; "cohort_name", "cohort_name", "cohort_name", "cohort_…</span></span>
+<span><span class="co">#&gt; $ group_level      &lt;chr&gt; "gibleed", "gibleed", "gibleed", "gibleed", "gibleed"…</span></span>
+<span><span class="co">#&gt; $ strata_name      &lt;chr&gt; "reason", "reason", "reason", "reason", "overall", "o…</span></span>
+<span><span class="co">#&gt; $ strata_level     &lt;chr&gt; "Initial qualifying events", "Initial qualifying even…</span></span>
+<span><span class="co">#&gt; $ variable_name    &lt;chr&gt; "number_records", "number_subjects", "excluded_record…</span></span>
+<span><span class="co">#&gt; $ variable_level   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span></span>
+<span><span class="co">#&gt; $ estimate_name    &lt;chr&gt; "count", "count", "count", "count", "count", "count",…</span></span>
+<span><span class="co">#&gt; $ estimate_type    &lt;chr&gt; "integer", "integer", "integer", "integer", "integer"…</span></span>
+<span><span class="co">#&gt; $ estimate_value   &lt;chr&gt; "479", "479", "0", "0", "479", "479", "1944-01-20", "…</span></span>
+<span><span class="co">#&gt; $ additional_name  &lt;chr&gt; "reason_id", "reason_id", "reason_id", "reason_id", "…</span></span>
+<span><span class="co">#&gt; $ additional_level &lt;chr&gt; "1", "1", "1", "1", "overall", "overall", "overall", …</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="combining-results">Combining results<a class="anchor" aria-label="anchor" href="#combining-results"></a>
+</h2>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">diagnostics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://darwin-eu-dev.github.io/omopgenerics/reference/bind.html" class="external-link">bind</a></span><span class="op">(</span><span class="va">gibleed_cohort_diag</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://darwin-eu-dev.github.io/omopgenerics/reference/suppress.html" class="external-link">suppress</a></span><span class="op">(</span>minCellCount <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="va">diagnostics</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 1,814</span></span>
+<span><span class="co">#&gt; Columns: 13</span></span>
+<span><span class="co">#&gt; $ result_id        &lt;int&gt; 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,…</span></span>
+<span><span class="co">#&gt; $ cdm_name         &lt;chr&gt; "Synthea synthetic health database", "Synthea synthet…</span></span>
+<span><span class="co">#&gt; $ group_name       &lt;chr&gt; "cohort_name", "cohort_name", "cohort_name", "cohort_…</span></span>
+<span><span class="co">#&gt; $ group_level      &lt;chr&gt; "gibleed", "gibleed", "gibleed", "gibleed", "gibleed"…</span></span>
+<span><span class="co">#&gt; $ strata_name      &lt;chr&gt; "reason", "reason", "reason", "reason", "overall", "o…</span></span>
+<span><span class="co">#&gt; $ strata_level     &lt;chr&gt; "Initial qualifying events", "Initial qualifying even…</span></span>
+<span><span class="co">#&gt; $ variable_name    &lt;chr&gt; "number_records", "number_subjects", "excluded_record…</span></span>
+<span><span class="co">#&gt; $ variable_level   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span></span>
+<span><span class="co">#&gt; $ estimate_name    &lt;chr&gt; "count", "count", "count", "count", "count", "count",…</span></span>
+<span><span class="co">#&gt; $ estimate_type    &lt;chr&gt; "integer", "integer", "integer", "integer", "integer"…</span></span>
+<span><span class="co">#&gt; $ estimate_value   &lt;chr&gt; "479", "479", "0", "0", "479", "479", "1944-01-20", "…</span></span>
+<span><span class="co">#&gt; $ additional_name  &lt;chr&gt; "reason_id", "reason_id", "reason_id", "reason_id", "…</span></span>
+<span><span class="co">#&gt; $ additional_level &lt;chr&gt; "1", "1", "1", "1", "overall", "overall", "overall", …</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="license">

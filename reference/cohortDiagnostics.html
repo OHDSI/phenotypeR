@@ -25,6 +25,8 @@
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/a01_Introduction.html">Introduction</a>
+    <a class="dropdown-item" href="../articles/a02_CodelistDiagnostics.html">Codelist diagnostics</a>
+    <a class="dropdown-item" href="../articles/a03_CohortDiagnostics.html">Cohort diagnostics</a>
   </div>
 </li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
@@ -48,13 +50,28 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">cohortDiagnostics</span><span class="op">(</span><span class="va">cohort</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">cohortDiagnostics</span><span class="op">(</span><span class="va">cohort</span>, strata <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, matchCohort <span class="op">=</span> <span class="cn">TRUE</span>, nSample <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>cohort</dt>
-<dd><p>Cohort table</p></dd>
+<dd><p>Cohort table in a cdm reference</p></dd>
+
+
+<dt>strata</dt>
+<dd><p>A list of variables to stratify results. These variables must
+have been added as additional columns in the cohort table.</p></dd>
+
+
+<dt>matchCohort</dt>
+<dd><p>TRUE or FALSE. If TRUE age and sex matched cohorts will
+be added for each cohort in the cohort table</p></dd>
+
+
+<dt>nSample</dt>
+<dd><p>The number of people to take a random sample for running
+large scale characteristics</p></dd>
 
 </dl></div>
     <div class="section level2">
