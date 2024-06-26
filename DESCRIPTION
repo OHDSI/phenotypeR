@@ -16,7 +16,8 @@ Suggests:
     omock,
     testthat (>= 3.0.0),
     knitr,
-    RPostgres
+    RPostgres,
+    shinytest2
 Config/testthat/edition: 3
 RoxygenNote: 7.3.1
 Imports: 
@@ -33,6 +34,7 @@ Imports:
     purrr,
     rmarkdown,
     rlang,
+    shiny,
     vctrs,
     visOmopResults
 URL: https://oxford-pharmacoepi.github.io/phenotypeR/

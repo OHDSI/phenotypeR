@@ -19,7 +19,7 @@ codelistDiagnostics <- function(cohort){
   if(is.null(attr(cdm, "cohort_codelist"))){
     cli::cli_warn(message =
                     c("cohort_codelist attribute for cohort not found",
-                      "- returning an empty result"))
+                      "i" = "Returning an empty result"))
     return(omopgenerics::emptySummarisedResult())
   }
 
