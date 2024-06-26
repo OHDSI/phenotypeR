@@ -13,7 +13,6 @@ shinyDiagnostics <- function(result){
   appDir <- system.file("shiny",
                         "app.R",
                         package = "phenotypeR")
-
   shiny::shinyAppFile(appDir)
 
 }
