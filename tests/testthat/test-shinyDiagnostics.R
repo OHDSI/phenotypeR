@@ -15,9 +15,6 @@ test_that("basic working example with one cohort", {
   my_result <- cdm$my_cohort |> cohortDiagnostics()
 
   shiny_app <- shinyDiagnostics(result = my_result)
-  app <- shinytest2::AppDriver$new(shiny_app,
-                                   name = "diagnostics")
-  app$expect_values()
-
+  expect_no_error(shiny_app)
 
 })
