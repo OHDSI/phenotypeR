@@ -8,8 +8,6 @@ shinyDiagnostics(result)
 }
 \arguments{
 \item{result}{A summarised result}
-
-\item{testMode}{testMode}
 }
 \value{
 A shiny app
