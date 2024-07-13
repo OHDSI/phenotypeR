@@ -1,12 +1,11 @@
 pandoc: 3.1.11
-pkgdown: 2.0.9
+pkgdown: 2.1.0
 pkgdown_sha: ~
 articles:
   a01_Introduction: a01_Introduction.html
   a02_CodelistDiagnostics: a02_CodelistDiagnostics.html
   a03_CohortDiagnostics: a03_CohortDiagnostics.html
-last_built: 2024-06-27T09:11Z
+last_built: 2024-07-13T09:31Z
 urls:
   reference: https://oxford-pharmacoepi.github.io/phenotypeR/reference
   article: https://oxford-pharmacoepi.github.io/phenotypeR/articles
-

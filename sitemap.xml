@@ -1,48 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/404.html</loc>
-  </url>
-  <url>
-    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/articles/a01_Introduction.html</loc>
-  </url>
-  <url>
-    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/articles/a02_CodelistDiagnostics.html</loc>
-  </url>
-  <url>
-    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/articles/a03_CohortDiagnostics.html</loc>
-  </url>
-  <url>
-    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/index.html</loc>
-  </url>
-  <url>
-    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/codelistDiagnostics.html</loc>
-  </url>
-  <url>
-    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/cohortDiagnostics.html</loc>
-  </url>
-  <url>
-    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/phenotypeR-package.html</loc>
-  </url>
-  <url>
-    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/pipe.html</loc>
-  </url>
-  <url>
-    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/reportDiagnostics.html</loc>
-  </url>
-  <url>
-    <loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/shinyDiagnostics.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://oxford-pharmacoepi.github.io/phenotypeR/404.html</loc></url>
+<url><loc>https://oxford-pharmacoepi.github.io/phenotypeR/LICENSE.html</loc></url>
+<url><loc>https://oxford-pharmacoepi.github.io/phenotypeR/articles/a01_Introduction.html</loc></url>
+<url><loc>https://oxford-pharmacoepi.github.io/phenotypeR/articles/a02_CodelistDiagnostics.html</loc></url>
+<url><loc>https://oxford-pharmacoepi.github.io/phenotypeR/articles/a03_CohortDiagnostics.html</loc></url>
+<url><loc>https://oxford-pharmacoepi.github.io/phenotypeR/articles/index.html</loc></url>
+<url><loc>https://oxford-pharmacoepi.github.io/phenotypeR/authors.html</loc></url>
+<url><loc>https://oxford-pharmacoepi.github.io/phenotypeR/index.html</loc></url>
+<url><loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/codelistDiagnostics.html</loc></url>
+<url><loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/cohortDiagnostics.html</loc></url>
+<url><loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/index.html</loc></url>
+<url><loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/phenotypeR-package.html</loc></url>
+<url><loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/pipe.html</loc></url>
+<url><loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/reportDiagnostics.html</loc></url>
+<url><loc>https://oxford-pharmacoepi.github.io/phenotypeR/reference/shinyDiagnostics.html</loc></url>
 </urlset>
+
