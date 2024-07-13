@@ -35,6 +35,9 @@ codelistDiagnostics <- function(cohort){
 
   cli::cli_bullets(c("*" = "Getting codelists from cohorts"))
   cl <- length(cohortIds) - 1
+  if(cl == 0){
+    cl <- NULL
+  }
   # get all cohort codelists
   all_codelists <- omopgenerics::cohortCodelist(cdm[[cohortTable]],
                                                 cohortIds[[1]])

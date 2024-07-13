@@ -9,7 +9,7 @@
 #'
 #' @examples
 reportDiagnostics <- function(result,
-                            directory = here::here()){
+                              directory = here::here()){
 
     input <- system.file("rmd", "phenotype_report.Rmd",
                          package = "phenotypeR")

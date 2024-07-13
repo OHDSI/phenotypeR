@@ -66,11 +66,24 @@ ui = dashboardPage(
 
   # ## body ----
   dashboardBody(
-    use_theme(DUtheme),
     tabItems(
       # code_counts ----
       tabItem(
-        tabName = "code_counts"
+        tabName = "code_use",
+        gt_output("gt_achilles_code_count") %>%
+          withSpinner()
+      ),
+      # code_counts ----
+      tabItem(
+        tabName = "index_events",
+        gt_output("gt_index_events") %>%
+          withSpinner()
+      ),
+      # code_counts ----
+      tabItem(
+        tabName = "orphan_codes",
+        gt_output("gt_orphan_codes") %>%
+          withSpinner()
       ),
       # Cohort overlap ----
       tabItem(
