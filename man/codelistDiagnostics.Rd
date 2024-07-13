@@ -8,7 +8,8 @@ codelistDiagnostics(cohort)
 }
 \arguments{
 \item{cohort}{A cohort table in a cdm reference. The cohort_codelist
-attribute must be populated.}
+attribute must be populated. The cdm reference must contain achilles
+tables as these will be used for deriving concept counts.}
 }
 \value{
 A summarised result

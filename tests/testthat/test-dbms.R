@@ -11,7 +11,8 @@ test_that("postgres test", {
     con = db,
     cdm_schema = Sys.getenv("CDM5_POSTGRESQL_CDM_SCHEMA"),
     write_schema = c(schema =  Sys.getenv("CDM5_POSTGRESQL_SCRATCH_SCHEMA"),
-                     prefix = "incp_")
+                     prefix = "incp_"),
+    achilles_schema = Sys.getenv("CDM5_POSTGRESQL_CDM_SCHEMA")
   )
 
   cdm$asthma <- CohortConstructor::conceptCohort(cdm = cdm,
@@ -27,7 +28,6 @@ test_that("postgres test", {
   result_code_diag <- codelistDiagnostics(cdm$my_cohort)
   expect_true("cohort_code_use" %in%
               omopgenerics::settings(result_code_diag)$result_type)
-
 
   result_cohort_diag <- cohortDiagnostics(cdm$my_cohort)
   expect_no_error(reportDiagnostics(result = result_code_diag))

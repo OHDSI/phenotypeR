@@ -13,5 +13,8 @@ test_that("missing codelist attribute", {
   expect_warning(result <- cdm$my_cohort |>
                     codelistDiagnostics())
  expect_true("summarised_result" %in% class(result))
+ expect_identical(result, omopgenerics::emptySummarisedResult())
+
+ CDMConnector::cdmDisconnect(cdm = cdm)
 })
 
