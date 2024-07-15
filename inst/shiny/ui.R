@@ -4,12 +4,6 @@ ui = dashboardPage(
   dashboardSidebar(
     sidebarMenu(
       menuItem(
-        text = "Background",
-        tabName = "background"),
-      menuItem(
-        text = "Databases",
-        tabName = "cdm_summary"),
-      menuItem(
         text = "CodelistDiagnostics",
         tabName = "codelist_diagnostics",
         menuSubItem(
@@ -22,7 +16,7 @@ ui = dashboardPage(
         ),
         menuSubItem(
           text = "Orphan concepts",
-          tabName = "orphan_concepts"
+          tabName = "orphan_codes"
         )
       ),
       menuItem(
@@ -41,8 +35,8 @@ ui = dashboardPage(
           tabName = "cohort_overlap"
         ),
         menuSubItem(
-          text = "Cohort timinig",
-          tabName = "cohort_timining"
+          text = "Cohort timing",
+          tabName = "cohort_timing"
         ),
         menuSubItem(
           text = "Incidence",
@@ -79,15 +73,76 @@ ui = dashboardPage(
         gt_output("gt_index_events") %>%
           withSpinner()
       ),
-      # code_counts ----
+      # orphan codes ----
       tabItem(
         tabName = "orphan_codes",
         gt_output("gt_orphan_codes") %>%
           withSpinner()
       ),
+      # Cohort counts ----
+      tabItem(
+        tabName = "cohort_counts",
+        gt_output("gt_cohort_counts") %>%
+          withSpinner()
+      ),
+      # Cohort attrition ----
+      tabItem(
+        tabName = "cohort_attrition",
+          div(
+            style = "display: inline-block;vertical-align:top; width: 150px;",
+            pickerInput(
+              inputId = "attrition_cohort_name",
+              label = "Cohort",
+              choices = cohort_names,
+              selected = cohort_names[1],
+              options = list(`actions-box` = TRUE,
+                             size = 10,
+                             `selected-text-format` = "count > 3"),
+              multiple = TRUE
+            )
+          ),
+        tabsetPanel(
+          type = "tabs",
+          tabPanel(
+            "Table",
+            gt_output("gt_cohort_attrition") %>%
+              withSpinner()
+            ),
+          tabPanel(
+            "Plot",
+            grVizOutput("gg_cohort_attrition")
+            )
+        )
+      ),
       # Cohort overlap ----
       tabItem(
-        tabName = "cohort_overlap"
+        tabName = "cohort_overlap",
+        tabsetPanel(
+          type = "tabs",
+          tabPanel(
+            "Table",
+        gt_output("gt_cohort_overlap") %>%
+          withSpinner()),
+        tabPanel(
+          "Plot",
+          plotlyOutput("gg_cohort_overlap") %>%
+            withSpinner())
+        )
+      ),
+      # Cohort timing ----
+      tabItem(
+        tabName = "cohort_timing",
+        tabsetPanel(
+          type = "tabs",
+          tabPanel(
+            "Table",
+        gt_output("gt_cohort_timing") %>%
+          withSpinner()),
+        tabPanel(
+          "Plot",
+          plotlyOutput("gg_cohort_timing") %>%
+            withSpinner())
+        )
       )
       # end ----
     )
