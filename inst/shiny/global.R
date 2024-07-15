@@ -12,7 +12,8 @@ library(shinydashboard)
 
 # load data ----
 if(file.exists(here::here("shiny", "data", "result.csv"))){
-  result <- read_csv(here::here("shiny", "data", "result.csv"))
+  result <- read_csv(here::here("shiny", "data", "result.csv"),
+                     col_types = c(.default = "c"))
 } else {
   cli::cli_warn("No results file found")
   result <- omopgenerics::emptySummarisedResult()
