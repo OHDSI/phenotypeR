@@ -45,7 +45,7 @@ cohortDiagnostics <- function(cohort,
     results[["cohort_timing"]] <- cdm[[cohortName]] |>
       CohortCharacteristics::summariseCohortTiming(strata = strata,
                                                    density = TRUE)
-    attr(results[["cohort_timing"]], "settings")$result_id <- 4L
+    attr(results[["cohort_timing"]], "settings")$result_id <- c(4L, 5L)
     }
 
     cli::cli_bullets(c("*" = "Getting cohort summary"))
@@ -65,14 +65,14 @@ cohortDiagnostics <- function(cohort,
         otherVariables = "days_in_cohort",
         otherVariablesEstimates = c("min", "q25", "median", "q75", "max")
       )
-    attr(results[["cohort_summary"]], "settings")$result_id <- 5L
+    attr(results[["cohort_summary"]], "settings")$result_id <- 6L
 
   cli::cli_bullets(c("*" = "{.strong Generating a age and sex matched cohorts}"))
   matchedCohortTable <- paste0(omopgenerics::tableName(cdm[[cohortName]]),
                                "_matched")
   cdm[[matchedCohortTable]] <- CohortConstructor::matchCohorts(cdm[[cohortName]],
                                                                name = matchedCohortTable)
-  attr(results[["cohort_summary"]], "settings")$result_id <- 6L
+  attr(results[["cohort_summary"]], "settings")$result_id <- 7L
 
 
   cli::cli_bullets(c("*" = "{.strong Running large scale characterisation}"))
@@ -89,7 +89,7 @@ cohortDiagnostics <- function(cohort,
     episodeInWindow = c("drug_exposure"),
     minimumFrequency = 0.0005
   )
-  attr(results[["lsc"]], "settings")$result_id <- attr(results[["lsc"]], "settings")$result_id + 7L
+  attr(results[["lsc"]], "settings")$result_id <- attr(results[["lsc"]], "settings")$result_id + 8L
 
   results <- results |>
     vctrs::list_drop_empty() |>

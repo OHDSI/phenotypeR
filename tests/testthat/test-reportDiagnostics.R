@@ -30,7 +30,8 @@ test_that("basic working example with one cohort", {
   my_result <- cdm$my_cohort |> cohortDiagnostics()
   expect_no_error(reportDiagnostics(result = my_result))
 
-})
+  CDMConnector::cdm_disconnect(cdm )
+  })
 
 test_that("basic working example with two cohorts", {
 
@@ -64,5 +65,8 @@ test_that("basic working example with two cohorts", {
                                  schema ="main", overwrite = TRUE)
   my_result <- cdm$my_cohort |> cohortDiagnostics()
   expect_no_error(reportDiagnostics(result = my_result))
+
+  CDMConnector::cdm_disconnect(cdm )
+
 
 })
