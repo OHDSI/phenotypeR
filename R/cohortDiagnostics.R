@@ -30,7 +30,7 @@ cohortDiagnostics <- function(cohort,
     CohortCharacteristics::summariseCohortCount(strata = strata)
 
   cli::cli_bullets(c("*" = "Getting cohort attrition"))
-  results[["cohort_counts"]] <- cdm[[cohortName]] |>
+  results[["cohort_attrition"]] <- cdm[[cohortName]] |>
     CohortCharacteristics::summariseCohortAttrition()
 
   if(length(cohortIds) > 1){
@@ -52,15 +52,17 @@ cohortDiagnostics <- function(cohort,
       PatientProfiles::addDemographics() |>
       CohortCharacteristics::summariseCharacteristics(
         strata = strata,
-        # tableIntersectCount = list(
-        #   "Number visits prior year" = list(
-        #     tableName = "visit_occurrence",
-        #     window = c(-365, -1)
-        #   )
-        # ),
+        tableIntersectCount = list(
+          "Number visits prior year" = list(
+            tableName = "visit_occurrence",
+            window = c(-365, -1)
+          )
+        ),
         otherVariables = "days_in_cohort",
         otherVariablesEstimates = c("min", "q25", "median", "q75", "max")
       )
+    attr(results[["cohort_summary"]], "settings")$result_id <- attr(results[["cohort_summary"]], "settings")$result_id * 10L
+
 
   cli::cli_bullets(c("*" = "{.strong Generating a age and sex matched cohorts}"))
   matchedCohortTable <- paste0(omopgenerics::tableName(cdm[[cohortName]]),
@@ -70,8 +72,6 @@ cohortDiagnostics <- function(cohort,
 
 
   cli::cli_bullets(c("*" = "{.strong Running large scale characterisation}"))
-
-
   results[["lsc"]] <- CohortCharacteristics::summariseLargeScaleCharacteristics(
     cohort = cdm[[matchedCohortTable]],
     strata = strata,
@@ -79,17 +79,18 @@ cohortDiagnostics <- function(cohort,
                   c(-30, -1), c(0, 0),
                   c(1, 30), c(31, 365),
                   c(366, Inf)),
-    eventInWindow = c("condition_occurrence"),
-    # eventInWindow = c("condition_occurrence", "visit_occurrence",
-    #                   "measurement", "procedure_occurrence",
-    #                   "observation"),
+    eventInWindow = c("condition_occurrence", "visit_occurrence",
+                      "measurement", "procedure_occurrence",
+                      "observation"),
     episodeInWindow = c("drug_exposure"),
     minimumFrequency = 0.0005
   )
+  attr(results[["lsc"]], "settings")$result_id <- attr(results[["lsc"]], "settings")$result_id * 100L
 
   results <- results |>
     vctrs::list_drop_empty() |>
-    omopgenerics::bind()
+    omopgenerics::bind() |>
+    omopgenerics::newSummarisedResult()
 
   results
 }
