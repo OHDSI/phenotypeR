@@ -28,18 +28,15 @@ cohortDiagnostics <- function(cohort,
   cli::cli_bullets(c("*" = "Getting cohort counts"))
   results[["cohort_counts"]] <- cdm[[cohortName]] |>
     CohortCharacteristics::summariseCohortCount(strata = strata)
-  # attr(results[["cohort_counts"]], "settings")$result_id <- 1L
 
   cli::cli_bullets(c("*" = "Getting cohort attrition"))
   results[["cohort_attrition"]] <- cdm[[cohortName]] |>
     CohortCharacteristics::summariseCohortAttrition()
-  # attr(results[["cohort_attrition"]], "settings")$result_id <- 2L
 
   if(length(cohortIds) > 1){
     cli::cli_bullets(c("*" = "Getting cohort overlap"))
     results[["cohort_overlap"]] <-  cdm[[cohortName]] |>
       CohortCharacteristics::summariseCohortOverlap(strata = strata)
-    # attr(results[["cohort_overlap"]], "settings")$result_id <- 3L
 
     cli::cli_bullets(c("*" = "Getting cohort timing"))
     results[["cohort_timing"]] <- cdm[[cohortName]] |>

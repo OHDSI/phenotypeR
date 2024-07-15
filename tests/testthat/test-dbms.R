@@ -28,6 +28,8 @@ test_that("postgres test", {
   result_code_diag <- codelistDiagnostics(cdm$my_cohort)
   expect_true("cohort_code_use" %in%
               omopgenerics::settings(result_code_diag)$result_type)
+  # shiny with only codelist results
+  shinyDiagnostics(result_code_diag)
 
   result_cohort_diag <- cohortDiagnostics(cdm$my_cohort)
   expect_no_error(reportDiagnostics(result = result_code_diag))

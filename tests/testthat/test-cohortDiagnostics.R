@@ -44,7 +44,7 @@ test_that("run with multiple cohorts", {
     omock::mockDrugExposure() |>
     omock::mockObservation() |>
     omock::mockMeasurement() |>
-    omock::mockCohort(name = "my_cohort")
+    omock::mockCohort(name = "my_cohort", numberCohorts = 2)
   cdm_local$visit_occurrence <- dplyr::tibble(
     person_id = 1L,
     visit_occurrence_id = 1L,
@@ -66,7 +66,7 @@ test_that("run with multiple cohorts", {
   expect_no_error(result <- cdm$my_cohort |>
                     cohortDiagnostics())
 
-  # cohort and timing and overlap should have been estimated
+  # cohort and timing and overlap should have been estimated now we have more than one cohort
   expect_true(any("cohort_overlap" ==
                      omopgenerics::settings(result) |>
                      dplyr::pull("result_type")))

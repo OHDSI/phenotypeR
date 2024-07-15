@@ -11,15 +11,15 @@ library(shinycssloaders)
 library(shinydashboard)
 
 # load data ----
-# if(file.exists(here::here("shiny", "data", "result.csv"))){
-#   result <- read_csv(here::here("shiny", "data", "result.csv"))
-# } else {
-#   cli::cli_warn("No results file found")
-#   result <- omopgenerics::emptySummarisedResult()
-# }
-# result <- omopgenerics::newSummarisedResult(result)
+if(file.exists(here::here("shiny", "data", "result.csv"))){
+  result <- read_csv(here::here("shiny", "data", "result.csv"))
+} else {
+  cli::cli_warn("No results file found")
+  result <- omopgenerics::emptySummarisedResult()
+}
+result <- omopgenerics::newSummarisedResult(result)
 
 
-cohort_names <- sort(unique(cd |>
+cohort_names <- sort(unique(result |>
               visOmopResults::filterSettings(result_type == "cohort_attrition") |>
               dplyr::pull("group_level")))
