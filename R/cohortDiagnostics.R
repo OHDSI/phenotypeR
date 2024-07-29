@@ -49,7 +49,6 @@ cohortDiagnostics <- function(cohort,
       dplyr::mutate(days_in_cohort = as.integer(!!CDMConnector::datediff(
         start = "cohort_start_date", end = "cohort_end_date", interval = "day"
       ))) |>
-      PatientProfiles::addDemographics() |>
       CohortCharacteristics::summariseCharacteristics(
         strata = strata,
         tableIntersectCount = list(
