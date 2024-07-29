@@ -1,4 +1,5 @@
 # Libraries ----
+library(omopgenerics)
 library(readr)
 library(here)
 library(gt)
@@ -11,20 +12,23 @@ library(shinycssloaders)
 library(shinydashboard)
 
 # load data ----
-if(file.exists(here::here("data", "result.csv"))){
-  result <- read_csv(here::here("data", "result.csv"),
-                     col_types = c(.default = "c"))
-} else if(file.exists(here::here("shiny", "data", "result.csv"))) {
-  result <- read_csv(here::here("shiny", "data", "result.csv"),
-                     col_types = c(.default = "c"))
-
+if(dir.exists(here::here("data"))){
+  result <- omopgenerics::importSummarisedResult(
+    path = here::here("data"))
+} else if(dir.exists(here::here("shiny", "data"))) {
+  result <- omopgenerics::importSummarisedResult(
+    path = here::here("shiny", "data"))
 } else {
   cli::cli_warn("No results file found")
   result <- omopgenerics::emptySummarisedResult()
 }
 result <- omopgenerics::newSummarisedResult(result)
 
+if(nrow(result) > 0){
+  cohort_names <- sort(unique(result |>
+                                visOmopResults::filterSettings(result_type == "cohort_attrition") |>
+                                dplyr::pull("group_level")))
+} else {
+  cohort_names <- NULL
+}
 
-cohort_names <- sort(unique(result |>
-              visOmopResults::filterSettings(result_type == "cohort_attrition") |>
-              dplyr::pull("group_level")))

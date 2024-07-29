@@ -18,9 +18,13 @@ server <- function(input, output, session) {
 
 
   working_attrition_data <- reactive({
-    result |>
-      visOmopResults::filterSettings(result_type == "cohort_attrition")  |>
-      visOmopResults::filterSettings(cohort_name  == input$attrition_cohort_name)
+    if(nrow(result) > 0){
+      result |>
+        visOmopResults::filterSettings(result_type == "cohort_attrition")  |>
+        visOmopResults::filterSettings(cohort_name  == input$attrition_cohort_name)
+    } else {
+      result
+    }
   })
   output$gt_cohort_attrition <- render_gt({
     CohortCharacteristics::tableCohortAttrition(working_attrition_data())
