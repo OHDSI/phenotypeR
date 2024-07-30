@@ -18,12 +18,12 @@ test_that("postgres test", {
   cdm$asthma <- CohortConstructor::conceptCohort(cdm = cdm,
                                                   conceptSet = list("asthma" = 317009),
                                                   name = "asthma")
-  diclofenac_codes <- CodelistGenerator::getDrugIngredientCodes(cdm,
-                                       name = c("diclofenac"))
-  cdm$diclofenac <- CohortConstructor::conceptCohort(cdm = cdm,
-                                                conceptSet = diclofenac_codes,
-                                                name = "diclofenac")
-  cdm <- omopgenerics::bind(cdm$asthma, cdm$diclofenac, name = "my_cohort")
+  drug_codes <- CodelistGenerator::getDrugIngredientCodes(cdm,
+                                       name = c("diclofenac", "metformin"))
+  cdm$drugs <- CohortConstructor::conceptCohort(cdm = cdm,
+                                                conceptSet = drug_codes,
+                                                name = "drugs")
+  cdm <- omopgenerics::bind(cdm$asthma, cdm$drugs, name = "my_cohort")
 
   result_code_diag <- codelistDiagnostics(cdm$my_cohort)
   # shiny with only codelist results
