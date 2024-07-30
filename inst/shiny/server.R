@@ -2,10 +2,25 @@ server <- function(input, output, session) {
 
   # achilles results
   working_achilles_data <- reactive({
-      result |>
+      working_result <- result |>
       filter(cdm_name %in% input$achilles_cdm_name,
-             group_level %in% input$achilles_codelist_name)
+             group_level %in% input$achilles_codelist_name,
+             strata_level %in% input$achilles_codelist_domain)
+
+      if(isFALSE(input$achilles_records)){
+        working_result <- working_result %>%
+          filter(estimate_name != "record_count")
+      }
+
+      if(isFALSE(input$achilles_subjects)) {
+        working_result <- working_result %>%
+          filter(estimate_name != "person_count")
+      }
+
+       working_result
+
   })
+
   output$gt_achilles_code_count <- render_gt({
     validate(
       need(nrow(working_achilles_data()) >0, "No result found")
@@ -13,30 +28,32 @@ server <- function(input, output, session) {
       CodelistGenerator::tableAchillesCodeUse(working_achilles_data(),
                                               type = "gt")
     })
-  output$gt_achilles_code_flextable <- renderUI({
+  output$raw_achilles_code <- renderDataTable({
     validate(
       need(nrow(working_achilles_data()) >0, "No result found")
     )
-    CodelistGenerator::tableAchillesCodeUse(working_achilles_data(),
-                                            type = "flextable") %>%
-      autofit() %>%
-      htmltools_value()
-  })
-  output$gt_achilles_code_tibble <- renderTable({
-    validate(
-      need(nrow(working_achilles_data()) >0, "No result found")
-    )
-    CodelistGenerator::tableAchillesCodeUse(working_achilles_data(),
+   table <-  CodelistGenerator::tableAchillesCodeUse(working_achilles_data(),
                                             type = "tibble")
+   names(table) <- gsub("\\[.*?\\]", "", names(table))
+   names(table) <- str_replace_all(names(table), "CDM name\n", " ")
+   names(table) <- str_replace_all(names(table), "\n", ": ")
+
+   if(length(names(table))>=7){
+     table[[7]] <- as.numeric(table[[7]])
+   }
+   if(length(names(table))>=8){
+     table[[8]] <- as.numeric(table[[7]])
+   }
+
+   datatable(table, rownames= FALSE)
+
   })
   # output type depends on input
   output$table_achilles_code_count <- renderUI({
-      if (input$achilles_table_type == "gt") {
-        tableOutput("gt_achilles_code_count")
-      } else if (input$achilles_table_type == "flextable"){
-        uiOutput("gt_achilles_code_flextable")
+      if (input$achilles_table_type == "tidy") {
+        gt_output("gt_achilles_code_count")
       } else {
-        gt_output("gt_achilles_code_tibble")
+        dataTableOutput("raw_achilles_code")
       }
     })
 

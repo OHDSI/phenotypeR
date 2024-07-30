@@ -81,7 +81,7 @@ ui = dashboardPage(
           style = "display: inline-block;vertical-align:top; width: 150px;",
           pickerInput(
             inputId = "achilles_codelist_name",
-            label = "Cohort",
+            label = "Codelist",
             choices = codelist_names,
             selected = codelist_names[1],
             options = list(`actions-box` = TRUE,
@@ -90,13 +90,38 @@ ui = dashboardPage(
             multiple = TRUE
           )
         ),
-
-
+        div(
+          style = "display: inline-block;vertical-align:top; width: 150px;",
+          pickerInput(
+            inputId = "achilles_codelist_domain",
+            label = "Domain",
+            choices = codelist_domains,
+            selected = codelist_domains,
+            options = list(`actions-box` = TRUE,
+                           size = 10,
+                           `selected-text-format` = "count > 3"),
+            multiple = TRUE
+          )
+        ),
+        prettySwitch(
+          inputId = "achilles_subjects",
+          label = "Number of subjects",
+          fill = TRUE,
+          value = TRUE
+        ),
+        div(
+          style = "display: inline-block;vertical-align:top; width: 150px;",
+        prettySwitch(
+          inputId = "achilles_records",
+          label = "Number of records",
+          fill = TRUE,
+          value = TRUE
+        )),
 
         radioGroupButtons(
           inputId = "achilles_table_type",
           label = "Table type",
-          choices = c("gt", "flextable", "tibble"),
+          choices = c("tidy", "raw"),
           status = "primary"
         ),
         uiOutput("table_achilles_code_count") %>%
