@@ -34,17 +34,12 @@ codelistDiagnostics <- function(cohort){
   results[[1]] <- omopgenerics::emptySummarisedResult()
 
   cli::cli_bullets(c("*" = "Getting codelists from cohorts"))
-  cl <- length(cohortIds) - 1
-  if(cl == 0){
-    cl <- NULL
-  }
   # get all cohort codelists
-  all_codelists <- omopgenerics::cohortCodelist(cdm[[cohortTable]],
-                                                cohortIds[[1]])
-  for(i in seq_along(cl)){
+  all_codelists <- omopgenerics::emptyCodelist()
+  for(i in seq_along(cohortIds)){
     all_codelists <- purrr::flatten(list(
       all_codelists,
-      omopgenerics::cohortCodelist(cdm[[cohortTable]], cohortIds[[i+1]])
+      omopgenerics::cohortCodelist(cdm[[cohortTable]], cohortIds[[i]])
     )) |>
       omopgenerics::newCodelist()
   }
