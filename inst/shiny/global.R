@@ -1,5 +1,6 @@
 # Libraries ----
 library(omopgenerics)
+library(dplyr)
 library(readr)
 library(here)
 library(gt)

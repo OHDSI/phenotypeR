@@ -11,10 +11,6 @@ ui = dashboardPage(
           tabName = "code_use"
         ),
         menuSubItem(
-          text = "Index events",
-          tabName = "index_events"
-        ),
-        menuSubItem(
           text = "Orphan concepts",
           tabName = "orphan_codes"
         )
@@ -25,6 +21,10 @@ ui = dashboardPage(
         menuSubItem(
           text = "Cohort counts",
           tabName = "cohort_counts"
+        ),
+        menuSubItem(
+          text = "Index events",
+          tabName = "index_events"
         ),
         menuSubItem(
           text = "Cohort attrition",
@@ -127,22 +127,190 @@ ui = dashboardPage(
         uiOutput("table_achilles_code_count") %>%
            withSpinner()
       ),
-      # code_counts ----
-      tabItem(
-        tabName = "index_events",
-        gt_output("gt_index_events") %>%
-          withSpinner()
-      ),
+
       # orphan codes ----
       tabItem(
         tabName = "orphan_codes",
-        gt_output("gt_orphan_codes") %>%
+        div(
+          style = "display: inline-block;vertical-align:top; width: 150px;",
+          pickerInput(
+            inputId = "orphan_cdm_name",
+            label = "Database",
+            choices = databases,
+            selected = databases,
+            options = list(`actions-box` = TRUE,
+                           size = 10,
+                           `selected-text-format` = "count > 3"),
+            multiple = TRUE
+          )
+        ),
+        div(
+          style = "display: inline-block;vertical-align:top; width: 150px;",
+          pickerInput(
+            inputId = "orphan_codelist_name",
+            label = "Codelist",
+            choices = codelist_names,
+            selected = codelist_names[1],
+            options = list(`actions-box` = TRUE,
+                           size = 10,
+                           `selected-text-format` = "count > 3"),
+            multiple = TRUE
+          )
+        ),
+        div(
+          style = "display: inline-block;vertical-align:top; width: 150px;",
+          pickerInput(
+            inputId = "orphan_codelist_domain",
+            label = "Domain",
+            choices = codelist_domains,
+            selected = codelist_domains,
+            options = list(`actions-box` = TRUE,
+                           size = 10,
+                           `selected-text-format` = "count > 3"),
+            multiple = TRUE
+          )
+        ),
+        prettySwitch(
+          inputId = "orphan_subjects",
+          label = "Number of subjects",
+          fill = TRUE,
+          value = TRUE
+        ),
+        div(
+          style = "display: inline-block;vertical-align:top; width: 150px;",
+          prettySwitch(
+            inputId = "orphan_records",
+            label = "Number of records",
+            fill = TRUE,
+            value = TRUE
+          )),
+
+        radioGroupButtons(
+          inputId = "orphan_table_type",
+          label = "Table type",
+          choices = c("tidy", "raw"),
+          status = "primary"
+        ),
+        uiOutput("table_orphan_code_count") %>%
           withSpinner()
       ),
       # Cohort counts ----
       tabItem(
         tabName = "cohort_counts",
-        gt_output("gt_cohort_counts") %>%
+        div(
+          style = "display: inline-block;vertical-align:top; width: 150px;",
+          pickerInput(
+            inputId = "cohort_count_cdm_name",
+            label = "Database",
+            choices = databases,
+            selected = databases,
+            options = list(`actions-box` = TRUE,
+                           size = 10,
+                           `selected-text-format` = "count > 3"),
+            multiple = TRUE
+          )
+        ),
+        div(
+          style = "display: inline-block;vertical-align:top; width: 150px;",
+          pickerInput(
+            inputId = "cohort_count_cohort_name",
+            label = "Cohort",
+            choices = cohort_names,
+            selected = cohort_names[1],
+            options = list(`actions-box` = TRUE,
+                           size = 10,
+                           `selected-text-format` = "count > 3"),
+            multiple = TRUE
+          )
+        ),
+        prettySwitch(
+          inputId = "cohort_count_subjects",
+          label = "Number of subjects",
+          fill = TRUE,
+          value = TRUE
+        ),
+        div(
+          style = "display: inline-block;vertical-align:top; width: 150px;",
+          prettySwitch(
+            inputId = "cohort_count_records",
+            label = "Number of records",
+            fill = TRUE,
+            value = TRUE
+          )),
+
+        radioGroupButtons(
+          inputId = "cohort_count_table_type",
+          label = "Table type",
+          choices = c("tidy", "raw"),
+          status = "primary"
+        ),
+        uiOutput("table_cohort_count_code_count") %>%
+          withSpinner()
+      ),
+      # code_counts ----
+      tabItem(
+        tabName = "index_events",
+        div(
+          style = "display: inline-block;vertical-align:top; width: 150px;",
+          pickerInput(
+            inputId = "index_events_cdm_name",
+            label = "Database",
+            choices = databases,
+            selected = databases,
+            options = list(`actions-box` = TRUE,
+                           size = 10,
+                           `selected-text-format` = "count > 3"),
+            multiple = TRUE
+          )
+        ),
+        div(
+          style = "display: inline-block;vertical-align:top; width: 150px;",
+          pickerInput(
+            inputId = "index_events_cohort_name",
+            label = "Cohort",
+            choices = cohort_names,
+            selected = cohort_names,
+            options = list(`actions-box` = TRUE,
+                           size = 10,
+                           `selected-text-format` = "count > 3"),
+            multiple = TRUE
+          )
+        ),
+        div(
+          style = "display: inline-block;vertical-align:top; width: 150px;",
+          pickerInput(
+            inputId = "index_events_codelist_name",
+            label = "Codelist",
+            choices = codelist_names,
+            selected = codelist_names,
+            options = list(`actions-box` = TRUE,
+                           size = 10,
+                           `selected-text-format` = "count > 3"),
+            multiple = TRUE
+          )
+        ),
+        prettySwitch(
+          inputId = "index_events_subjects",
+          label = "Number of subjects",
+          fill = TRUE,
+          value = TRUE
+        ),
+        div(
+          style = "display: inline-block;vertical-align:top; width: 150px;",
+          prettySwitch(
+            inputId = "index_events_records",
+            label = "Number of records",
+            fill = TRUE,
+            value = TRUE
+          )),
+
+        radioGroupButtons(
+          inputId = "index_events_table_type",
+          label = "Table type",
+          choices = c("tidy", "raw"),
+          status = "primary"
+        ),
+        uiOutput("table_index_events_code_count") %>%
           withSpinner()
       ),
       # Cohort attrition ----

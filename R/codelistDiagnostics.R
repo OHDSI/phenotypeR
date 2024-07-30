@@ -52,28 +52,15 @@ codelistDiagnostics <- function(cohort){
   cli::cli_bullets(c("*" = "Getting code counts in database based on achilles"))
   results[[paste0("achilles_code_use")]] <- CodelistGenerator::summariseAchillesCodeUse(x = all_codelists, cdm = cdm)
 
-  cli::cli_bullets(c("*" = "Getting index event breakdown"))
-  for(i in seq_along(cohortIds)){
-    results[[paste0("index_event_", i)]] <- CodelistGenerator::summariseCohortCodeUse(
-      x = omopgenerics::cohortCodelist(cdm[[cohortTable]], cohortIds[[i]]),
-      cdm = cdm,
-      cohortTable = cohortTable,
-      cohortId = cohortIds[[i]],
-      timing = "entry",
-      countBy = c("record", "person"),
-      byConcept = TRUE
-    )
-  }
-
   cli::cli_bullets(c("*" = "Getting orphan concepts"))
   results[[paste0("orphan_codes", i)]] <- CodelistGenerator::summariseOrphanCodes(
       x = all_codelists,
       cdm = cdm
     )
 
-  results <- vctrs::list_drop_empty(results)
-
-  results <- omopgenerics::bind(results)
+  results <- results |>
+    vctrs::list_drop_empty() |>
+    omopgenerics::bind()
 
   results
 }

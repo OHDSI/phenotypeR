@@ -36,6 +36,7 @@ test_that("postgres test", {
 
   # shiny with all results
   result_all <- omopgenerics::bind(result_code_diag, result_cohort_diag)
+  expect_no_error(shinyDiagnostics(result = result_all))
 
   CDMConnector::cdm_disconnect(cdm = cdm)
 
