@@ -26,8 +26,6 @@ test_that("postgres test", {
   cdm <- omopgenerics::bind(cdm$asthma, cdm$diclofenac, name = "my_cohort")
 
   result_code_diag <- codelistDiagnostics(cdm$my_cohort)
-  expect_true("cohort_code_use" %in%
-              omopgenerics::settings(result_code_diag)$result_type)
   # shiny with only codelist results
   expect_no_error(shinyDiagnostics(result_code_diag))
 

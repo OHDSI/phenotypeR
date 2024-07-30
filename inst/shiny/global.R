@@ -3,6 +3,7 @@ library(omopgenerics)
 library(readr)
 library(here)
 library(gt)
+library(flextable)
 library(plotly)
 library(DiagrammeR)
 library(shiny)
@@ -23,6 +24,9 @@ if(dir.exists(here::here("data"))){
   result <- omopgenerics::emptySummarisedResult()
 }
 result <- omopgenerics::newSummarisedResult(result)
+
+
+databases <-sort(unique(result$cdm_name))
 
 if(nrow(result) > 0){
   cohort_names <- sort(unique(result |>

@@ -64,8 +64,27 @@ ui = dashboardPage(
       # code_counts ----
       tabItem(
         tabName = "code_use",
-        gt_output("gt_achilles_code_count") %>%
-          withSpinner()
+        div(
+          style = "display: inline-block;vertical-align:top; width: 150px;",
+          pickerInput(
+            inputId = "achilles_cdm_name",
+            label = "Database",
+            choices = databases,
+            selected = databases,
+            options = list(`actions-box` = TRUE,
+                           size = 10,
+                           `selected-text-format` = "count > 3"),
+            multiple = TRUE
+          )
+        ),
+        radioGroupButtons(
+          inputId = "achilles_table_type",
+          label = "Table type",
+          choices = c("gt", "flextable", "tibble"),
+          status = "primary"
+        ),
+        uiOutput("table_achilles_code_count") %>%
+           withSpinner()
       ),
       # code_counts ----
       tabItem(
