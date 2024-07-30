@@ -3,7 +3,9 @@ test_that("basic working example with one cohort", {
   skip_on_cran()
 
   # empty result - should still work without error
-  expect_no_error(shinyDiagnostics(result = omopgenerics::emptySummarisedResult()))
+  expect_no_error(
+    shinyDiagnostics(result = omopgenerics::emptySummarisedResult())
+    )
 
   # with results
   cdm_local <- omock::mockCdmReference() |>
