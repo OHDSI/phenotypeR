@@ -77,6 +77,22 @@ ui = dashboardPage(
             multiple = TRUE
           )
         ),
+        div(
+          style = "display: inline-block;vertical-align:top; width: 150px;",
+          pickerInput(
+            inputId = "achilles_codelist_name",
+            label = "Cohort",
+            choices = codelist_names,
+            selected = codelist_names[1],
+            options = list(`actions-box` = TRUE,
+                           size = 10,
+                           `selected-text-format` = "count > 3"),
+            multiple = TRUE
+          )
+        ),
+
+
+
         radioGroupButtons(
           inputId = "achilles_table_type",
           label = "Table type",

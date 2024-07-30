@@ -3,7 +3,8 @@ server <- function(input, output, session) {
   # achilles results
   working_achilles_data <- reactive({
       result |>
-      filter(cdm_name %in% input$achilles_cdm_name)
+      filter(cdm_name %in% input$achilles_cdm_name,
+             group_level %in% input$achilles_codelist_name)
   })
   output$gt_achilles_code_count <- render_gt({
     validate(

@@ -29,6 +29,9 @@ result <- omopgenerics::newSummarisedResult(result)
 databases <-sort(unique(result$cdm_name))
 
 if(nrow(result) > 0){
+  codelist_names <- sort(unique(result |>
+                                  visOmopResults::filterSettings(result_type == "achilles_code_use") |>
+                                  dplyr::pull("group_level")))
   cohort_names <- sort(unique(result |>
                                 visOmopResults::filterSettings(result_type == "cohort_attrition") |>
                                 dplyr::pull("group_level")))
