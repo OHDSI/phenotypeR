@@ -16,7 +16,9 @@ Suggests:
     omock,
     testthat (>= 3.0.0),
     knitr,
-    RPostgres
+    RPostgres,
+    PatientProfiles,
+    ggplot2
 Config/testthat/edition: 3
 RoxygenNote: 7.3.2
 Imports: 
@@ -29,7 +31,6 @@ Imports:
     here,
     omopgenerics,
     magrittr,
-    PatientProfiles,
     purrr,
     rmarkdown,
     rlang,
@@ -38,3 +39,4 @@ Imports:
     visOmopResults
 URL: https://oxford-pharmacoepi.github.io/phenotypeR/
 VignetteBuilder: knitr
+

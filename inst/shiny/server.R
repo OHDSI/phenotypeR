@@ -219,7 +219,7 @@ server <- function(input, output, session) {
       table[[7]] <- as.numeric(table[[7]])
     }
     if(length(names(table))>=8){
-      table[[8]] <- as.numeric(table[[7]])
+      table[[8]] <- as.numeric(table[[8]])
     }
 
     datatable(table, rownames= FALSE)
