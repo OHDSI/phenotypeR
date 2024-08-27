@@ -76,12 +76,44 @@ cohortDiagnostics <- function(cohort,
     attr(results[["cohort_summary"]], "settings")$result_id <- attr(results[["cohort_summary"]], "settings")$result_id * 10L
 
 
+ # cli::cli_bullets(c("*" = "{.strong Creating denominator for incidence and prevalence}"))
+ # denominatorTable <- omopgenerics::uniqueTableName()
+ # cdm <- IncidencePrevalence::generateDenominatorCohortSet(
+ #   cdm = cdm,
+ #   name = denominatorTable,
+ #   ageGroup = list(c(0,17),
+ #                   c(18,64),
+ #                   c(65,199)),
+ #   sex = c("Male", "Female", "Both"),
+ #   daysPriorObservation = c(0, 180)
+ # )
+ #
+ # cli::cli_bullets(c("*" = "{.strong Estimating incidence}"))
+ # results[["incidence"]] <- IncidencePrevalence::estimateIncidence(
+ #   cdm = cdm,
+ #   denominatorTable = denominatorTable,
+ #   outcomeTable = cohortName,
+ #   interval = "years",
+ #   repeatedEvents = c(TRUE, FALSE),
+ #   outcomeWashout = c(0, Inf),
+ #   completeDatabaseIntervals = c(TRUE, FALSE),
+ #   minCellCount = 0)
+ #
+ # cli::cli_bullets(c("*" = "{.strong Estimating prevalence}"))
+ # results[["prevalence"]] <- IncidencePrevalence::estimatePeriodPrevalence(
+ #   cdm = cdm,
+ #   denominatorTable = denominatorTable,
+ #   outcomeTable = cohortName,
+ #   interval = "years",
+ #   completeDatabaseIntervals = c(TRUE, FALSE),
+ #   fullContribution = c(TRUE, FALSE),
+ #   minCellCount = 0)
+
   cli::cli_bullets(c("*" = "{.strong Generating a age and sex matched cohorts}"))
   matchedCohortTable <- paste0(omopgenerics::tableName(cdm[[cohortName]]),
                                "_matched")
   cdm[[matchedCohortTable]] <- CohortConstructor::matchCohorts(cdm[[cohortName]],
                                                                name = matchedCohortTable)
-
 
   cli::cli_bullets(c("*" = "{.strong Running large scale characterisation}"))
   results[["lsc"]] <- CohortCharacteristics::summariseLargeScaleCharacteristics(
