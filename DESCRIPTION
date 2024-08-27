@@ -18,7 +18,8 @@ Suggests:
     knitr,
     RPostgres,
     PatientProfiles,
-    ggplot2
+    ggplot2,
+    ggpubr
 Config/testthat/edition: 3
 RoxygenNote: 7.3.2
 Imports: 
