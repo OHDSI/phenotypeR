@@ -256,35 +256,164 @@ server <- function(input, output, session) {
     validate(
       need(nrow(working_attrition_data()) >0, "No result found")
     )
+    validate(
+      need(length(unique(working_attrition_data() |> dplyr::pull("group_level"))) == 1,
+           "Please select only one cohort")
+    )
     CohortCharacteristics::plotCohortAttrition(working_attrition_data())
   })
 
+  # overlap -----
+  working_overlap_data <- reactive({
+    if(nrow(result) > 0){
+      workingResult <- result |>
+        visOmopResults::filterSettings(result_type == "cohort_overlap")  |>
+        visOmopResults::splitGroup(keep = TRUE) |>
+        dplyr::filter(cohort_name_reference %in% input$overlap_cohort_name) |>
+        dplyr::filter(cohort_name_comparator %in% input$overlap_cohort_name)
+      workingResult <-  omopgenerics::newSummarisedResult(workingResult |>
+                                          select(!"cohort_name_reference") |>
+                                          select(!"cohort_name_comparator"),
+                                        settings = settings(result) |>
+                                          dplyr::filter(result_type == "cohort_overlap"))
+      workingResult
+    } else {
+      result
+    }
+  })
   output$gt_cohort_overlap <- render_gt({
     validate(
-      need(nrow(working_attrition_data()) >0, "No result found")
+      need(nrow(working_overlap_data()) >0, "No result found")
     )
-    CohortCharacteristics::tableCohortOverlap(result)
+    CohortCharacteristics::tableCohortOverlap(working_overlap_data())
   })
   output$gg_cohort_overlap <- renderPlotly({
     validate(
-      need(nrow(working_attrition_data()) >0, "No result found")
+      need(nrow(working_overlap_data()) >0, "No result found")
     )
-   plotly::ggplotly(CohortCharacteristics::plotCohortOverlap(result))
+   plotly::ggplotly(CohortCharacteristics::plotCohortOverlap(working_overlap_data()))
   })
 
+  # timing -----
+  working_timing_data <- reactive({
+    if(nrow(result) > 0){
+      workingResult <- result |>
+        visOmopResults::filterSettings(result_type == "cohort_timing")  |>
+        visOmopResults::splitGroup(keep = TRUE) |>
+        dplyr::filter(cohort_name_reference %in% input$timing_cohort_name) |>
+        dplyr::filter(cohort_name_comparator %in% input$timing_cohort_name)
+      workingResult <-  omopgenerics::newSummarisedResult(workingResult |>
+                                                            select(!"cohort_name_reference") |>
+                                                            select(!"cohort_name_comparator"),
+                                                          settings = settings(result) |>
+                                                            dplyr::filter(result_type == "cohort_timing"))
+
+    } else {
+      result
+    }
+  })
   output$gt_cohort_timing <- render_gt({
     validate(
-      need(nrow(working_attrition_data()) >0, "No result found")
+      need(nrow(working_timing_data()) >0, "No result found")
     )
-    CohortCharacteristics::tableCohortTiming(result)
+    CohortCharacteristics::tableCohortTiming(working_timing_data())
   })
 
   output$gg_cohort_timing <- renderPlotly({
     validate(
-      need(nrow(working_attrition_data()) >0, "No result found")
+      need(nrow(working_timing_data()) >0, "No result found")
     )
-    plotly::ggplotly(CohortCharacteristics::plotCohortTiming(result))
+    plotly::ggplotly(CohortCharacteristics::plotCohortTiming(working_timing_data()))
   })
 
+
+  # chars -----
+  working_chars_data <- reactive({
+    working_result <- result |>
+      dplyr::filter(group_level %in% input$chars_cohort) |>
+      dplyr::filter(cdm_name %in% input$chars_cdm_name)
+
+    working_result
+
+  })
+
+  output$gt_chars <- render_gt({
+    validate(
+      need(nrow(working_chars_data()) >0, "No result found")
+    )
+    CohortCharacteristics::tableCharacteristics(working_chars_data(),
+                                            type = "gt")
+  })
+  output$raw_chars <- renderDataTable({
+    validate(
+      need(nrow(working_chars_data()) >0, "No result found")
+    )
+
+    table <-  CohortCharacteristics::tableCharacteristics(working_chars_data(),
+                                                      type = "tibble")
+    names(table) <- gsub("\\[.*?\\]", "", names(table))
+    names(table) <- str_replace_all(names(table), "CDM name\n", " ")
+    names(table) <- str_replace_all(names(table), "\n", ": ")
+
+    datatable(table, rownames= FALSE)
+
+  })
+  # output type depends on input
+  output$table_chars <- renderUI({
+    if (input$chars_table_type == "tidy") {
+      gt_output("gt_chars") %>%
+        withSpinner()
+    } else {
+      dataTableOutput("raw_chars")
+    }
+  })
+  # lsc -----
+  working_lsc_data <- reactive({
+    working_result <- result |>
+      dplyr::filter(group_level %in% input$lsc_cohort) |>
+      dplyr::filter(cdm_name %in% input$lsc_cdm_name) |>
+      dplyr::filter(variable_level %in% "-365 to -31") |>
+      visOmopResults::filterSettings(result_type  ==  "summarised_large_scale_characteristics" ) |>
+      dplyr::filter(!is.na(estimate_value))
+
+    working_result <-  omopgenerics::newSummarisedResult(working_result ,
+                                                        settings = settings(result) |>
+                                                          dplyr::filter(result_type == "summarised_large_scale_characteristics"))
+
+    working_result
+
+  })
+
+  output$gt_lsc <- render_gt({
+    validate(
+      need(nrow(working_lsc_data()) >0, "No result found")
+    )
+    browser()
+    CohortCharacteristics::tableLargeScaleCharacteristics(working_lsc_data(),
+                                                type = "gt")
+  })
+  output$raw_lsc <- renderDataTable({
+    validate(
+      need(nrow(working_lsc_data()) >0, "No result found")
+    )
+
+    table <-  CohortCharacteristics::tableLargeScaleCharacteristics(working_lsc_data(),
+                                                          type = "tibble")
+    names(table) <- gsub("\\[.*?\\]", "", names(table))
+    names(table) <- str_replace_all(names(table), "CDM name\n", " ")
+    names(table) <- str_replace_all(names(table), "\n", ": ")
+
+    datatable(table, rownames= FALSE)
+
+  })
+  # output type depends on input
+  output$table_lsc <- renderUI({
+    if (input$lsc_table_type == "tidy") {
+      gt_output("gt_lsc") %>%
+        withSpinner()
+    } else {
+      dataTableOutput("raw_lsc")
+    }
+  })
 
   }
