@@ -38,14 +38,14 @@ ui = dashboardPage(
           text = "Cohort timing",
           tabName = "cohort_timing"
         ),
-        menuSubItem(
-          text = "Incidence",
-          tabName = "incidence"
-        ),
-        menuSubItem(
-          text = "Prevalence",
-          tabName = "prevalence"
-        ),
+        # menuSubItem(
+        #   text = "Incidence",
+        #   tabName = "incidence"
+        # ),
+        # menuSubItem(
+        #   text = "Prevalence",
+        #   tabName = "prevalence"
+        # ),
         menuSubItem(
           text = "Cohort characteristics",
           tabName = "cohort_characteristics"
@@ -345,6 +345,19 @@ ui = dashboardPage(
       # Cohort overlap ----
       tabItem(
         tabName = "cohort_overlap",
+        div(
+          style = "display: inline-block;vertical-align:top; width: 150px;",
+          pickerInput(
+            inputId = "overlap_cohort_name",
+            label = "Cohort",
+            choices = cohort_names,
+            selected = cohort_names,
+            options = list(`actions-box` = TRUE,
+                           size = 10,
+                           `selected-text-format` = "count > 3"),
+            multiple = TRUE
+          )
+        ),
         tabsetPanel(
           type = "tabs",
           tabPanel(
@@ -360,6 +373,19 @@ ui = dashboardPage(
       # Cohort timing ----
       tabItem(
         tabName = "cohort_timing",
+        div(
+          style = "display: inline-block;vertical-align:top; width: 150px;",
+          pickerInput(
+            inputId = "timing_cohort_name",
+            label = "Cohort",
+            choices = cohort_names,
+            selected = cohort_names,
+            options = list(`actions-box` = TRUE,
+                           size = 10,
+                           `selected-text-format` = "count > 3"),
+            multiple = TRUE
+          )
+        ),
         tabsetPanel(
           type = "tabs",
           tabPanel(
@@ -371,7 +397,84 @@ ui = dashboardPage(
           plotlyOutput("gg_cohort_timing") %>%
             withSpinner())
         )
+      ),
+      # chars -----
+      tabItem(
+        tabName = "cohort_characteristics",
+        div(
+          style = "display: inline-block;vertical-align:top; width: 150px;",
+          pickerInput(
+            inputId = "chars_cdm_name",
+            label = "Database",
+            choices = databases,
+            selected = databases,
+            options = list(`actions-box` = TRUE,
+                           size = 10,
+                           `selected-text-format` = "count > 3"),
+            multiple = TRUE
+          )
+        ),
+        div(
+          style = "display: inline-block;vertical-align:top; width: 150px;",
+          pickerInput(
+            inputId = "chars_cohort",
+            label = "Cohort",
+            choices = cohort_names,
+            selected = cohort_names,
+            options = list(`actions-box` = TRUE,
+                           size = 10,
+                           `selected-text-format` = "count > 3"),
+            multiple = TRUE
+          )
+        ),
+        radioGroupButtons(
+          inputId = "chars_table_type",
+          label = "Table type",
+          choices = c("tidy", "raw"),
+          status = "primary"
+        ),
+        uiOutput("table_chars") %>%
+          withSpinner()
+      ),
+      # lsc -----
+      tabItem(
+        tabName = "lsc",
+        div(
+          style = "display: inline-block;vertical-align:top; width: 150px;",
+          pickerInput(
+            inputId = "lsc_cdm_name",
+            label = "Database",
+            choices = databases,
+            selected = databases,
+            options = list(`actions-box` = TRUE,
+                           size = 10,
+                           `selected-text-format` = "count > 3"),
+            multiple = TRUE
+          )
+        ),
+        div(
+          style = "display: inline-block;vertical-align:top; width: 150px;",
+          pickerInput(
+            inputId = "lsc_cohort",
+            label = "Cohort",
+            choices = cohort_names,
+            selected = cohort_names,
+            options = list(`actions-box` = TRUE,
+                           size = 10,
+                           `selected-text-format` = "count > 3"),
+            multiple = TRUE
+          )
+        ),
+        radioGroupButtons(
+          inputId = "lsc_table_type",
+          label = "Table type",
+          choices = c("tidy", "raw"),
+          status = "primary"
+        ),
+        uiOutput("table_lsc") %>%
+          withSpinner()
       )
+
       # end ----
     )
   )

@@ -73,7 +73,6 @@ cohortDiagnostics <- function(cohort,
         otherVariables = "days_in_cohort",
         otherVariablesEstimates = c("min", "q25", "median", "q75", "max")
       )
-    attr(results[["cohort_summary"]], "settings")$result_id <- attr(results[["cohort_summary"]], "settings")$result_id * 10L
 
 
  # cli::cli_bullets(c("*" = "{.strong Creating denominator for incidence and prevalence}"))
@@ -129,7 +128,6 @@ cohortDiagnostics <- function(cohort,
     episodeInWindow = c("drug_exposure"),
     minimumFrequency = 0.0005
   )
-  attr(results[["lsc"]], "settings")$result_id <- attr(results[["lsc"]], "settings")$result_id * 100L
 
   results <- results |>
     vctrs::list_drop_empty() |>
