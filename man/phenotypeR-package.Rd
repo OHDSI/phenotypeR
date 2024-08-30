@@ -4,16 +4,27 @@
 \name{phenotypeR-package}
 \alias{phenotypeR}
 \alias{phenotypeR-package}
-\title{phenotypeR: Phenotype a set of cohorts in data mapped to a the OMOP common data model}
+\title{phenotypeR: Assess Study Cohorts Using a Common Data Model}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-More about what it does (maybe more than one line) Use four spaces when indenting paragraphs within the Description.
+Phenotype study cohorts in data mapped to the Observational Medical Outcomes Partnership Common Data Model.
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://oxford-pharmacoepi.github.io/phenotypeR/}
+}
+
+}
+\author{
+\strong{Maintainer}: Edward Burn \email{edward.burn@ndorms.ox.ac.uk} (\href{https://orcid.org/0000-0002-9286-1128}{ORCID})
+
+Authors:
+\itemize{
+  \item Marti Catala \email{marti.catalasabate@ndorms.ox.ac.uk} (\href{https://orcid.org/0000-0003-3308-9905}{ORCID})
+  \item Xihang Chen \email{xihang.chen@ndorms.ox.ac.uk} (\href{https://orcid.org/0009-0001-8112-8959}{ORCID})
+  \item Albert Prats-Uribe \email{albert.prats-uribe@ndorms.ox.ac.uk} (\href{https://orcid.org/0000-0003-1202-9153}{ORCID})
 }
 
 }
