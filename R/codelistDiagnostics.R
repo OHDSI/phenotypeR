@@ -8,6 +8,15 @@
 #' @export
 #'
 #' @examples
+#' \donttest{
+#' library(CohortConstructor)
+#'
+#' cdm <- mockCohortConstructor(conditionOccurrence = TRUE)
+#'
+#' cohort <- conceptCohort(cdm = cdm, conceptSet = list(a = 1), name = "cohort")
+#'
+#' cohort |> attrition()
+#' }
 codelistDiagnostics <- function(cohort){
 
   cdm <- omopgenerics::cdmReference(cohort)
