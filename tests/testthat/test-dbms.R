@@ -28,11 +28,17 @@ test_that("postgres test", {
   result_code_diag <- codelistDiagnostics(cdm$my_cohort)
   # shiny with only codelist results
   expect_no_error(shinyDiagnostics(result_code_diag))
+  expect_no_error(CodelistGenerator::tableCohortCodeUse(result_code_diag))
+  expect_no_error(CodelistGenerator::tableAchillesCodeUse(result_code_diag))
+  expect_no_error(CodelistGenerator::tableOrphanCodes(result_code_diag))
 
   result_cohort_diag <- cohortDiagnostics(cdm$my_cohort)
   expect_no_error(reportDiagnostics(result = result_code_diag))
   # shiny with only cohort diagnostics results
   expect_no_error(shinyDiagnostics(result = result_cohort_diag))
+
+  result_cohort_pop_diag <- cohortToPopulationDiagnostics(cdm$my_cohort)
+  expect_no_error(shinyDiagnostics(result = result_cohort_pop_diag))
 
   # shiny with all results
   result_all <- omopgenerics::bind(result_code_diag, result_cohort_diag)

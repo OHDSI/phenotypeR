@@ -33,19 +33,6 @@ cohortDiagnostics <- function(cohort,
   results[["cohort_attrition"]] <- cdm[[cohortName]] |>
     CohortCharacteristics::summariseCohortAttrition()
 
-  cli::cli_bullets(c("*" = "Getting index event breakdown"))
-  for(i in seq_along(cohortIds)){
-    results[[paste0("index_event_", i)]] <- CodelistGenerator::summariseCohortCodeUse(
-      x = omopgenerics::cohortCodelist(cdm[[cohortName]], cohortIds[[i]]),
-      cdm = cdm,
-      cohortTable = cohortName,
-      cohortId = cohortIds[[i]],
-      timing = "entry",
-      countBy = c("record", "person"),
-      byConcept = TRUE
-    )
-  }
-
   if(length(cohortIds) > 1){
     cli::cli_bullets(c("*" = "Getting cohort overlap"))
     results[["cohort_overlap"]] <-  cdm[[cohortName]] |>
