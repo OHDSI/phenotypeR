@@ -47,4 +47,6 @@ Imports:
     visOmopResults
 URL: https://oxford-pharmacoepi.github.io/phenotypeR/
 VignetteBuilder: knitr
+Remotes: 
+    darwin-eu-dev/CohortCharacteristics
 

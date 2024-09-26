@@ -1,3 +1,34 @@
+
+test_that("eunomia", {
+  skip_on_cran()
+  con <- DBI::dbConnect(duckdb::duckdb(dbdir = CDMConnector::eunomia_dir()))
+  cdm <- CDMConnector::cdm_from_con(con = con,
+                                    cdm_schema = "main",
+                                    write_schema = "main")
+  meds_cs <- CodelistGenerator::getDrugIngredientCodes(
+    cdm = cdm,
+    name = c(
+      "acetaminophen",
+      "morphine",
+      "warfarin"
+    )
+  )
+  cdm$meds <- CohortConstructor::conceptCohort(cdm = cdm,
+                               conceptSet = meds_cs,
+                               name = "meds")
+  # result_code_diag <- codelistDiagnostics(cdm$meds) # needs achilles
+  result_cohort_diag <- cohortDiagnostics(cdm$meds)
+  result_cohort_to_pop_diag <- codelistDiagnostics(cdm$meds)
+  results <- omopgenerics::bind(result_cohort_diag,
+                                result_cohort_to_pop_diag)
+
+  expect_no_error(shinyDiagnostics(result = results))
+  omopViewer::exportStaticApp(results)
+  CohortCharacteristics::tableCharacteristics(results)
+
+
+})
+
 test_that("postgres test", {
   skip_on_cran()
   skip_if(Sys.getenv("CDM5_POSTGRESQL_DBNAME") == "")

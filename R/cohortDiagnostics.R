@@ -45,10 +45,7 @@ cohortDiagnostics <- function(cohort,
     }
 
     cli::cli_bullets(c("*" = "Getting cohort summary"))
-    results[["cohort_summary"]] <- cdm[[cohortName]] %>%
-      dplyr::mutate(days_in_cohort = as.integer(!!CDMConnector::datediff(
-        start = "cohort_start_date", end = "cohort_end_date", interval = "day"
-      ))) |>
+    results[["cohort_summary"]] <- cdm[[cohortName]] |>
       CohortCharacteristics::summariseCharacteristics(
         strata = strata,
         tableIntersectCount = list(
@@ -56,9 +53,7 @@ cohortDiagnostics <- function(cohort,
             tableName = "visit_occurrence",
             window = c(-365, -1)
           )
-        ),
-        otherVariables = "days_in_cohort",
-        otherVariablesEstimates = c("min", "q25", "median", "q75", "max")
+        )
       )
 
 

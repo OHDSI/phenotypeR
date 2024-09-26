@@ -11,6 +11,8 @@
 cohortToPopulationDiagnostics <- function(cohort,
                                           nSample = 1000){
 
+  omopgenerics::assertNumeric(nSample, min = 1)
+
   cdm <- omopgenerics::cdmReference(cohort)
   cohortName <- omopgenerics::tableName(cohort)
   cohortIds <- omopgenerics::settings(cohort) |>
