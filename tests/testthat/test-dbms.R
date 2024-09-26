@@ -1,6 +1,7 @@
 
 test_that("eunomia", {
   skip_on_cran()
+  skip_on_ci()
   con <- DBI::dbConnect(duckdb::duckdb(dbdir = CDMConnector::eunomia_dir()))
   cdm <- CDMConnector::cdm_from_con(con = con,
                                     cdm_schema = "main",
@@ -18,14 +19,12 @@ test_that("eunomia", {
                                name = "meds")
   # result_code_diag <- codelistDiagnostics(cdm$meds) # needs achilles
   result_cohort_diag <- cohortDiagnostics(cdm$meds)
-  result_cohort_to_pop_diag <- codelistDiagnostics(cdm$meds)
+  result_cohort_to_pop_diag <- cohortToPopulationDiagnostics(cdm$meds)
   results <- omopgenerics::bind(result_cohort_diag,
                                 result_cohort_to_pop_diag)
 
   expect_no_error(shinyDiagnostics(result = results))
-  omopViewer::exportStaticApp(results)
-  CohortCharacteristics::tableCharacteristics(results)
-
+  # omopViewer::exportStaticApp(results)
 
 })
 

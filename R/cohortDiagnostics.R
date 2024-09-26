@@ -25,9 +25,17 @@ cohortDiagnostics <- function(cohort,
 
   results <- list()
 
-  cli::cli_bullets(c("*" = "Getting cohort counts"))
-  results[["cohort_counts"]] <- cdm[[cohortName]] |>
-    CohortCharacteristics::summariseCohortCount(strata = strata)
+  cli::cli_bullets(c("*" = "Getting cohort summary"))
+  results[["cohort_summary"]] <- cdm[[cohortName]] |>
+    CohortCharacteristics::summariseCharacteristics(
+      strata = strata,
+      tableIntersectCount = list(
+        "Number visits prior year" = list(
+          tableName = "visit_occurrence",
+          window = c(-365, -1)
+        )
+      )
+    )
 
   cli::cli_bullets(c("*" = "Getting cohort attrition"))
   results[["cohort_attrition"]] <- cdm[[cohortName]] |>
@@ -43,18 +51,6 @@ cohortDiagnostics <- function(cohort,
       CohortCharacteristics::summariseCohortTiming(strata = strata,
                                                    density = TRUE)
     }
-
-    cli::cli_bullets(c("*" = "Getting cohort summary"))
-    results[["cohort_summary"]] <- cdm[[cohortName]] |>
-      CohortCharacteristics::summariseCharacteristics(
-        strata = strata,
-        tableIntersectCount = list(
-          "Number visits prior year" = list(
-            tableName = "visit_occurrence",
-            window = c(-365, -1)
-          )
-        )
-      )
 
 
  # cli::cli_bullets(c("*" = "{.strong Creating denominator for incidence and prevalence}"))
@@ -90,26 +86,6 @@ cohortDiagnostics <- function(cohort,
  #   fullContribution = c(TRUE, FALSE),
  #   minCellCount = 0)
 
-  cli::cli_bullets(c("*" = "{.strong Generating a age and sex matched cohorts}"))
-  matchedCohortTable <- paste0(omopgenerics::tableName(cdm[[cohortName]]),
-                               "_matched")
-  cdm[[matchedCohortTable]] <- CohortConstructor::matchCohorts(cdm[[cohortName]],
-                                                               name = matchedCohortTable)
-
-  cli::cli_bullets(c("*" = "{.strong Running large scale characterisation}"))
-  results[["lsc"]] <- CohortCharacteristics::summariseLargeScaleCharacteristics(
-    cohort = cdm[[matchedCohortTable]],
-    strata = strata,
-    window = list(c(-Inf, -366), c(-365, -31),
-                  c(-30, -1), c(0, 0),
-                  c(1, 30), c(31, 365),
-                  c(366, Inf)),
-    eventInWindow = c("condition_occurrence", "visit_occurrence",
-                      "measurement", "procedure_occurrence",
-                      "observation"),
-    episodeInWindow = c("drug_exposure"),
-    minimumFrequency = 0.0005
-  )
 
   results <- results |>
     vctrs::list_drop_empty() |>
