@@ -67,12 +67,14 @@ test_that("run with multiple cohorts", {
                     cohortDiagnostics())
 
   # cohort and timing and overlap should have been estimated now we have more than one cohort
-  expect_true(any("cohort_overlap" ==
-                     omopgenerics::settings(result) |>
-                     dplyr::pull("result_type")))
-  expect_true(any("cohort_timing" ==
-                    omopgenerics::settings(result) |>
-                    dplyr::pull("result_type")))
+  expect_true(any(stringr::str_detect(
+    omopgenerics::settings(result) |>
+      dplyr::pull("result_type"),
+    "cohort_overlap")))
+  expect_true(any(stringr::str_detect(
+                   omopgenerics::settings(result) |>
+                    dplyr::pull("result_type"),
+                   "cohort_timing")))
 })
 
 test_that("check all expected analyses are present in results", {

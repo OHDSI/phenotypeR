@@ -26,7 +26,8 @@ Suggests:
     RPostgres,
     PatientProfiles,
     ggplot2,
-    ggpubr
+    ggpubr, 
+    stringr
 Config/testthat/edition: 3
 RoxygenNote: 7.3.2
 Imports: 
