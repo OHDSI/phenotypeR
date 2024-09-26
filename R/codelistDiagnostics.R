@@ -20,6 +20,11 @@
 codelistDiagnostics <- function(cohort){
 
   cdm <- omopgenerics::cdmReference(cohort)
+  cohortName <- omopgenerics::tableName(cohort)
+  cohortIds <- omopgenerics::settings(cohort) |>
+    dplyr::select("cohort_definition_id") |>
+    dplyr::pull()
+
   if(!"achilles_results" %in% names(cdm)){
     cli::cli_warn(
       c("The CDM reference containing the cohort must also contain achilles tables.",
@@ -55,6 +60,19 @@ codelistDiagnostics <- function(cohort){
 
   cli::cli_bullets(c("*" = "Getting code counts in database based on achilles"))
   results[[paste0("achilles_code_use")]] <- CodelistGenerator::summariseAchillesCodeUse(x = all_codelists, cdm = cdm)
+
+  cli::cli_bullets(c("*" = "Getting index event breakdown"))
+  for(i in seq_along(cohortIds)){
+    results[[paste0("index_event_", i)]] <- CodelistGenerator::summariseCohortCodeUse(
+      x = omopgenerics::cohortCodelist(cdm[[cohortName]], cohortIds[[i]]),
+      cdm = cdm,
+      cohortTable = cohortName,
+      cohortId = cohortIds[[i]],
+      timing = "entry",
+      countBy = c("record", "person"),
+      byConcept = TRUE
+    )
+  }
 
   cli::cli_bullets(c("*" = "Getting orphan concepts"))
   results[[paste0("orphan_codes", i)]] <- CodelistGenerator::summariseOrphanCodes(

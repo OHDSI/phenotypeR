@@ -17,3 +17,14 @@ A summarised result
 \description{
 Run codelist-level diagnostics
 }
+\examples{
+\donttest{
+library(CohortConstructor)
+
+cdm <- mockCohortConstructor(conditionOccurrence = TRUE)
+
+cohort <- conceptCohort(cdm = cdm, conceptSet = list(a = 1), name = "cohort")
+
+cohort |> attrition()
+}
+}

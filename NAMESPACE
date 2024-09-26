@@ -3,6 +3,7 @@
 export("%>%")
 export(codelistDiagnostics)
 export(cohortDiagnostics)
+export(cohortToPopulationDiagnostics)
 export(reportDiagnostics)
 export(shinyDiagnostics)
 importFrom(magrittr,"%>%")

@@ -26,7 +26,8 @@ Suggests:
     RPostgres,
     PatientProfiles,
     ggplot2,
-    ggpubr
+    ggpubr, 
+    stringr
 Config/testthat/edition: 3
 RoxygenNote: 7.3.2
 Imports: 
@@ -47,4 +48,6 @@ Imports:
     visOmopResults
 URL: https://oxford-pharmacoepi.github.io/phenotypeR/
 VignetteBuilder: knitr
+Remotes: 
+    darwin-eu-dev/CohortCharacteristics
 
