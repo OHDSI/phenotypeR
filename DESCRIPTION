@@ -21,6 +21,7 @@ Suggests:
     DBI,
     gt,
     omock,
+    OmopSketch,
     testthat (>= 3.0.0),
     knitr,
     RPostgres,
