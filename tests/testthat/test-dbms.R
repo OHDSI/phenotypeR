@@ -17,10 +17,11 @@ test_that("eunomia", {
   cdm$meds <- CohortConstructor::conceptCohort(cdm = cdm,
                                conceptSet = meds_cs,
                                name = "meds")
-  # result_code_diag <- codelistDiagnostics(cdm$meds) # needs achilles
+  result_code_diag <- codelistDiagnostics(cdm$meds) # only partial results without achilles
   result_cohort_diag <- cohortDiagnostics(cdm$meds)
   result_cohort_to_pop_diag <- cohortToPopulationDiagnostics(cdm$meds)
-  results <- omopgenerics::bind(result_cohort_diag,
+  results <- omopgenerics::bind(result_code_diag,
+                                result_cohort_diag,
                                 result_cohort_to_pop_diag)
 
   expect_no_error(shinyDiagnostics(result = results))
