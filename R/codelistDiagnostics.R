@@ -25,13 +25,6 @@ codelistDiagnostics <- function(cohort){
     dplyr::select("cohort_definition_id") |>
     dplyr::pull()
 
-  if(!"achilles_results" %in% names(cdm)){
-    cli::cli_warn(
-      c("The CDM reference containing the cohort must also contain achilles tables.",
-        "Returning an empty summarised result.")
-    )
-    return(omopgenerics::emptySummarisedResult())
-  }
   cohortTable <- omopgenerics::tableName(cohort)
   cohortIds <- omopgenerics::settings(cohort) |>
     dplyr::select("cohort_definition_id") |>
@@ -40,12 +33,9 @@ codelistDiagnostics <- function(cohort){
   if(is.null(attr(cdm[[cohortTable]], "cohort_codelist"))){
     cli::cli_warn(message =
                     c("cohort_codelist attribute for cohort not found",
-                      "i" = "Returning an empty result"))
+                      "i" = "Returning an empty summarised result"))
     return(omopgenerics::emptySummarisedResult())
   }
-
-  results <- list()
-  results[[1]] <- omopgenerics::emptySummarisedResult()
 
   cli::cli_bullets(c("*" = "Getting codelists from cohorts"))
   # get all cohort codelists
@@ -58,8 +48,15 @@ codelistDiagnostics <- function(cohort){
       omopgenerics::newCodelist()
   }
 
-  cli::cli_bullets(c("*" = "Getting code counts in database based on achilles"))
-  results[[paste0("achilles_code_use")]] <- CodelistGenerator::summariseAchillesCodeUse(x = all_codelists, cdm = cdm)
+  if(length(all_codelists) == 0){
+    cli::cli_warn(message =
+                    c("Empty cohort_codelist attribute for cohort",
+                      "i" = "Returning an empty summarised result"))
+    return(omopgenerics::emptySummarisedResult())
+  }
+
+  results <- list()
+  results[[1]] <- omopgenerics::emptySummarisedResult()
 
   cli::cli_bullets(c("*" = "Getting index event breakdown"))
   for(i in seq_along(cohortIds)){
@@ -73,6 +70,27 @@ codelistDiagnostics <- function(cohort){
       byConcept = TRUE
     )
   }
+
+  # all other analyses require achilles, so return if not available
+  if(!"achilles_results" %in% names(cdm)){
+    cli::cli_warn(
+      c("The CDM reference containing the cohort must also contain achilles tables.",
+        "Returning only index event breakdown.")
+    )
+    results <- results |>
+      vctrs::list_drop_empty() |>
+      omopgenerics::bind()
+
+   if(is.null(results)){
+     results <- omopgenerics::emptySummarisedResult()
+   }
+
+    return(results)
+  }
+
+
+  cli::cli_bullets(c("*" = "Getting code counts in database based on achilles"))
+  results[[paste0("achilles_code_use")]] <- CodelistGenerator::summariseAchillesCodeUse(x = all_codelists, cdm = cdm)
 
   cli::cli_bullets(c("*" = "Getting orphan concepts"))
   results[[paste0("orphan_codes", i)]] <- CodelistGenerator::summariseOrphanCodes(
