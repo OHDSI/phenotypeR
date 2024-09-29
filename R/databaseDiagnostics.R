@@ -5,9 +5,7 @@
 #' @param cdm CDM reference
 #'
 #' @return
-#' @export
-#'
-#' @examples
+#' @noRd
 databaseDiagnostics <- function(cdm){
 
 OmopSketch::summariseOmopSnapshot(cdm)

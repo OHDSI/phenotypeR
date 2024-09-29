@@ -17,16 +17,9 @@ test_that("eunomia", {
   cdm$meds <- CohortConstructor::conceptCohort(cdm = cdm,
                                conceptSet = meds_cs,
                                name = "meds")
-  result_code_diag <- codelistDiagnostics(cdm$meds) # only partial results without achilles
-  result_cohort_diag <- cohortDiagnostics(cdm$meds)
-  result_cohort_to_pop_diag <- cohortToPopulationDiagnostics(cdm$meds)
-  results <- omopgenerics::bind(result_code_diag,
-                                result_cohort_diag,
-                                result_cohort_to_pop_diag)
-
+  results <- phenotype(cdm$meds)
   expect_no_error(shinyDiagnostics(result = results))
-  # omopViewer::exportStaticApp(results)
-
+  omopViewer::exportStaticApp(results)
 })
 
 test_that("postgres test", {
@@ -56,24 +49,20 @@ test_that("postgres test", {
                                                 name = "drugs")
   cdm <- omopgenerics::bind(cdm$asthma, cdm$drugs, name = "my_cohort")
 
-  result_code_diag <- codelistDiagnostics(cdm$my_cohort)
-  # shiny with only codelist results
-  expect_no_error(shinyDiagnostics(result_code_diag))
-  expect_no_error(CodelistGenerator::tableCohortCodeUse(result_code_diag))
-  expect_no_error(CodelistGenerator::tableAchillesCodeUse(result_code_diag))
-  expect_no_error(CodelistGenerator::tableOrphanCodes(result_code_diag))
+  results <- phenotype(cdm$my_cohort)
+  expect_no_error(shinyDiagnostics(result = results))
+  expect_no_error(CodelistGenerator::tableCohortCodeUse(results))
+  expect_no_error(CodelistGenerator::tableAchillesCodeUse(results))
+  expect_no_error(CodelistGenerator::tableOrphanCodes(results))
 
-  result_cohort_diag <- cohortDiagnostics(cdm$my_cohort)
-  expect_no_error(reportDiagnostics(result = result_code_diag))
-  # shiny with only cohort diagnostics results
-  expect_no_error(shinyDiagnostics(result = result_cohort_diag))
-
-  result_cohort_pop_diag <- cohortToPopulationDiagnostics(cdm$my_cohort)
-  expect_no_error(shinyDiagnostics(result = result_cohort_pop_diag))
-
-  # shiny with all results
-  result_all <- omopgenerics::bind(result_code_diag, result_cohort_diag)
-  expect_no_error(shinyDiagnostics(result = result_all))
+  expect_no_error(CohortCharacteristics::tableCharacteristics(results))
+  expect_no_error(CohortCharacteristics::tableCohortAttrition(results))
+  expect_no_error(CohortCharacteristics::tableCohortOverlap(results))
+  expect_no_error(CohortCharacteristics::tableCohortTiming(results))
+  expect_no_error(CohortCharacteristics::tableLargeScaleCharacteristics(results))
+  results$variable_name <- CodelistGenerator:::tidyWords(results$variable_name)
+  # omopViewer::exportStaticApp(results)
+  expect_no_error(shinyDiagnostics(result = results))
 
   CDMConnector::cdm_disconnect(cdm = cdm)
 
