@@ -100,35 +100,35 @@ hip fracture using the Eunomia synthetic data.</p>
 <span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: ??</span></span>
 <span><span class="co">#&gt; Columns: 4</span></span>
-<span><span class="co">#&gt; Database: DuckDB v1.1.0 [unknown@Linux 6.8.0-1014-azure:R 4.4.1//tmp/RtmpiisfHF/file18452783d33a.duckdb]</span></span>
-<span><span class="co">#&gt; $ cohort_definition_id <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2, 2, 2, 2, 2, 2, 3, 1, 2, 2, 2, 2, 2, 2, 2, 4, 4…</span></span>
-<span><span class="co">#&gt; $ subject_id           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2287, 2944, 3513, 4428, 5213, 5241, 3622, 2864, 1…</span></span>
-<span><span class="co">#&gt; $ cohort_start_date    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 1940-12-26, 1972-09-20, 2007-02-12, 1972-10-25, …</span></span>
-<span><span class="co">#&gt; $ cohort_end_date      <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 1941-01-16, 1972-10-18, 2007-02-26, 1972-11-07, …</span></span></code></pre></div>
+<span><span class="co">#&gt; Database: DuckDB v1.1.0 [unknown@Linux 6.8.0-1014-azure:R 4.4.1//tmp/Rtmply4Ruc/file19df2ec24989.duckdb]</span></span>
+<span><span class="co">#&gt; $ cohort_definition_id <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2, 2, 2, 2, 2, 2, 3, 3, 3, 1, 1, 2, 2, 2, 2, 2, 2…</span></span>
+<span><span class="co">#&gt; $ subject_id           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1098, 2477, 2894, 3439, 3731, 4642, 2, 1309, 3987…</span></span>
+<span><span class="co">#&gt; $ cohort_start_date    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 1961-09-09, 1969-10-02, 1967-07-02, 2009-02-20, …</span></span>
+<span><span class="co">#&gt; $ cohort_end_date      <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 1961-09-30, 1969-10-30, 1967-07-30, 2009-03-20, …</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="summarising-code-use">Summarising code use<a class="anchor" aria-label="anchor" href="#summarising-code-use"></a>
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">code_diag</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/codelistDiagnostics.html">codelistDiagnostics</a></span><span class="op">(</span>cohort <span class="op">=</span> <span class="va">cdm</span><span class="op">$</span><span class="va">injuries</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">code_diag</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/phenotype.html">phenotype</a></span><span class="op">(</span><span class="va">cdm</span><span class="op">$</span><span class="va">injuries</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://darwin-eu.github.io/CodelistGenerator/reference/tableCohortCodeUse.html" class="external-link">tableCohortCodeUse</a></span><span class="op">(</span><span class="va">code_diag</span><span class="op">)</span></span></code></pre></div>
-<div id="suvupsnnty" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#suvupsnnty table {
+<div id="yndzieivhk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yndzieivhk table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#suvupsnnty thead, #suvupsnnty tbody, #suvupsnnty tfoot, #suvupsnnty tr, #suvupsnnty td, #suvupsnnty th {
+#yndzieivhk thead, #yndzieivhk tbody, #yndzieivhk tfoot, #yndzieivhk tr, #yndzieivhk td, #yndzieivhk th {
   border-style: none;
 }
 
-#suvupsnnty p {
+#yndzieivhk p {
   margin: 0;
   padding: 0;
 }
 
-#suvupsnnty .gt_table {
+#yndzieivhk .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -154,12 +154,12 @@ hip fracture using the Eunomia synthetic data.</p>
   border-left-color: #D3D3D3;
 }
 
-#suvupsnnty .gt_caption {
+#yndzieivhk .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#suvupsnnty .gt_title {
+#yndzieivhk .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -171,7 +171,7 @@ hip fracture using the Eunomia synthetic data.</p>
   border-bottom-width: 0;
 }
 
-#suvupsnnty .gt_subtitle {
+#yndzieivhk .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -183,7 +183,7 @@ hip fracture using the Eunomia synthetic data.</p>
   border-top-width: 0;
 }
 
-#suvupsnnty .gt_heading {
+#yndzieivhk .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -195,13 +195,13 @@ hip fracture using the Eunomia synthetic data.</p>
   border-right-color: #D3D3D3;
 }
 
-#suvupsnnty .gt_bottom_border {
+#yndzieivhk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#suvupsnnty .gt_col_headings {
+#yndzieivhk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -216,7 +216,7 @@ hip fracture using the Eunomia synthetic data.</p>
   border-right-color: #D3D3D3;
 }
 
-#suvupsnnty .gt_col_heading {
+#yndzieivhk .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -236,7 +236,7 @@ hip fracture using the Eunomia synthetic data.</p>
   overflow-x: hidden;
 }
 
-#suvupsnnty .gt_column_spanner_outer {
+#yndzieivhk .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -248,15 +248,15 @@ hip fracture using the Eunomia synthetic data.</p>
   padding-right: 4px;
 }
 
-#suvupsnnty .gt_column_spanner_outer:first-child {
+#yndzieivhk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#suvupsnnty .gt_column_spanner_outer:last-child {
+#yndzieivhk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#suvupsnnty .gt_column_spanner {
+#yndzieivhk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -268,11 +268,11 @@ hip fracture using the Eunomia synthetic data.</p>
   width: 100%;
 }
 
-#suvupsnnty .gt_spanner_row {
+#yndzieivhk .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#suvupsnnty .gt_group_heading {
+#yndzieivhk .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -298,7 +298,7 @@ hip fracture using the Eunomia synthetic data.</p>
   text-align: left;
 }
 
-#suvupsnnty .gt_empty_group_heading {
+#yndzieivhk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -313,15 +313,15 @@ hip fracture using the Eunomia synthetic data.</p>
   vertical-align: middle;
 }
 
-#suvupsnnty .gt_from_md > :first-child {
+#yndzieivhk .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#suvupsnnty .gt_from_md > :last-child {
+#yndzieivhk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#suvupsnnty .gt_row {
+#yndzieivhk .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -340,7 +340,7 @@ hip fracture using the Eunomia synthetic data.</p>
   overflow-x: hidden;
 }
 
-#suvupsnnty .gt_stub {
+#yndzieivhk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -353,7 +353,7 @@ hip fracture using the Eunomia synthetic data.</p>
   padding-right: 5px;
 }
 
-#suvupsnnty .gt_stub_row_group {
+#yndzieivhk .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -367,15 +367,15 @@ hip fracture using the Eunomia synthetic data.</p>
   vertical-align: top;
 }
 
-#suvupsnnty .gt_row_group_first td {
+#yndzieivhk .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#suvupsnnty .gt_row_group_first th {
+#yndzieivhk .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#suvupsnnty .gt_summary_row {
+#yndzieivhk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -385,16 +385,16 @@ hip fracture using the Eunomia synthetic data.</p>
   padding-right: 5px;
 }
 
-#suvupsnnty .gt_first_summary_row {
+#yndzieivhk .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#suvupsnnty .gt_first_summary_row.thick {
+#yndzieivhk .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#suvupsnnty .gt_last_summary_row {
+#yndzieivhk .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -404,7 +404,7 @@ hip fracture using the Eunomia synthetic data.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#suvupsnnty .gt_grand_summary_row {
+#yndzieivhk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -414,7 +414,7 @@ hip fracture using the Eunomia synthetic data.</p>
   padding-right: 5px;
 }
 
-#suvupsnnty .gt_first_grand_summary_row {
+#yndzieivhk .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -424,7 +424,7 @@ hip fracture using the Eunomia synthetic data.</p>
   border-top-color: #D3D3D3;
 }
 
-#suvupsnnty .gt_last_grand_summary_row_top {
+#yndzieivhk .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -434,11 +434,11 @@ hip fracture using the Eunomia synthetic data.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#suvupsnnty .gt_striped {
+#yndzieivhk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#suvupsnnty .gt_table_body {
+#yndzieivhk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -447,7 +447,7 @@ hip fracture using the Eunomia synthetic data.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#suvupsnnty .gt_footnotes {
+#yndzieivhk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -461,7 +461,7 @@ hip fracture using the Eunomia synthetic data.</p>
   border-right-color: #D3D3D3;
 }
 
-#suvupsnnty .gt_footnote {
+#yndzieivhk .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -470,7 +470,7 @@ hip fracture using the Eunomia synthetic data.</p>
   padding-right: 5px;
 }
 
-#suvupsnnty .gt_sourcenotes {
+#yndzieivhk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -484,7 +484,7 @@ hip fracture using the Eunomia synthetic data.</p>
   border-right-color: #D3D3D3;
 }
 
-#suvupsnnty .gt_sourcenote {
+#yndzieivhk .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -492,72 +492,72 @@ hip fracture using the Eunomia synthetic data.</p>
   padding-right: 5px;
 }
 
-#suvupsnnty .gt_left {
+#yndzieivhk .gt_left {
   text-align: left;
 }
 
-#suvupsnnty .gt_center {
+#yndzieivhk .gt_center {
   text-align: center;
 }
 
-#suvupsnnty .gt_right {
+#yndzieivhk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#suvupsnnty .gt_font_normal {
+#yndzieivhk .gt_font_normal {
   font-weight: normal;
 }
 
-#suvupsnnty .gt_font_bold {
+#yndzieivhk .gt_font_bold {
   font-weight: bold;
 }
 
-#suvupsnnty .gt_font_italic {
+#yndzieivhk .gt_font_italic {
   font-style: italic;
 }
 
-#suvupsnnty .gt_super {
+#yndzieivhk .gt_super {
   font-size: 65%;
 }
 
-#suvupsnnty .gt_footnote_marks {
+#yndzieivhk .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#suvupsnnty .gt_asterisk {
+#yndzieivhk .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#suvupsnnty .gt_indent_1 {
+#yndzieivhk .gt_indent_1 {
   text-indent: 5px;
 }
 
-#suvupsnnty .gt_indent_2 {
+#yndzieivhk .gt_indent_2 {
   text-indent: 10px;
 }
 
-#suvupsnnty .gt_indent_3 {
+#yndzieivhk .gt_indent_3 {
   text-indent: 15px;
 }
 
-#suvupsnnty .gt_indent_4 {
+#yndzieivhk .gt_indent_4 {
   text-indent: 20px;
 }
 
-#suvupsnnty .gt_indent_5 {
+#yndzieivhk .gt_indent_5 {
   text-indent: 25px;
 }
 
-#suvupsnnty .katex-display {
+#yndzieivhk .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#suvupsnnty div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#yndzieivhk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -581,8 +581,8 @@ hip fracture using the Eunomia synthetic data.</p>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Standard concept name">Standard concept name</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="2" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Standard concept ID">Standard concept ID</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Source concept name">Source concept name</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Source concept id">Source concept id</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Domain id">Domain id</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Source concept ID">Source concept ID</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Domain ID">Domain ID</th>
       <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" style="background-color: #D9D9D9; text-align: center; font-weight: bold;" scope="colgroup" id="Estimate name">
         <span class="gt_column_spanner">Estimate name</span>
       </th>
@@ -599,8 +599,8 @@ hip fracture using the Eunomia synthetic data.</p>
 <td headers="Standard concept name" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">overall</td>
 <td headers="Standard concept ID" class="gt_row gt_right" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">-</td>
 <td headers="Source concept name" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">overall</td>
-<td headers="Source concept id" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">overall</td>
-<td headers="Domain id" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">overall</td>
+<td headers="Source concept ID" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">overall</td>
+<td headers="Domain ID" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">overall</td>
 <td headers="[header_name]Database name
 [header_level]Eunomia
 [header_name]Estimate name
@@ -616,8 +616,8 @@ hip fracture using the Eunomia synthetic data.</p>
 <td headers="Standard concept name" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">Fracture of ankle</td>
 <td headers="Standard concept ID" class="gt_row gt_right" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">4059173</td>
 <td headers="Source concept name" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">Fracture of ankle</td>
-<td headers="Source concept id" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">4059173</td>
-<td headers="Domain id" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">condition</td>
+<td headers="Source concept ID" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">4059173</td>
+<td headers="Domain ID" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">condition</td>
 <td headers="[header_name]Database name
 [header_level]Eunomia
 [header_name]Estimate name
@@ -633,8 +633,8 @@ hip fracture using the Eunomia synthetic data.</p>
 <td headers="Standard concept name" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">overall</td>
 <td headers="Standard concept ID" class="gt_row gt_right" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">-</td>
 <td headers="Source concept name" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">overall</td>
-<td headers="Source concept id" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">overall</td>
-<td headers="Domain id" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">overall</td>
+<td headers="Source concept ID" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">overall</td>
+<td headers="Domain ID" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">overall</td>
 <td headers="[header_name]Database name
 [header_level]Eunomia
 [header_name]Estimate name
@@ -650,8 +650,8 @@ hip fracture using the Eunomia synthetic data.</p>
 <td headers="Standard concept name" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">Sprain of ankle</td>
 <td headers="Standard concept ID" class="gt_row gt_right" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">81151</td>
 <td headers="Source concept name" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">Sprain of ankle</td>
-<td headers="Source concept id" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">81151</td>
-<td headers="Domain id" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">condition</td>
+<td headers="Source concept ID" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">81151</td>
+<td headers="Domain ID" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">condition</td>
 <td headers="[header_name]Database name
 [header_level]Eunomia
 [header_name]Estimate name
@@ -667,8 +667,8 @@ hip fracture using the Eunomia synthetic data.</p>
 <td headers="Standard concept name" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">overall</td>
 <td headers="Standard concept ID" class="gt_row gt_right" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">-</td>
 <td headers="Source concept name" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">overall</td>
-<td headers="Source concept id" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">overall</td>
-<td headers="Domain id" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">overall</td>
+<td headers="Source concept ID" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">overall</td>
+<td headers="Domain ID" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">overall</td>
 <td headers="[header_name]Database name
 [header_level]Eunomia
 [header_name]Estimate name
@@ -684,8 +684,8 @@ hip fracture using the Eunomia synthetic data.</p>
 <td headers="Standard concept name" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">Fracture of forearm</td>
 <td headers="Standard concept ID" class="gt_row gt_right" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">4278672</td>
 <td headers="Source concept name" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">Fracture of forearm</td>
-<td headers="Source concept id" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">4278672</td>
-<td headers="Domain id" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">condition</td>
+<td headers="Source concept ID" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">4278672</td>
+<td headers="Domain ID" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">condition</td>
 <td headers="[header_name]Database name
 [header_level]Eunomia
 [header_name]Estimate name
@@ -701,8 +701,8 @@ hip fracture using the Eunomia synthetic data.</p>
 <td headers="Standard concept name" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">overall</td>
 <td headers="Standard concept ID" class="gt_row gt_right" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">-</td>
 <td headers="Source concept name" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">overall</td>
-<td headers="Source concept id" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">overall</td>
-<td headers="Domain id" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">overall</td>
+<td headers="Source concept ID" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">overall</td>
+<td headers="Domain ID" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">overall</td>
 <td headers="[header_name]Database name
 [header_level]Eunomia
 [header_name]Estimate name
@@ -718,8 +718,8 @@ hip fracture using the Eunomia synthetic data.</p>
 <td headers="Standard concept name" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">Closed fracture of hip</td>
 <td headers="Standard concept ID" class="gt_row gt_right" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">4230399</td>
 <td headers="Source concept name" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">Closed fracture of hip</td>
-<td headers="Source concept id" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">4230399</td>
-<td headers="Domain id" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">condition</td>
+<td headers="Source concept ID" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">4230399</td>
+<td headers="Domain ID" class="gt_row gt_left" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">condition</td>
 <td headers="[header_name]Database name
 [header_level]Eunomia
 [header_name]Estimate name
