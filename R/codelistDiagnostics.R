@@ -5,18 +5,7 @@
 #' tables as these will be used for deriving concept counts.
 #'
 #' @return A summarised result
-#' @export
-#'
-#' @examples
-#' \donttest{
-#' library(CohortConstructor)
-#'
-#' cdm <- mockCohortConstructor(conditionOccurrence = TRUE)
-#'
-#' cohort <- conceptCohort(cdm = cdm, conceptSet = list(a = 1), name = "cohort")
-#'
-#' cohort |> attrition()
-#' }
+#' @noRd
 codelistDiagnostics <- function(cohort){
 
   cdm <- omopgenerics::cdmReference(cohort)

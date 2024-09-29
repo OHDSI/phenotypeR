@@ -60,26 +60,9 @@ cdm$gibleed <- conceptCohort(cdm = cdm,
                                    conceptSet = list(gibleed = 192671L),
                                    name = "gibleed")
 
-gibleed_code_diag <- cdm$gibleed |>
-   codelistDiagnostics()
-gibleed_code_diag |> 
+result <- cdm$gibleed |>
+   phenotype()
+result |> 
   glimpse()
 ```
 
-## Cohort diagnostics
-
-```{r, message=FALSE}
-gibleed_cohort_diag <- cdm$gibleed |>
-   cohortDiagnostics()
-gibleed_cohort_diag |> 
-  glimpse()
-```
-
-
-## Combining results
-```{r, message=FALSE}
-diagnostics <- bind(gibleed_cohort_diag) |> 
-  suppress(minCellCount = 5)
-diagnostics |> 
-  glimpse()
-```
