@@ -19,7 +19,6 @@ test_that("eunomia", {
                                name = "meds")
   results <- phenotype(cdm$meds)
   expect_no_error(shinyDiagnostics(result = results))
-  omopViewer::exportStaticApp(results)
 })
 
 test_that("postgres test", {

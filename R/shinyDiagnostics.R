@@ -11,16 +11,9 @@
 shinyDiagnostics <- function(result,
                              directory = here::here()){
 
-  file.copy(from = system.file("shiny",
-                            package = "phenotypeR"),
-            to = directory,
-            recursive = TRUE,
-            overwrite = TRUE)
+  rlang::check_installed("omopViewer")
 
-  omopgenerics::exportSummarisedResult(result,
-                                       fileName = "result.csv",
-                                       path = here::here(directory, "shiny", "data"))
-
-  shiny::shinyAppDir(here::here(directory, "shiny"))
+  result |>
+    omopViewer::exportStaticApp(directory = directory)
 
 }
