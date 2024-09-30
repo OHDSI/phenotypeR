@@ -20,10 +20,10 @@ shinyDiagnostics <- function(result,
     )
 }
 
-getBackground <- function(results) {
+getBackground <- function(result) {
 
   cohorts <- result |>
-    visOmopResults::filterSettings(table_name == "my_cohort") |>
+    visOmopResults::filterSettings(.data$table_name == "my_cohort") |>
     dplyr::distinct(.data$group_name, .data$group_level) |>
     visOmopResults::splitGroup()
 
@@ -37,7 +37,7 @@ getBackground <- function(results) {
   }
 
   codelists <- result |>
-    visOmopResults::filterSettings(result_type == "cohort_code_use") |>
+    visOmopResults::filterSettings(.data$result_type == "cohort_code_use") |>
     dplyr::distinct(.data$group_name, .data$group_level) |>
     visOmopResults::splitGroup()
 
