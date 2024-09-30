@@ -47,7 +47,8 @@ Imports:
     rlang,
     shiny,
     vctrs,
-    visOmopResults
+    visOmopResults,
+    glue
 URL: https://oxford-pharmacoepi.github.io/phenotypeR/
 VignetteBuilder: knitr
 Remotes: 
