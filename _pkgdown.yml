@@ -1,4 +1,18 @@
-url: https://oxford-pharmacoepi.github.io/phenotypeR/
+url: https://ohdsi.github.io/phenotypeR/
 template:
   bootstrap: 5
 
+navbar:
+  structure:
+    right: [github]
+
+reference:
+- subtitle: Run all diagnostics
+- contents:
+  - matches("phenotype")
+- subtitle: Run individual diagnostics
+- contents:
+  - matches("databaseDiagnostics|codelistDiagnostics|cohortDiagnostics|cohortToPopulationDiagnostics")
+- subtitle: Visualise results
+- contents:
+  - matches("reportDiagnostics|shinyDiagnostics")
