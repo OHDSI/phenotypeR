@@ -42,7 +42,14 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">phenotype</span><span class="op">(</span><span class="va">cohort</span>, nSample <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">phenotype</span><span class="op">(</span></span>
+<span>  <span class="va">cohort</span>,</span>
+<span>  databaseDiagnostics <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  codelistDiagnostics <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  cohortDiagnostics <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  cohortToPopulationDiagnostics <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  nSample <span class="op">=</span> <span class="fl">1000</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -51,6 +58,23 @@
 
 <dl><dt id="arg-cohort">cohort<a class="anchor" aria-label="anchor" href="#arg-cohort"></a></dt>
 <dd><p>Cohort</p></dd>
+
+
+<dt id="arg-databasediagnostics">databaseDiagnostics<a class="anchor" aria-label="anchor" href="#arg-databasediagnostics"></a></dt>
+<dd><p>If TRUE, database diagnostics will be run.</p></dd>
+
+
+<dt id="arg-codelistdiagnostics">codelistDiagnostics<a class="anchor" aria-label="anchor" href="#arg-codelistdiagnostics"></a></dt>
+<dd><p>If TRUE, codelist diagnostics will be run.</p></dd>
+
+
+<dt id="arg-cohortdiagnostics">cohortDiagnostics<a class="anchor" aria-label="anchor" href="#arg-cohortdiagnostics"></a></dt>
+<dd><p>If TRUE, cohort diagnostics will be run.</p></dd>
+
+
+<dt id="arg-cohorttopopulationdiagnostics">cohortToPopulationDiagnostics<a class="anchor" aria-label="anchor" href="#arg-cohorttopopulationdiagnostics"></a></dt>
+<dd><p>If TRUE, cohort to population
+diagnostics will be run.</p></dd>
 
 
 <dt id="arg-nsample">nSample<a class="anchor" aria-label="anchor" href="#arg-nsample"></a></dt>
