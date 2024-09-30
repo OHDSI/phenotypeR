@@ -5,7 +5,9 @@
 #' NULL, no sampling will be performed.
 #'
 #' @return A summarised result
-#' @noRd
+#' @export
+#'
+#' @examples
 cohortToPopulationDiagnostics <- function(cohort,
                                           nSample = 1000){
 

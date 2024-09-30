@@ -9,7 +9,9 @@
 #' large scale characteristics
 #'
 #' @return A summarised result
-#' @noRd
+#' @export
+#'
+#' @examples
 cohortDiagnostics <- function(cohort,
                               strata = list(),
                               matchCohort = TRUE,

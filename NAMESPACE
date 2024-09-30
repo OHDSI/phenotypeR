@@ -2,6 +2,10 @@
 
 export("%>%")
 export(bind)
+export(codelistDiagnostics)
+export(cohortDiagnostics)
+export(cohortToPopulationDiagnostics)
+export(databaseDiagnostics)
 export(exportSummarisedResult)
 export(importSummarisedResult)
 export(phenotype)

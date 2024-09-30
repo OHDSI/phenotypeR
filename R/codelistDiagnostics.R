@@ -5,7 +5,9 @@
 #' tables as these will be used for deriving concept counts.
 #'
 #' @return A summarised result
-#' @noRd
+#' @export
+#'
+#' @examples
 codelistDiagnostics <- function(cohort){
 
   cdm <- omopgenerics::cdmReference(cohort)
