@@ -1,4 +1,4 @@
-test_that("multiplication works", {
+test_that("overall diagnostics function", {
   cdm_local <- omock::mockCdmReference() |>
     omock::mockPerson(nPerson = 100) |>
     omock::mockObservationPeriod() |>
@@ -28,7 +28,52 @@ test_that("multiplication works", {
   cdm <- CDMConnector::copyCdmTo(con = db, cdm = cdm_local,
                                  schema ="main", overwrite = TRUE)
 
-  my_result <- phenotype(cdm$my_cohort)
-  omopViewer::exportStaticApp(my_result)
+ expect_no_error(my_result <- phenotype(cdm$my_cohort))
+
+  expect_identical(phenotype(cdm$my_cohort,
+            databaseDiagnostics = FALSE,
+            codelistDiagnostics = FALSE,
+            cohortDiagnostics = FALSE,
+            cohortToPopulationDiagnostics = FALSE),
+  omopgenerics::emptySummarisedResult())
+
+  dd_only <- phenotype(cdm$my_cohort,
+            databaseDiagnostics = TRUE,
+            codelistDiagnostics = FALSE,
+            cohortDiagnostics = FALSE,
+            cohortToPopulationDiagnostics = FALSE)
+  expect_true(settings(dd_only) |>
+    dplyr::pull("result_type") == "summarise_omop_snapshot")
+
+  # codelist diag will be empty currently
+  code_diag_only <- phenotype(cdm$my_cohort,
+            databaseDiagnostics = FALSE,
+            codelistDiagnostics = TRUE,
+            cohortDiagnostics = FALSE,
+            cohortToPopulationDiagnostics = FALSE)
+
+  cohort_diag_only <-  phenotype(cdm$my_cohort,
+            databaseDiagnostics = FALSE,
+            codelistDiagnostics = FALSE,
+            cohortDiagnostics = TRUE,
+            cohortToPopulationDiagnostics = FALSE)
+  expect_true(
+   all(c("summarise_characteristics", "summarise_cohort_attrition",
+      "summarise_cohort_attrition",
+      "summarise_cohort_overlap", "summarise_cohort_timing") %in%
+    (settings(cohort_diag_only) |>
+                dplyr::pull("result_type"))))
+
+  cohort_pop_diag_only <-  phenotype(cdm$my_cohort,
+            databaseDiagnostics = FALSE,
+            codelistDiagnostics = FALSE,
+            cohortDiagnostics = FALSE,
+            cohortToPopulationDiagnostics = TRUE)
+  expect_true(
+    all(c("summarise_characteristics",
+          "summarise_large_scale_characteristics") %in%
+          unique(settings(cohort_pop_diag_only) |>
+             dplyr::pull("result_type"))))
+
 
   })

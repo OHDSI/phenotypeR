@@ -4,10 +4,26 @@
 \alias{phenotype}
 \title{Phenotype a cohort}
 \usage{
-phenotype(cohort, nSample = 1000)
+phenotype(
+  cohort,
+  databaseDiagnostics = TRUE,
+  codelistDiagnostics = TRUE,
+  cohortDiagnostics = TRUE,
+  cohortToPopulationDiagnostics = TRUE,
+  nSample = 1000
+)
 }
 \arguments{
 \item{cohort}{Cohort}
+
+\item{databaseDiagnostics}{If TRUE, database diagnostics will be run.}
+
+\item{codelistDiagnostics}{If TRUE, codelist diagnostics will be run.}
+
+\item{cohortDiagnostics}{If TRUE, cohort diagnostics will be run.}
+
+\item{cohortToPopulationDiagnostics}{If TRUE, cohort to population
+diagnostics will be run.}
 
 \item{nSample}{The number of people to take a random sample for matching to
 the database population. If NULL, no sampling will be performed and the
