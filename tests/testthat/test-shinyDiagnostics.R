@@ -36,7 +36,7 @@ test_that("basic working example with one cohort", {
   cdm <- CDMConnector::copyCdmTo(con = db, cdm = cdm_local,
                                  schema ="main", overwrite = TRUE)
 
-  my_result_cohort_diag <- cdm$my_cohort |> phenotype()
+  my_result_cohort_diag <- cdm$my_cohort |> phenotypeDiagnostics()
   expect_no_error(shinyDiagnostics(my_result_cohort_diag))
 
 
