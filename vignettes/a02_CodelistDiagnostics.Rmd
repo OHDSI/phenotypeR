@@ -58,6 +58,6 @@ cdm$injuries |>
 ## Summarising code use
 
 ```{r}
-code_diag <- phenotype(cdm$injuries)
+code_diag <- codelistDiagnostics(cdm$injuries)
 tableCohortCodeUse(code_diag)
 ```

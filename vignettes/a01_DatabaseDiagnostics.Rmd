@@ -1,8 +1,8 @@
 ---
-title: "Introduction"
+title: "Database diagnostics"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{a01_Introduction}
+  %\VignetteIndexEntry{a01_DatabaseDiagnostics}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

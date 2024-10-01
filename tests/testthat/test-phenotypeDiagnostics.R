@@ -28,16 +28,16 @@ test_that("overall diagnostics function", {
   cdm <- CDMConnector::copyCdmTo(con = db, cdm = cdm_local,
                                  schema ="main", overwrite = TRUE)
 
- expect_no_error(my_result <- phenotype(cdm$my_cohort))
+ expect_no_error(my_result <- phenotypeDiagnostics(cdm$my_cohort))
 
-  expect_identical(phenotype(cdm$my_cohort,
+  expect_identical(phenotypeDiagnostics(cdm$my_cohort,
             databaseDiagnostics = FALSE,
             codelistDiagnostics = FALSE,
             cohortDiagnostics = FALSE,
             cohortToPopulationDiagnostics = FALSE),
   omopgenerics::emptySummarisedResult())
 
-  dd_only <- phenotype(cdm$my_cohort,
+  dd_only <- phenotypeDiagnostics(cdm$my_cohort,
             databaseDiagnostics = TRUE,
             codelistDiagnostics = FALSE,
             cohortDiagnostics = FALSE,
@@ -46,13 +46,13 @@ test_that("overall diagnostics function", {
     dplyr::pull("result_type") == "summarise_omop_snapshot")
 
   # codelist diag will be empty currently
-  code_diag_only <- phenotype(cdm$my_cohort,
+  code_diag_only <- phenotypeDiagnostics(cdm$my_cohort,
             databaseDiagnostics = FALSE,
             codelistDiagnostics = TRUE,
             cohortDiagnostics = FALSE,
             cohortToPopulationDiagnostics = FALSE)
 
-  cohort_diag_only <-  phenotype(cdm$my_cohort,
+  cohort_diag_only <-  phenotypeDiagnostics(cdm$my_cohort,
             databaseDiagnostics = FALSE,
             codelistDiagnostics = FALSE,
             cohortDiagnostics = TRUE,
@@ -64,7 +64,7 @@ test_that("overall diagnostics function", {
     (settings(cohort_diag_only) |>
                 dplyr::pull("result_type"))))
 
-  cohort_pop_diag_only <-  phenotype(cdm$my_cohort,
+  cohort_pop_diag_only <-  phenotypeDiagnostics(cdm$my_cohort,
             databaseDiagnostics = FALSE,
             codelistDiagnostics = FALSE,
             cohortDiagnostics = FALSE,

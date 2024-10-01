@@ -17,7 +17,7 @@ test_that("eunomia", {
   cdm$meds <- CohortConstructor::conceptCohort(cdm = cdm,
                                conceptSet = meds_cs,
                                name = "meds")
-  results <- phenotype(cdm$meds)
+  results <- phenotypeDiagnostics(cdm$meds)
   expect_no_error(shinyDiagnostics(result = results))
 })
 
@@ -48,7 +48,7 @@ test_that("postgres test", {
                                                 name = "drugs")
   cdm <- omopgenerics::bind(cdm$asthma, cdm$drugs, name = "my_cohort")
 
-  results <- phenotype(cdm$my_cohort)
+  results <- phenotypeDiagnostics(cdm$my_cohort)
   expect_no_error(shinyDiagnostics(result = results))
   expect_no_error(CodelistGenerator::tableCohortCodeUse(results))
   expect_no_error(CodelistGenerator::tableAchillesCodeUse(results))
