@@ -42,8 +42,10 @@ test_that("overall diagnostics function", {
             codelistDiagnostics = FALSE,
             cohortDiagnostics = FALSE,
             cohortToPopulationDiagnostics = FALSE)
-  expect_true(settings(dd_only) |>
-    dplyr::pull("result_type") == "summarise_omop_snapshot")
+  expect_true("summarise_omop_snapshot" %in%
+                (settings(dd_only) |> dplyr::pull("result_type")))
+  expect_true("summarise_observation_period" %in%
+                (settings(dd_only) |> dplyr::pull("result_type")))
 
   # codelist diag will be empty currently
   code_diag_only <- phenotypeDiagnostics(cdm$my_cohort,
