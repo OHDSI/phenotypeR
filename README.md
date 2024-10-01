@@ -7,7 +7,7 @@
 
 > **This package is under development and not yet ready for use.**
 
-[![R-CMD-check](https://github.com/oxford-pharmacoepi/phenotypeR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/oxford-pharmacoepi/phenotypeR/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/ohdsi/phenotypeR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ohdsi/phenotypeR/actions/workflows/R-CMD-check.yaml)
 [![Lifecycle:Experimental](https://img.shields.io/badge/Lifecycle-Experimental-339999)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 
 <!-- badges: end -->
@@ -63,7 +63,7 @@ result <- cdm$gibleed |>
 #> Returning only index event breakdown.
 result |> 
   glimpse()
-#> Rows: 3,012
+#> Rows: 2,998
 #> Columns: 13
 #> $ result_id        <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3,…
 #> $ cdm_name         <chr> "Synthea synthetic health database", "Synthea synthet…

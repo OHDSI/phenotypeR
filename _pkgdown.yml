@@ -9,10 +9,10 @@ navbar:
 reference:
 - subtitle: Run all diagnostics
 - contents:
-  - matches("phenotype")
+  - matches("phenotypeDiagnostics")
 - subtitle: Run individual diagnostics
 - contents:
   - matches("databaseDiagnostics|codelistDiagnostics|cohortDiagnostics|cohortToPopulationDiagnostics")
 - subtitle: Visualise results
 - contents:
-  - matches("reportDiagnostics|shinyDiagnostics")
+  - matches("shinyDiagnostics")

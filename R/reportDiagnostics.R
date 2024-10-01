@@ -5,9 +5,7 @@
 #' @param directory Directory where to save report
 #'
 #' @return A report
-#' @export
-#'
-#' @examples
+#' @noRd
 reportDiagnostics <- function(result,
                               directory = here::here()){
 
