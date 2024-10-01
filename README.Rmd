@@ -61,7 +61,7 @@ cdm$gibleed <- conceptCohort(cdm = cdm,
                                    name = "gibleed")
 
 result <- cdm$gibleed |>
-   phenotype()
+   phenotypeDiagnostics()
 result |> 
   glimpse()
 ```
