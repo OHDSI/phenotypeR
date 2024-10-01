@@ -1,7 +1,7 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://ohdsi.github.io/phenotypeR/404.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/LICENSE.html</loc></url>
-<url><loc>https://ohdsi.github.io/phenotypeR/articles/a01_Introduction.html</loc></url>
+<url><loc>https://ohdsi.github.io/phenotypeR/articles/a01_DatabaseDiagnostics.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/articles/a02_CodelistDiagnostics.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/articles/a03_CohortDiagnostics.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/articles/index.html</loc></url>
@@ -12,7 +12,7 @@
 <url><loc>https://ohdsi.github.io/phenotypeR/reference/cohortToPopulationDiagnostics.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/reference/databaseDiagnostics.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/reference/index.html</loc></url>
-<url><loc>https://ohdsi.github.io/phenotypeR/reference/phenotype.html</loc></url>
+<url><loc>https://ohdsi.github.io/phenotypeR/reference/phenotypeDiagnostics.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/reference/phenotypeR-package.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/reference/pipe.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/reference/reexports.html</loc></url>

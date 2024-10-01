@@ -18,7 +18,7 @@
       <ul class="navbar-nav me-auto"><li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/a01_Introduction.html">Introduction</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/a01_DatabaseDiagnostics.html">Database diagnostics</a></li>
     <li><a class="dropdown-item" href="../articles/a02_CodelistDiagnostics.html">Codelist diagnostics</a></li>
     <li><a class="dropdown-item" href="../articles/a03_CohortDiagnostics.html">Cohort diagnostics</a></li>
   </ul></li>
@@ -40,7 +40,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">cohortDiagnostics</span><span class="op">(</span><span class="va">cohort</span>, strata <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, matchCohort <span class="op">=</span> <span class="cn">TRUE</span>, nSample <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">cohortDiagnostics</span><span class="op">(</span><span class="va">cohort</span>, strata <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -54,16 +54,6 @@
 <dt id="arg-strata">strata<a class="anchor" aria-label="anchor" href="#arg-strata"></a></dt>
 <dd><p>A list of variables to stratify results. These variables must
 have been added as additional columns in the cohort table.</p></dd>
-
-
-<dt id="arg-matchcohort">matchCohort<a class="anchor" aria-label="anchor" href="#arg-matchcohort"></a></dt>
-<dd><p>TRUE or FALSE. If TRUE age and sex matched cohorts will
-be added for each cohort in the cohort table</p></dd>
-
-
-<dt id="arg-nsample">nSample<a class="anchor" aria-label="anchor" href="#arg-nsample"></a></dt>
-<dd><p>The number of people to take a random sample for running
-large scale characteristics</p></dd>
 
 </dl></div>
     <div class="section level2">
