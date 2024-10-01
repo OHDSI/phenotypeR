@@ -13,7 +13,7 @@ Phenotype study cohorts in data mapped to the Observational Medical Outcomes Par
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://oxford-pharmacoepi.github.io/phenotypeR/}
+  \item \url{https://ohdsi.github.io/phenotypeR/}
 }
 
 }

@@ -49,7 +49,7 @@ Imports:
     vctrs,
     visOmopResults,
     glue
-URL: https://oxford-pharmacoepi.github.io/phenotypeR/
+URL: https://ohdsi.github.io/phenotypeR/
 VignetteBuilder: knitr
 Remotes: 
     darwin-eu-dev/CohortCharacteristics,
