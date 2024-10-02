@@ -16,7 +16,13 @@ shinyDiagnostics <- function(result,
   result |>
     omopViewer::exportStaticApp(
       directory = directory,
-      background = getBackground(result)
+      background = getBackground(result),
+      summary = FALSE,
+      panels = list("summarise_omop_snapshot",
+                    "summarise_observation_period",
+                    "summarise_cohort_attrition",
+                    "summarise_characteristics",
+                    "summarise_large_scale_characteristics")
     )
 }
 
