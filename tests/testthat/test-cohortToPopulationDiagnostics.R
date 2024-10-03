@@ -32,11 +32,11 @@ test_that("cohort to pop diagnostics", {
   # expected errors
   expect_error(cohortToPopulationDiagnostics(cohort = "not a cohort"))
   expect_error(cdm$my_cohort |>
-                    cohortToPopulationDiagnostics(nSample = 0))
+                    cohortToPopulationDiagnostics(matchedSample = 0))
   expect_error(cdm$my_cohort |>
-                 cohortToPopulationDiagnostics(nSample = "a"))
+                 cohortToPopulationDiagnostics(matchedSample = "a"))
   expect_error(cdm$my_cohort |>
-                 cohortToPopulationDiagnostics(nSample = Inf))
+                 cohortToPopulationDiagnostics(matchedSample = Inf))
 
 
 })

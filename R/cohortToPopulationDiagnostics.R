@@ -1,7 +1,7 @@
 #' Compare characteristics of cohort matched to database population
 #'
 #' @param cohort Cohort table in a cdm reference
-#' @param nSample The number of people to take a random sample for matching. If
+#' @param matchedSample The number of people to take a random sample for matching. If
 #' NULL, no sampling will be performed.
 #'
 #' @return A summarised result
@@ -9,9 +9,9 @@
 #'
 #' @examples
 cohortToPopulationDiagnostics <- function(cohort,
-                                          nSample = 1000){
+                                          matchedSample = 1000){
 
-  omopgenerics::assertNumeric(nSample, min = 1)
+  omopgenerics::assertNumeric(matchedSample, min = 1)
 
   cdm <- omopgenerics::cdmReference(cohort)
   cohortName <- omopgenerics::tableName(cohort)
@@ -23,10 +23,10 @@ cohortToPopulationDiagnostics <- function(cohort,
   matchedCohortTable <- paste0(omopgenerics::tableName(cdm[[cohortName]]),
                                "_matched")
 
-  if(!is.null(nSample)){
-  cli::cli_bullets(c("*" = "{.strong Taking {nSample} person sample of cohorts}"))
+  if(!is.null(matchedSample)){
+  cli::cli_bullets(c("*" = "{.strong Taking {matchedSample} person sample of cohorts}"))
   cdm[[matchedCohortTable]] <- CohortConstructor::sampleCohorts(cdm[[cohortName]],
-                                   n = nSample,
+                                   n = matchedSample,
                                    name = matchedCohortTable)
   } else {
     cdm[[matchedCohortTable]] <- cdm[[cohortName]]
