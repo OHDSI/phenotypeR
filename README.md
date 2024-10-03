@@ -46,7 +46,7 @@ You can install phenotypeR from GitHub:
 remotes::install_github("ohdsi/phenotypeR")
 ```
 
-## Codelist diagnostics
+## Example usage
 
 ``` r
 library(omopgenerics)
@@ -70,7 +70,7 @@ result <- cdm$gibleed |>
 
 ``` r
 summary(result)
-#> A summarised_result object with 6044 rows, 12 different result_id, 1 different
+#> A summarised_result object with 6020 rows, 12 different result_id, 1 different
 #> cdm names, and 10 settings.
 #> CDM names: Synthea synthetic health database.
 #> Settings: package_name, package_version, result_type, timing, table_name,
