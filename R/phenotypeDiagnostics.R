@@ -36,7 +36,7 @@ phenotypeDiagnostics <- function(cohort,
     cli::cli("Running cohort diagnostics")
     results[["cohort_diag"]] <- cohortDiagnostics(cohort)
   }
-  if (isTRUE(cohortToPopulationDiagnostics)) {
+  if (isTRUE(matchedDiagnostics)) {
     cli::cli("Running matched diagnostics")
     results[["cohort_to_pop_diag"]] <- matchedDiagnostics(cohort,
       nSample = nSample
