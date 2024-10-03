@@ -10,7 +10,7 @@
 #' sampling will be performed
 #' @param matchedDiagnostics If TRUE, cohort to population
 #' diagnostics will be run.
-#' @param nSample The number of people to take a random sample for matching to
+#' @param matchedSample The number of people to take a random sample for matching to
 #' the database population. If NULL, no sampling will be performed and the
 #' entire cohorts will be used.
 #'
@@ -25,7 +25,7 @@ phenotypeDiagnostics <- function(cohort,
                                  populationDiagnostics = TRUE,
                                  populationSample = 1000000,
                                  matchedDiagnostics = TRUE,
-                                 nSample = 1000) {
+                                 matchedSample = 1000) {
 
   cdm <- omopgenerics::cdmReference(cohort)
 
@@ -50,7 +50,7 @@ phenotypeDiagnostics <- function(cohort,
   if (isTRUE(matchedDiagnostics)) {
     cli::cli("Running matched diagnostics")
     results[["matched_diag"]] <- matchedDiagnostics(cohort,
-      nSample = nSample
+                                                    matchedSample  = matchedSample
     )
   }
 

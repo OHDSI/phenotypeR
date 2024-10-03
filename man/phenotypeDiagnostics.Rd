@@ -12,7 +12,7 @@ phenotypeDiagnostics(
   populationDiagnostics = TRUE,
   populationSample = 1e+06,
   matchedDiagnostics = TRUE,
-  nSample = 1000
+  matchedSample = 1000
 )
 }
 \arguments{
@@ -32,7 +32,7 @@ sampling will be performed}
 \item{matchedDiagnostics}{If TRUE, cohort to population
 diagnostics will be run.}
 
-\item{nSample}{The number of people to take a random sample for matching to
+\item{matchedSample}{The number of people to take a random sample for matching to
 the database population. If NULL, no sampling will be performed and the
 entire cohorts will be used.}
 }

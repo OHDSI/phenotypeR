@@ -4,12 +4,12 @@
 \alias{matchedDiagnostics}
 \title{Compare characteristics of cohort matched to database population}
 \usage{
-matchedDiagnostics(cohort, nSample = 1000)
+matchedDiagnostics(cohort, matchedSample = 1000)
 }
 \arguments{
 \item{cohort}{Cohort table in a cdm reference}
 
-\item{nSample}{The number of people to take a random sample for matching. If
+\item{matchedSample}{The number of people to take a random sample for matching. If
 NULL, no sampling will be performed.}
 }
 \value{
