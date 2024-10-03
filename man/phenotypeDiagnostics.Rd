@@ -9,7 +9,7 @@ phenotypeDiagnostics(
   databaseDiagnostics = TRUE,
   codelistDiagnostics = TRUE,
   cohortDiagnostics = TRUE,
-  cohortToPopulationDiagnostics = TRUE,
+  matchedDiagnostics = TRUE,
   nSample = 1000
 )
 }
@@ -22,7 +22,7 @@ phenotypeDiagnostics(
 
 \item{cohortDiagnostics}{If TRUE, cohort diagnostics will be run.}
 
-\item{cohortToPopulationDiagnostics}{If TRUE, cohort to population
+\item{matchedDiagnostics}{If TRUE, cohort to population
 diagnostics will be run.}
 
 \item{nSample}{The number of people to take a random sample for matching to
