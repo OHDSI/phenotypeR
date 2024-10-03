@@ -5,7 +5,7 @@ articles:
   a01_DatabaseDiagnostics: a01_DatabaseDiagnostics.html
   a02_CodelistDiagnostics: a02_CodelistDiagnostics.html
   a03_CohortDiagnostics: a03_CohortDiagnostics.html
-last_built: 2024-10-03T11:34Z
+last_built: 2024-10-03T11:37Z
 urls:
   reference: https://ohdsi.github.io/phenotypeR/reference
   article: https://ohdsi.github.io/phenotypeR/articles
