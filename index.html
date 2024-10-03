@@ -59,9 +59,20 @@
 
 
 <!-- badges: end -->
-<p>The phenotypeR package supports the assessment of cohorts</p>
-<p>Codelist-level diagnostics help to answer questions like what concepts from our codelist are used in the database? What concepts were present led to individuals’ entry in the cohort? Are there any concepts being used in the database that we didn’t include in our codelist but maybe we should have?</p>
-<p>Cohort-level diagnostics help to answer questions like how many individuals did we include in our cohort and how many were excluded because of our inclusion criteria? If we have multiple cohorts, is there overlap between them and when do people enter one cohort relative to another? What is the incidence of cohort entry and what is the prevalence of the cohort in the database? What are the characteristics of those people in the cohort, and how do they compare to people similar in terms of age and sex?</p>
+<p>The phenotypeR package helps us to assess the research-readiness of a set of cohorts we have defined. This assessment includes:</p>
+<ul>
+<li>
+<strong><em>Database diagnostics</em></strong> which help us to better understand the database in which they have been created. This includes information about the size of the data, the time period covered, the number of people in the data as a whole. More granular information that may influence analytic decisions, such as the number of observation periods per person, is also described.<br>
+</li>
+<li>
+<strong><em>Codelist diagnostics</em></strong> which help to answer questions like what concepts from our codelist are used in the database? What concepts were present led to individuals’ entry in the cohort? Are there any concepts being used in the database that we didn’t include in our codelist but maybe we should have?<br>
+</li>
+<li>
+<strong><em>Cohort diagnostics</em></strong> which help to answer questions like how many individuals did we include in our cohort and how many were excluded because of our inclusion criteria? If we have multiple cohorts, is there overlap between them and when do people enter one cohort relative to another? What is the incidence of cohort entry and what is the prevalence of the cohort in the database?<br>
+</li>
+<li>
+<strong><em>Matched diagnostics</em></strong> which compares our study cohorts to the overall population in the database. By matching people in the cohorts to people with a similar age and sex in the database we can see how our cohorts differ from the general database population.</li>
+</ul>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -79,7 +90,6 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ohdsi.github.io/phenotypeR/">phenotypeR</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ohdsi.github.io/CohortConstructor/" class="external-link">CohortConstructor</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: package 'dplyr' was built under R version 4.2.3</span></span>
 <span></span>
 <span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html" class="external-link">dbConnect</a></span><span class="op">(</span><span class="fu">duckdb</span><span class="fu">::</span><span class="fu"><a href="https://r.duckdb.org/reference/duckdb.html" class="external-link">duckdb</a></span><span class="op">(</span>dbdir <span class="op">=</span> <span class="fu">CDMConnector</span><span class="fu">::</span><span class="fu"><a href="https://darwin-eu.github.io/CDMConnector/reference/eunomiaDir.html" class="external-link">eunomia_dir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">cdm</span> <span class="op">&lt;-</span> <span class="fu">CDMConnector</span><span class="fu">::</span><span class="fu"><a href="https://darwin-eu.github.io/CDMConnector/reference/cdm_from_con.html" class="external-link">cdm_from_con</a></span><span class="op">(</span>con <span class="op">=</span> <span class="va">con</span>,</span>
@@ -91,26 +101,17 @@
 <span>                                   name <span class="op">=</span> <span class="st">"gibleed"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">result</span> <span class="op">&lt;-</span> <span class="va">cdm</span><span class="op">$</span><span class="va">gibleed</span> <span class="op">|&gt;</span></span>
-<span>   <span class="fu"><a href="reference/phenotypeDiagnostics.html">phenotypeDiagnostics</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: The CDM reference containing the cohort must also contain achilles tables.</span></span>
-<span><span class="co">#&gt; Returning only index event breakdown.</span></span>
-<span><span class="va">result</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Rows: 2,998</span></span>
-<span><span class="co">#&gt; Columns: 13</span></span>
-<span><span class="co">#&gt; $ result_id        &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3,…</span></span>
-<span><span class="co">#&gt; $ cdm_name         &lt;chr&gt; "Synthea synthetic health database", "Synthea synthet…</span></span>
-<span><span class="co">#&gt; $ group_name       &lt;chr&gt; "overall", "overall", "overall", "overall", "overall"…</span></span>
-<span><span class="co">#&gt; $ group_level      &lt;chr&gt; "overall", "overall", "overall", "overall", "overall"…</span></span>
-<span><span class="co">#&gt; $ strata_name      &lt;chr&gt; "overall", "overall", "overall", "overall", "overall"…</span></span>
-<span><span class="co">#&gt; $ strata_level     &lt;chr&gt; "overall", "overall", "overall", "overall", "overall"…</span></span>
-<span><span class="co">#&gt; $ variable_name    &lt;chr&gt; "general", "general", "observation_period", "cdm", "g…</span></span>
-<span><span class="co">#&gt; $ variable_level   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span></span>
-<span><span class="co">#&gt; $ estimate_name    &lt;chr&gt; "snapshot_date", "person_count", "count", "source_nam…</span></span>
-<span><span class="co">#&gt; $ estimate_type    &lt;chr&gt; "date", "integer", "integer", "character", "character…</span></span>
-<span><span class="co">#&gt; $ estimate_value   &lt;chr&gt; "2024-10-03", "2694", "5343", "Synthea synthetic heal…</span></span>
-<span><span class="co">#&gt; $ additional_name  &lt;chr&gt; "overall", "overall", "overall", "overall", "overall"…</span></span>
-<span><span class="co">#&gt; $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "overall"…</span></span></code></pre></div>
+<span>   <span class="fu"><a href="reference/phenotypeDiagnostics.html">phenotypeDiagnostics</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span>
+<span><span class="co">#&gt; A summarised_result object with 6044 rows, 12 different result_id, 1 different</span></span>
+<span><span class="co">#&gt; cdm names, and 10 settings.</span></span>
+<span><span class="co">#&gt; CDM names: Synthea synthetic health database.</span></span>
+<span><span class="co">#&gt; Settings: package_name, package_version, result_type, timing, table_name,</span></span>
+<span><span class="co">#&gt; cohort_definition_id, cdm_version, vocabulary_version, type, and analysis.</span></span></code></pre></div>
+<p>Once we have our results we can quickly view them in an interactive application. This shiny app will be saved in a new directory and can be further customised.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/shinyDiagnostics.html">shinyDiagnostics</a></span><span class="op">(</span>result <span class="op">=</span> <span class="va">result</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="license">
