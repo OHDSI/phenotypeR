@@ -34,14 +34,14 @@ test_that("overall diagnostics function", {
             databaseDiagnostics = FALSE,
             codelistDiagnostics = FALSE,
             cohortDiagnostics = FALSE,
-            cohortToPopulationDiagnostics = FALSE),
+            matchedDiagnostics = FALSE),
   omopgenerics::emptySummarisedResult())
 
   dd_only <- phenotypeDiagnostics(cdm$my_cohort,
             databaseDiagnostics = TRUE,
             codelistDiagnostics = FALSE,
             cohortDiagnostics = FALSE,
-            cohortToPopulationDiagnostics = FALSE)
+            matchedDiagnostics = FALSE)
   expect_true("summarise_omop_snapshot" %in%
                 (settings(dd_only) |> dplyr::pull("result_type")))
   expect_true("summarise_observation_period" %in%
@@ -52,13 +52,13 @@ test_that("overall diagnostics function", {
             databaseDiagnostics = FALSE,
             codelistDiagnostics = TRUE,
             cohortDiagnostics = FALSE,
-            cohortToPopulationDiagnostics = FALSE)
+            matchedDiagnostics = FALSE)
 
   cohort_diag_only <-  phenotypeDiagnostics(cdm$my_cohort,
             databaseDiagnostics = FALSE,
             codelistDiagnostics = FALSE,
             cohortDiagnostics = TRUE,
-            cohortToPopulationDiagnostics = FALSE)
+            matchedDiagnostics = FALSE)
   expect_true(
    all(c("summarise_characteristics", "summarise_cohort_attrition",
       "summarise_cohort_attrition",
@@ -70,7 +70,7 @@ test_that("overall diagnostics function", {
             databaseDiagnostics = FALSE,
             codelistDiagnostics = FALSE,
             cohortDiagnostics = FALSE,
-            cohortToPopulationDiagnostics = TRUE)
+            matchedDiagnostics = TRUE)
   expect_true(
     all(c("summarise_characteristics",
           "summarise_large_scale_characteristics") %in%

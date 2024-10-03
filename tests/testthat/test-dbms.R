@@ -59,7 +59,6 @@ test_that("postgres test", {
   expect_no_error(CohortCharacteristics::tableCohortOverlap(results))
   expect_no_error(CohortCharacteristics::tableCohortTiming(results))
   expect_no_error(CohortCharacteristics::tableLargeScaleCharacteristics(results))
-  results$variable_name <- CodelistGenerator:::tidyWords(results$variable_name)
   # omopViewer::exportStaticApp(results)
   expect_no_error(shinyDiagnostics(result = results))
 
