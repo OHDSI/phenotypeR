@@ -43,7 +43,7 @@ You can install phenotypeR from GitHub:
 remotes::install_github("ohdsi/phenotypeR")
 ```
 
-## Codelist diagnostics
+## Example usage
 
 ```{r, message=FALSE, warning=FALSE}
 library(omopgenerics)
