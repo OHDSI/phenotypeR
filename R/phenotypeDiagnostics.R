@@ -25,20 +25,25 @@ phenotypeDiagnostics <- function(cohort,
 
   results <- list()
   if (isTRUE(databaseDiagnostics)) {
+    cli::cli("Running database diagnostics")
     results[["db_diag"]] <- databaseDiagnostics(cdm)
   }
   if (isTRUE(codelistDiagnostics)) {
+    cli::cli("Running codelist diagnostics")
     results[["code_diag"]] <- codelistDiagnostics(cohort)
   }
   if (isTRUE(cohortDiagnostics)) {
+    cli::cli("Running cohort diagnostics")
     results[["cohort_diag"]] <- cohortDiagnostics(cohort)
   }
   if (isTRUE(cohortToPopulationDiagnostics)) {
+    cli::cli("Running population diagnostics")
     results[["cohort_to_pop_diag"]] <- cohortToPopulationDiagnostics(cohort,
       nSample = nSample
     )
   }
 
+  cli::cli("Combining results")
   results <- results |>
     vctrs::list_drop_empty() |>
     omopgenerics::bind()
