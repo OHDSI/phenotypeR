@@ -9,6 +9,8 @@ phenotypeDiagnostics(
   databaseDiagnostics = TRUE,
   codelistDiagnostics = TRUE,
   cohortDiagnostics = TRUE,
+  populationDiagnostics = TRUE,
+  populationSample = 1e+06,
   matchedDiagnostics = TRUE,
   nSample = 1000
 )
@@ -21,6 +23,11 @@ phenotypeDiagnostics(
 \item{codelistDiagnostics}{If TRUE, codelist diagnostics will be run.}
 
 \item{cohortDiagnostics}{If TRUE, cohort diagnostics will be run.}
+
+\item{populationDiagnostics}{If TRUE, population diagnostics will be run.}
+
+\item{populationSample}{N of people from the cdm to sample. If NULL no
+sampling will be performed}
 
 \item{matchedDiagnostics}{If TRUE, cohort to population
 diagnostics will be run.}
