@@ -8,8 +8,8 @@
 #' @export
 #'
 #' @examples
-cohortToPopulationDiagnostics <- function(cohort,
-                                          nSample = 1000){
+matchedDiagnostics <- function(cohort,
+                               nSample = 1000){
 
   omopgenerics::assertNumeric(nSample, min = 1)
 
