@@ -46,6 +46,8 @@
 <span>  databaseDiagnostics <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  codelistDiagnostics <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  cohortDiagnostics <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  populationDiagnostics <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  populationSample <span class="op">=</span> <span class="fl">1e+06</span>,</span>
 <span>  matchedDiagnostics <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  nSample <span class="op">=</span> <span class="fl">1000</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -69,6 +71,15 @@
 
 <dt id="arg-cohortdiagnostics">cohortDiagnostics<a class="anchor" aria-label="anchor" href="#arg-cohortdiagnostics"></a></dt>
 <dd><p>If TRUE, cohort diagnostics will be run.</p></dd>
+
+
+<dt id="arg-populationdiagnostics">populationDiagnostics<a class="anchor" aria-label="anchor" href="#arg-populationdiagnostics"></a></dt>
+<dd><p>If TRUE, population diagnostics will be run.</p></dd>
+
+
+<dt id="arg-populationsample">populationSample<a class="anchor" aria-label="anchor" href="#arg-populationsample"></a></dt>
+<dd><p>N of people from the cdm to sample. If NULL no
+sampling will be performed</p></dd>
 
 
 <dt id="arg-matcheddiagnostics">matchedDiagnostics<a class="anchor" aria-label="anchor" href="#arg-matcheddiagnostics"></a></dt>
