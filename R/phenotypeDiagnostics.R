@@ -5,7 +5,9 @@
 #' @param databaseDiagnostics If TRUE, database diagnostics will be run.
 #' @param codelistDiagnostics If TRUE, codelist diagnostics will be run.
 #' @param cohortDiagnostics If TRUE, cohort diagnostics will be run.
-#' @param populationDiagnostics description
+#' @param populationDiagnostics If TRUE, population diagnostics will be run.
+#' @param populationSample N of people from the cdm to sample. If NULL no
+#' sampling will be performed
 #' @param matchedDiagnostics If TRUE, cohort to population
 #' diagnostics will be run.
 #' @param nSample The number of people to take a random sample for matching to

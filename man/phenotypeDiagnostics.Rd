@@ -24,7 +24,10 @@ phenotypeDiagnostics(
 
 \item{cohortDiagnostics}{If TRUE, cohort diagnostics will be run.}
 
-\item{populationDiagnostics}{description}
+\item{populationDiagnostics}{If TRUE, population diagnostics will be run.}
+
+\item{populationSample}{N of people from the cdm to sample. If NULL no
+sampling will be performed}
 
 \item{matchedDiagnostics}{If TRUE, cohort to population
 diagnostics will be run.}
