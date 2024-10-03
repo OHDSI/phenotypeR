@@ -5,6 +5,7 @@
 #' @param databaseDiagnostics If TRUE, database diagnostics will be run.
 #' @param codelistDiagnostics If TRUE, codelist diagnostics will be run.
 #' @param cohortDiagnostics If TRUE, cohort diagnostics will be run.
+#' @param populationDiagnostics description
 #' @param matchedDiagnostics If TRUE, cohort to population
 #' diagnostics will be run.
 #' @param nSample The number of people to take a random sample for matching to
@@ -19,8 +20,11 @@ phenotypeDiagnostics <- function(cohort,
                                  databaseDiagnostics = TRUE,
                                  codelistDiagnostics = TRUE,
                                  cohortDiagnostics = TRUE,
+                                 populationDiagnostics = TRUE,
+                                 populationSample = 1000000,
                                  matchedDiagnostics = TRUE,
                                  nSample = 1000) {
+
   cdm <- omopgenerics::cdmReference(cohort)
 
   results <- list()
@@ -36,9 +40,14 @@ phenotypeDiagnostics <- function(cohort,
     cli::cli("Running cohort diagnostics")
     results[["cohort_diag"]] <- cohortDiagnostics(cohort)
   }
+  if (isTRUE(populationDiagnostics)) {
+    cli::cli("Running population diagnostics")
+    results[["pop_diag"]] <- populationDiagnostics(cohort,
+                                                   populationSample = populationSample)
+  }
   if (isTRUE(matchedDiagnostics)) {
     cli::cli("Running matched diagnostics")
-    results[["cohort_to_pop_diag"]] <- matchedDiagnostics(cohort,
+    results[["matched_diag"]] <- matchedDiagnostics(cohort,
       nSample = nSample
     )
   }
