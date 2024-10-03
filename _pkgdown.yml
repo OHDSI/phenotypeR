@@ -12,7 +12,7 @@ reference:
   - matches("phenotypeDiagnostics")
 - subtitle: Run individual diagnostics
 - contents:
-  - matches("databaseDiagnostics|codelistDiagnostics|cohortDiagnostics|cohortToPopulationDiagnostics")
+  - matches("databaseDiagnostics|codelistDiagnostics|cohortDiagnostics|matchedDiagnostics")
 - subtitle: Visualise results
 - contents:
   - matches("shinyDiagnostics")
