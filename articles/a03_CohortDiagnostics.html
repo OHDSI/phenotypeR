@@ -36,6 +36,7 @@
 <li><a class="dropdown-item" href="../articles/a01_DatabaseDiagnostics.html">Database diagnostics</a></li>
     <li><a class="dropdown-item" href="../articles/a02_CodelistDiagnostics.html">Codelist diagnostics</a></li>
     <li><a class="dropdown-item" href="../articles/a03_CohortDiagnostics.html">Cohort diagnostics</a></li>
+    <li><a class="dropdown-item" href="../articles/a04_MatchedDiagnostics.html">a04_MatchedDiagnostics</a></li>
   </ul>
 </li>
       </ul>
@@ -1167,12 +1168,12 @@ cohort table.</p>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: ??</span></span>
 <span><span class="co">#&gt; Columns: 9</span></span>
-<span><span class="co">#&gt; Database: DuckDB v1.1.0 [unknown@Linux 6.8.0-1014-azure:R 4.4.1//tmp/Rtmp0eF0GG/file192a25d90bba.duckdb]</span></span>
+<span><span class="co">#&gt; Database: DuckDB v1.1.0 [unknown@Linux 6.8.0-1014-azure:R 4.4.1//tmp/Rtmp5zhICv/file18ea79d04967.duckdb]</span></span>
 <span><span class="co">#&gt; $ cohort_definition_id <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2, 1, 2, 3, 2, 4, 1, 1, 2, 2, 3, 3, 2, 2, 1, 2, 2…</span></span>
 <span><span class="co">#&gt; $ subject_id           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 16, 42, 187, 18, 114, 72, 191, 2, 49, 160, 90, 11…</span></span>
 <span><span class="co">#&gt; $ cohort_start_date    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 2014-06-27, 1970-06-04, 1977-03-20, 1998-10-07, …</span></span>
 <span><span class="co">#&gt; $ cohort_end_date      <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 2014-07-25, 1970-07-04, 1977-04-25, 1999-01-05, …</span></span>
-<span><span class="co">#&gt; $ age                  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 42, 60, 31, 32, 1, 22, 73, 69, 10, 14, 14, 34, 8,…</span></span>
+<span><span class="co">#&gt; $ age                  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 42, 60, 31, 32, 1, 22, 73, 69, 9, 14, 14, 34, 8, …</span></span>
 <span><span class="co">#&gt; $ age_group            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "18 to 65", "18 to 65", "18 to 65", "18 to 65", "…</span></span>
 <span><span class="co">#&gt; $ sex                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Female", "Female", "Male", "Female", "Female", "…</span></span>
 <span><span class="co">#&gt; $ prior_observation    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 15597, 22128, 11563, 12012, 390, 8114, 27003, 255…</span></span>

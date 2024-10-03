@@ -36,6 +36,7 @@
 <li><a class="dropdown-item" href="../articles/a01_DatabaseDiagnostics.html">Database diagnostics</a></li>
     <li><a class="dropdown-item" href="../articles/a02_CodelistDiagnostics.html">Codelist diagnostics</a></li>
     <li><a class="dropdown-item" href="../articles/a03_CohortDiagnostics.html">Cohort diagnostics</a></li>
+    <li><a class="dropdown-item" href="../articles/a04_MatchedDiagnostics.html">a04_MatchedDiagnostics</a></li>
   </ul>
 </li>
       </ul>
@@ -96,11 +97,11 @@ hip fracture using the Eunomia synthetic data.</p>
 <span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: ??</span></span>
 <span><span class="co">#&gt; Columns: 4</span></span>
-<span><span class="co">#&gt; Database: DuckDB v1.1.0 [unknown@Linux 6.8.0-1014-azure:R 4.4.1//tmp/Rtmp6zhXqv/file18e1fb0eb5d.duckdb]</span></span>
-<span><span class="co">#&gt; $ cohort_definition_id <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3…</span></span>
-<span><span class="co">#&gt; $ subject_id           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2088, 569, 1024, 1072, 1428, 2501, 3079, 3547, 37…</span></span>
-<span><span class="co">#&gt; $ cohort_start_date    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 1911-09-07, 1939-09-24, 1982-03-17, 1990-10-28, …</span></span>
-<span><span class="co">#&gt; $ cohort_end_date      <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 1911-12-06, 1939-10-29, 1982-03-31, 1990-11-18, …</span></span></code></pre></div>
+<span><span class="co">#&gt; Database: DuckDB v1.1.0 [unknown@Linux 6.8.0-1014-azure:R 4.4.1//tmp/Rtmpykrgzh/file18a4426f62cc.duckdb]</span></span>
+<span><span class="co">#&gt; $ cohort_definition_id <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 1, 2…</span></span>
+<span><span class="co">#&gt; $ subject_id           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 3694, 474, 1021, 1021, 1397, 1966, 2226, 3440, 35…</span></span>
+<span><span class="co">#&gt; $ cohort_start_date    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 1972-12-21, 1982-12-02, 1976-06-29, 1992-09-24, …</span></span>
+<span><span class="co">#&gt; $ cohort_end_date      <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 1973-01-20, 1982-12-16, 1976-07-20, 1992-10-15, …</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="summarising-code-use">Summarising code use<a class="anchor" aria-label="anchor" href="#summarising-code-use"></a>

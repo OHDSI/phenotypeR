@@ -4,14 +4,15 @@
 <url><loc>https://ohdsi.github.io/phenotypeR/articles/a01_DatabaseDiagnostics.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/articles/a02_CodelistDiagnostics.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/articles/a03_CohortDiagnostics.html</loc></url>
+<url><loc>https://ohdsi.github.io/phenotypeR/articles/a04_MatchedDiagnostics.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/articles/index.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/authors.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/index.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/reference/codelistDiagnostics.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/reference/cohortDiagnostics.html</loc></url>
-<url><loc>https://ohdsi.github.io/phenotypeR/reference/cohortToPopulationDiagnostics.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/reference/databaseDiagnostics.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/reference/index.html</loc></url>
+<url><loc>https://ohdsi.github.io/phenotypeR/reference/matchedDiagnostics.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/reference/phenotypeDiagnostics.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/reference/phenotypeR-package.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/reference/pipe.html</loc></url>
