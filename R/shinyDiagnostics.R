@@ -20,8 +20,13 @@ shinyDiagnostics <- function(result,
       summary = FALSE,
       panels = list("summarise_omop_snapshot",
                     "summarise_observation_period",
-                    "summarise_cohort_attrition",
+                    "achilles_code_use",
+                    "cohort_code_use",
+                    "orphan_code_use",
                     "summarise_characteristics",
+                    "summarise_cohort_attrition",
+                    "summarise_cohort_overlap",
+                    "summarise_cohort_timing",
                     "summarise_large_scale_characteristics")
     )
 }

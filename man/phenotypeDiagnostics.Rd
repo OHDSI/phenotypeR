@@ -9,8 +9,10 @@ phenotypeDiagnostics(
   databaseDiagnostics = TRUE,
   codelistDiagnostics = TRUE,
   cohortDiagnostics = TRUE,
-  cohortToPopulationDiagnostics = TRUE,
-  nSample = 1000
+  populationDiagnostics = TRUE,
+  populationSample = 1e+06,
+  matchedDiagnostics = TRUE,
+  matchedSample = 1000
 )
 }
 \arguments{
@@ -22,10 +24,15 @@ phenotypeDiagnostics(
 
 \item{cohortDiagnostics}{If TRUE, cohort diagnostics will be run.}
 
-\item{cohortToPopulationDiagnostics}{If TRUE, cohort to population
+\item{populationDiagnostics}{If TRUE, population diagnostics will be run.}
+
+\item{populationSample}{N of people from the cdm to sample. If NULL no
+sampling will be performed}
+
+\item{matchedDiagnostics}{If TRUE, cohort to population
 diagnostics will be run.}
 
-\item{nSample}{The number of people to take a random sample for matching to
+\item{matchedSample}{The number of people to take a random sample for matching to
 the database population. If NULL, no sampling will be performed and the
 entire cohorts will be used.}
 }

@@ -12,22 +12,30 @@
 
 <!-- badges: end -->
 
-The phenotypeR package supports the assessment of cohorts
+The phenotypeR package helps us to assess the research-readiness of a
+set of cohorts we have defined. This assessment includes:
 
-Codelist-level diagnostics help to answer questions like what concepts
-from our codelist are used in the database? What concepts were present
-led to individuals’ entry in the cohort? Are there any concepts being
-used in the database that we didn’t include in our codelist but maybe we
-should have?
-
-Cohort-level diagnostics help to answer questions like how many
-individuals did we include in our cohort and how many were excluded
-because of our inclusion criteria? If we have multiple cohorts, is there
-overlap between them and when do people enter one cohort relative to
-another? What is the incidence of cohort entry and what is the
-prevalence of the cohort in the database? What are the characteristics
-of those people in the cohort, and how do they compare to people similar
-in terms of age and sex?
+- ***Database diagnostics*** which help us to better understand the
+  database in which they have been created. This includes information
+  about the size of the data, the time period covered, the number of
+  people in the data as a whole. More granular information that may
+  influence analytic decisions, such as the number of observation
+  periods per person, is also described.  
+- ***Codelist diagnostics*** which help to answer questions like what
+  concepts from our codelist are used in the database? What concepts
+  were present led to individuals’ entry in the cohort? Are there any
+  concepts being used in the database that we didn’t include in our
+  codelist but maybe we should have?  
+- ***Cohort diagnostics*** which help to answer questions like how many
+  individuals did we include in our cohort and how many were excluded
+  because of our inclusion criteria? If we have multiple cohorts, is
+  there overlap between them and when do people enter one cohort
+  relative to another? What is the incidence of cohort entry and what is
+  the prevalence of the cohort in the database?  
+- ***Matched diagnostics*** which compares our study cohorts to the
+  overall population in the database. By matching people in the cohorts
+  to people with a similar age and sex in the database we can see how
+  our cohorts differ from the general database population.
 
 ## Installation
 
@@ -35,10 +43,10 @@ You can install phenotypeR from GitHub:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("oxford-pharmacoepi/phenotypeR")
+remotes::install_github("ohdsi/phenotypeR")
 ```
 
-## Codelist diagnostics
+## Example usage
 
 ``` r
 library(omopgenerics)
@@ -46,7 +54,6 @@ library(CDMConnector)
 library(phenotypeR)
 library(CohortConstructor)
 library(dplyr)
-#> Warning: package 'dplyr' was built under R version 4.2.3
 
 con <- DBI::dbConnect(duckdb::duckdb(dbdir = CDMConnector::eunomia_dir()))
 cdm <- CDMConnector::cdm_from_con(con = con,
@@ -59,23 +66,21 @@ cdm$gibleed <- conceptCohort(cdm = cdm,
 
 result <- cdm$gibleed |>
    phenotypeDiagnostics()
-#> Warning: The CDM reference containing the cohort must also contain achilles tables.
-#> Returning only index event breakdown.
-result |> 
-  glimpse()
-#> Rows: 2,998
-#> Columns: 13
-#> $ result_id        <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3,…
-#> $ cdm_name         <chr> "Synthea synthetic health database", "Synthea synthet…
-#> $ group_name       <chr> "overall", "overall", "overall", "overall", "overall"…
-#> $ group_level      <chr> "overall", "overall", "overall", "overall", "overall"…
-#> $ strata_name      <chr> "overall", "overall", "overall", "overall", "overall"…
-#> $ strata_level     <chr> "overall", "overall", "overall", "overall", "overall"…
-#> $ variable_name    <chr> "general", "general", "observation_period", "cdm", "g…
-#> $ variable_level   <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-#> $ estimate_name    <chr> "snapshot_date", "person_count", "count", "source_nam…
-#> $ estimate_type    <chr> "date", "integer", "integer", "character", "character…
-#> $ estimate_value   <chr> "2024-10-01", "2694", "5343", "Synthea synthetic heal…
-#> $ additional_name  <chr> "overall", "overall", "overall", "overall", "overall"…
-#> $ additional_level <chr> "overall", "overall", "overall", "overall", "overall"…
+```
+
+``` r
+summary(result)
+#> A summarised_result object with 6020 rows, 12 different result_id, 1 different
+#> cdm names, and 10 settings.
+#> CDM names: Synthea synthetic health database.
+#> Settings: package_name, package_version, result_type, timing, table_name,
+#> cohort_definition_id, cdm_version, vocabulary_version, type, and analysis.
+```
+
+Once we have our results we can quickly view them in an interactive
+application. This shiny app will be saved in a new directory and can be
+further customised.
+
+``` r
+shinyDiagnostics(result = result)
 ```

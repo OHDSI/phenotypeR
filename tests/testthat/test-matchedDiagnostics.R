@@ -27,16 +27,16 @@ test_that("cohort to pop diagnostics", {
   cdm <- CDMConnector::copyCdmTo(con = db, cdm = cdm_local,
                                  schema ="main", overwrite = TRUE)
   expect_no_error(result <- cdm$my_cohort |>
-                    cohortToPopulationDiagnostics())
+                    matchedDiagnostics())
 
   # expected errors
-  expect_error(cohortToPopulationDiagnostics(cohort = "not a cohort"))
+  expect_error(matchedDiagnostics(cohort = "not a cohort"))
   expect_error(cdm$my_cohort |>
-                    cohortToPopulationDiagnostics(nSample = 0))
+                    matchedDiagnostics(matchedSample  = 0))
   expect_error(cdm$my_cohort |>
-                 cohortToPopulationDiagnostics(nSample = "a"))
+                 matchedDiagnostics(matchedSample  = "a"))
   expect_error(cdm$my_cohort |>
-                 cohortToPopulationDiagnostics(nSample = Inf))
+                 matchedDiagnostics(matchedSample  = Inf))
 
 
 })
