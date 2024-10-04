@@ -5,3 +5,5 @@ inst/doc
 /shiny
 /doc/
 /Meta/
+.Rproj.user/
+.Rhistory
