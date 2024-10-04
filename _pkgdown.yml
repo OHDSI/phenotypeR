@@ -16,3 +16,6 @@ reference:
 - subtitle: Visualise results
 - contents:
   - matches("shinyDiagnostics")
+- subtitle: Codelist diagnostics helper
+- contents:
+  - matches("addCodelistAttribute")
