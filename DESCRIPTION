@@ -52,5 +52,4 @@ Imports:
 URL: https://ohdsi.github.io/phenotypeR/
 VignetteBuilder: knitr
 Remotes: 
-    darwin-eu-dev/CohortCharacteristics,
     oxford-pharmacoepi/omopViewer
