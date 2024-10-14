@@ -46,41 +46,6 @@ cohortDiagnostics <- function(cohort,
                                                    density = TRUE)
     }
 
-
- # cli::cli_bullets(c("*" = "{.strong Creating denominator for incidence and prevalence}"))
- # denominatorTable <- omopgenerics::uniqueTableName()
- # cdm <- IncidencePrevalence::generateDenominatorCohortSet(
- #   cdm = cdm,
- #   name = denominatorTable,
- #   ageGroup = list(c(0,17),
- #                   c(18,64),
- #                   c(65,199)),
- #   sex = c("Male", "Female", "Both"),
- #   daysPriorObservation = c(0, 180)
- # )
- #
- # cli::cli_bullets(c("*" = "{.strong Estimating incidence}"))
- # results[["incidence"]] <- IncidencePrevalence::estimateIncidence(
- #   cdm = cdm,
- #   denominatorTable = denominatorTable,
- #   outcomeTable = cohortName,
- #   interval = "years",
- #   repeatedEvents = c(TRUE, FALSE),
- #   outcomeWashout = c(0, Inf),
- #   completeDatabaseIntervals = c(TRUE, FALSE),
- #   minCellCount = 0)
- #
- # cli::cli_bullets(c("*" = "{.strong Estimating prevalence}"))
- # results[["prevalence"]] <- IncidencePrevalence::estimatePeriodPrevalence(
- #   cdm = cdm,
- #   denominatorTable = denominatorTable,
- #   outcomeTable = cohortName,
- #   interval = "years",
- #   completeDatabaseIntervals = c(TRUE, FALSE),
- #   fullContribution = c(TRUE, FALSE),
- #   minCellCount = 0)
-
-
   results <- results |>
     vctrs::list_drop_empty() |>
     omopgenerics::bind() |>

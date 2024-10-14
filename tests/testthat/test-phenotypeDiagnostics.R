@@ -29,19 +29,23 @@ test_that("overall diagnostics function", {
                                  schema ="main", overwrite = TRUE)
 
  expect_no_error(my_result <- phenotypeDiagnostics(cdm$my_cohort))
+ attr(my_result, "settings") <- attr(my_result, "settings") |>
+   dplyr::mutate(min_cell_count = 0)
 
   expect_identical(phenotypeDiagnostics(cdm$my_cohort,
             databaseDiagnostics = FALSE,
             codelistDiagnostics = FALSE,
             cohortDiagnostics = FALSE,
-            matchedDiagnostics = FALSE),
+            matchedDiagnostics = FALSE,
+            populationDiagnostics = FALSE),
   omopgenerics::emptySummarisedResult())
 
   dd_only <- phenotypeDiagnostics(cdm$my_cohort,
             databaseDiagnostics = TRUE,
             codelistDiagnostics = FALSE,
             cohortDiagnostics = FALSE,
-            matchedDiagnostics = FALSE)
+            matchedDiagnostics = FALSE,
+            populationDiagnostics = FALSE)
   expect_true("summarise_omop_snapshot" %in%
                 (settings(dd_only) |> dplyr::pull("result_type")))
   expect_true("summarise_observation_period" %in%
@@ -52,13 +56,15 @@ test_that("overall diagnostics function", {
             databaseDiagnostics = FALSE,
             codelistDiagnostics = TRUE,
             cohortDiagnostics = FALSE,
-            matchedDiagnostics = FALSE)
+            matchedDiagnostics = FALSE,
+            populationDiagnostics = FALSE)
 
   cohort_diag_only <-  phenotypeDiagnostics(cdm$my_cohort,
             databaseDiagnostics = FALSE,
             codelistDiagnostics = FALSE,
             cohortDiagnostics = TRUE,
-            matchedDiagnostics = FALSE)
+            matchedDiagnostics = FALSE,
+            populationDiagnostics = FALSE)
   expect_true(
    all(c("summarise_characteristics", "summarise_cohort_attrition",
       "summarise_cohort_attrition",
@@ -70,7 +76,8 @@ test_that("overall diagnostics function", {
             databaseDiagnostics = FALSE,
             codelistDiagnostics = FALSE,
             cohortDiagnostics = FALSE,
-            matchedDiagnostics = TRUE)
+            matchedDiagnostics = TRUE,
+            populationDiagnostics = FALSE)
   expect_true(
     all(c("summarise_characteristics",
           "summarise_large_scale_characteristics") %in%
