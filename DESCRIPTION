@@ -31,7 +31,9 @@ Suggests:
     ggplot2,
     ggpubr, 
     stringr,
-    shiny
+    shiny,
+    DiagrammeR,
+    sortable
 Config/testthat/edition: 3
 RoxygenNote: 7.3.2
 Imports: 
