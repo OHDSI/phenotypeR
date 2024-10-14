@@ -17,6 +17,7 @@ License: Apache License (>= 2)
 Encoding: UTF-8
 LazyData: true
 Suggests: 
+    CDMConnector,
     duckdb,
     DBI,
     gt,
@@ -29,11 +30,11 @@ Suggests:
     PatientProfiles,
     ggplot2,
     ggpubr, 
-    stringr
+    stringr,
+    shiny
 Config/testthat/edition: 3
 RoxygenNote: 7.3.2
 Imports: 
-    CDMConnector,
     CodelistGenerator (>= 3.1.0),
     CohortCharacteristics,
     CohortConstructor,
@@ -46,7 +47,6 @@ Imports:
     purrr,
     rmarkdown,
     rlang,
-    shiny,
     vctrs,
     visOmopResults,
     glue
