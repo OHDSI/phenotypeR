@@ -29,6 +29,8 @@ test_that("overall diagnostics function", {
                                  schema ="main", overwrite = TRUE)
 
  expect_no_error(my_result <- phenotypeDiagnostics(cdm$my_cohort))
+ attr(my_result, "settings") <- attr(my_result, "settings") |>
+   dplyr::mutate(min_cell_count = 0)
 
   expect_identical(phenotypeDiagnostics(cdm$my_cohort,
             databaseDiagnostics = FALSE,

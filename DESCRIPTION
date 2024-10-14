@@ -40,6 +40,7 @@ Imports:
     cli,
     dplyr,
     here,
+    IncidencePrevalence (>= 0.8.0),
     omopgenerics,
     magrittr,
     purrr,

@@ -16,18 +16,26 @@ shinyDiagnostics <- function(result,
   result |>
     omopViewer::exportStaticApp(
       directory = directory,
-      background = getBackground(result),
+      # background = getBackground(result),
       summary = FALSE,
-      panels = list("summarise_omop_snapshot",
-                    "summarise_observation_period",
-                    "achilles_code_use",
-                    "cohort_code_use",
-                    "orphan_code_use",
-                    "summarise_characteristics",
-                    "summarise_cohort_attrition",
-                    "summarise_cohort_overlap",
-                    "summarise_cohort_timing",
-                    "summarise_large_scale_characteristics")
+      panels = list(
+                   "Database details" = c("Snapshot"= "summarise_omop_snapshot",
+                                          "Observation periods"= "summarise_observation_period"),
+                   "Codelist diagnostics" = c(
+                     "Achilles code use" = "achilles_code_use",
+                     "Cohort code use" = "cohort_code_use",
+                     "Orphan code use" = "orphan_code_use"),
+                   "Cohort diagnostics" = c(
+                     "Cohort characteristics" = "summarise_characteristics",
+                     "Cohort attrition" = "summarise_cohort_attrition",
+                     "Cohort overlap" = "summarise_cohort_overlap",
+                     "Cohort timing" = "summarise_cohort_timing"),
+                   "Matched diagnostics" = c(
+                     "Large scale characteristics" = "summarise_large_scale_characteristics"),
+                   "Population diagnostics" = c(
+                     "Incidence" = "incidence",
+                     "Period prevalence" = "period_prevalence")
+                   )
     )
 }
 
