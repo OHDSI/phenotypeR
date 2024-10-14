@@ -40,6 +40,7 @@
     <li><a class="dropdown-item" href="articles/a02_CodelistDiagnostics.html">Codelist diagnostics</a></li>
     <li><a class="dropdown-item" href="articles/a03_CohortDiagnostics.html">Cohort diagnostics</a></li>
     <li><a class="dropdown-item" href="articles/a04_MatchedDiagnostics.html">a04_MatchedDiagnostics</a></li>
+    <li><a class="dropdown-item" href="articles/a05_PopulationDiagnostics.html">UNKNOWN TITLE</a></li>
   </ul>
 </li>
       </ul>
@@ -71,7 +72,10 @@
 <strong><em>Cohort diagnostics</em></strong> which help to answer questions like how many individuals did we include in our cohort and how many were excluded because of our inclusion criteria? If we have multiple cohorts, is there overlap between them and when do people enter one cohort relative to another? What is the incidence of cohort entry and what is the prevalence of the cohort in the database?<br>
 </li>
 <li>
-<strong><em>Matched diagnostics</em></strong> which compares our study cohorts to the overall population in the database. By matching people in the cohorts to people with a similar age and sex in the database we can see how our cohorts differ from the general database population.</li>
+<strong><em>Matched diagnostics</em></strong> which compares our study cohorts to the overall population in the database. By matching people in the cohorts to people with a similar age and sex in the database we can see how our cohorts differ from the general database population.<br>
+</li>
+<li>
+<strong><em>Population diagnostics</em></strong> which estimates the frequency of our study cohorts in the database in terms of their incidence rates and prevalence.</li>
 </ul>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -104,11 +108,15 @@
 <span>   <span class="fu"><a href="reference/phenotypeDiagnostics.html">phenotypeDiagnostics</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span>
-<span><span class="co">#&gt; A summarised_result object with 6020 rows, 12 different result_id, 1 different</span></span>
-<span><span class="co">#&gt; cdm names, and 10 settings.</span></span>
+<span><span class="co">#&gt; A summarised_result object with 13334 rows, 48 different result_id, 1 different</span></span>
+<span><span class="co">#&gt; cdm names, and 25 settings.</span></span>
 <span><span class="co">#&gt; CDM names: Synthea synthetic health database.</span></span>
 <span><span class="co">#&gt; Settings: package_name, package_version, result_type, timing, table_name,</span></span>
-<span><span class="co">#&gt; cohort_definition_id, cdm_version, vocabulary_version, type, and analysis.</span></span></code></pre></div>
+<span><span class="co">#&gt; cohort_definition_id, cdm_version, vocabulary_version,</span></span>
+<span><span class="co">#&gt; analysis_outcome_washout, analysis_repeated_events, analysis_interval,</span></span>
+<span><span class="co">#&gt; analysis_complete_database_intervals, denominator_age_group, denominator_sex,</span></span>
+<span><span class="co">#&gt; denominator_days_prior_observation, denominator_start_date,</span></span>
+<span><span class="co">#&gt; denominator_end_date, denominator_time_at_risk, …, type, and analysis.</span></span></code></pre></div>
 <p>Once we have our results we can quickly view them in an interactive application. This shiny app will be saved in a new directory and can be further customised.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/shinyDiagnostics.html">shinyDiagnostics</a></span><span class="op">(</span>result <span class="op">=</span> <span class="va">result</span><span class="op">)</span></span></code></pre></div>

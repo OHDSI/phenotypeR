@@ -37,6 +37,7 @@
     <li><a class="dropdown-item" href="../articles/a02_CodelistDiagnostics.html">Codelist diagnostics</a></li>
     <li><a class="dropdown-item" href="../articles/a03_CohortDiagnostics.html">Cohort diagnostics</a></li>
     <li><a class="dropdown-item" href="../articles/a04_MatchedDiagnostics.html">a04_MatchedDiagnostics</a></li>
+    <li><a class="dropdown-item" href="../articles/a05_PopulationDiagnostics.html">UNKNOWN TITLE</a></li>
   </ul>
 </li>
       </ul>
@@ -97,11 +98,11 @@ hip fracture using the Eunomia synthetic data.</p>
 <span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: ??</span></span>
 <span><span class="co">#&gt; Columns: 4</span></span>
-<span><span class="co">#&gt; Database: DuckDB v1.1.0 [unknown@Linux 6.8.0-1014-azure:R 4.4.1//tmp/Rtmp8X4Uu1/file1919f20df4e.duckdb]</span></span>
-<span><span class="co">#&gt; $ cohort_definition_id <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 4, 4…</span></span>
-<span><span class="co">#&gt; $ subject_id           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 42, 914, 992, 246, 655, 1520, 2004, 2160, 2752, 3…</span></span>
-<span><span class="co">#&gt; $ cohort_start_date    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 1970-06-04, 2013-05-20, 1997-02-01, 1980-06-27, …</span></span>
-<span><span class="co">#&gt; $ cohort_end_date      <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 1970-07-04, 2013-07-19, 1997-04-02, 1980-07-11, …</span></span></code></pre></div>
+<span><span class="co">#&gt; Database: DuckDB v1.1.0 [unknown@Linux 6.8.0-1015-azure:R 4.4.1//tmp/RtmpGQVgHF/file20b9d36e771.duckdb]</span></span>
+<span><span class="co">#&gt; $ cohort_definition_id <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4, 1…</span></span>
+<span><span class="co">#&gt; $ subject_id           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 3129, 5132, 156, 576, 1977, 2470, 3757, 4090, 463…</span></span>
+<span><span class="co">#&gt; $ cohort_start_date    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 2008-08-31, 2014-05-03, 2013-08-19, 1999-06-28, …</span></span>
+<span><span class="co">#&gt; $ cohort_end_date      <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 2008-09-30, 2014-06-02, 2013-09-02, 1999-07-12, …</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="summarising-code-use">Summarising code use<a class="anchor" aria-label="anchor" href="#summarising-code-use"></a>
@@ -561,32 +562,38 @@ hip fracture using the Eunomia synthetic data.</p>
 <table class="table gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings gt_spanner_row">
-<th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="7" style="background-color: #D9D9D9; text-align: center; font-weight: bold;" scope="colgroup" id></th>
-      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" style="background-color: #D9D9D9; text-align: center; font-weight: bold;" scope="colgroup" id="Database name">
-        <span class="gt_column_spanner">Database name</span>
+<th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="7" style="background-color: #D9D9D9; text-align: center; font-weight: bold;" scope="colgroup"></th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" style="background-color: #D9D9D9; text-align: center; font-weight: bold;" scope="colgroup" id="spanner-[header_name]Database name
+[header_level]Eunomia
+[header_name]Estimate name
+[header_level]Record count">
+        <div class="gt_column_spanner">Database name</div>
       </th>
     </tr>
 <tr class="gt_col_headings gt_spanner_row">
-<th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="7" style="background-color: #E1E1E1; text-align: center; font-weight: bold;" scope="colgroup" id></th>
-      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" style="background-color: #E1E1E1; text-align: center; font-weight: bold;" scope="colgroup" id="Eunomia">
-        <span class="gt_column_spanner">Eunomia</span>
+<th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="7" style="background-color: #E1E1E1; text-align: center; font-weight: bold;" scope="colgroup"></th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" style="background-color: #E1E1E1; text-align: center; font-weight: bold;" scope="colgroup" id="spanner-[header_level]Eunomia
+[header_name]Estimate name
+[header_level]Record count">
+        <div class="gt_column_spanner">Eunomia</div>
       </th>
     </tr>
 <tr class="gt_col_headings gt_spanner_row">
-<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Cohort name">Cohort name</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Codelist name">Codelist name</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Standard concept name">Standard concept name</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="2" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Standard concept ID">Standard concept ID</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Source concept name">Source concept name</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Source concept id">Source concept id</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Domain id">Domain id</th>
-      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" style="background-color: #D9D9D9; text-align: center; font-weight: bold;" scope="colgroup" id="Estimate name">
-        <span class="gt_column_spanner">Estimate name</span>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Cohort-name">Cohort name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Codelist-name">Codelist name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Standard-concept-name">Standard concept name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="2" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Standard-concept-ID">Standard concept ID</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Source-concept-name">Source concept name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Source-concept-id">Source concept id</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Domain-id">Domain id</th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" style="background-color: #D9D9D9; text-align: center; font-weight: bold;" scope="colgroup" id="spanner-[header_name]Estimate name
+[header_level]Record count">
+        <div class="gt_column_spanner">Estimate name</div>
       </th>
     </tr>
 <tr class="gt_col_headings">
-<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #E1E1E1; text-align: center; font-weight: bold;" scope="col" id="Record count">Record count</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #E1E1E1; text-align: center; font-weight: bold;" scope="col" id="Person count">Person count</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #E1E1E1; text-align: center; font-weight: bold;" scope="col" id="[header_name]Database-name-[header_level]Eunomia-[header_name]Estimate-name-[header_level]Record-count">Record count</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #E1E1E1; text-align: center; font-weight: bold;" scope="col" id="[header_name]Database-name-[header_level]Eunomia-[header_name]Estimate-name-[header_level]Person-count">Person count</th>
     </tr>
 </thead>
 <tbody class="gt_table_body">
