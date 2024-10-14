@@ -35,7 +35,10 @@ set of cohorts we have defined. This assessment includes:
 - ***Matched diagnostics*** which compares our study cohorts to the
   overall population in the database. By matching people in the cohorts
   to people with a similar age and sex in the database we can see how
-  our cohorts differ from the general database population.
+  our cohorts differ from the general database population.  
+- ***Population diagnostics*** which estimates the frequency of our
+  study cohorts in the database in terms of their incidence rates and
+  prevalence.
 
 ## Installation
 
@@ -70,11 +73,15 @@ result <- cdm$gibleed |>
 
 ``` r
 summary(result)
-#> A summarised_result object with 6020 rows, 12 different result_id, 1 different
-#> cdm names, and 10 settings.
+#> A summarised_result object with 13334 rows, 48 different result_id, 1 different
+#> cdm names, and 25 settings.
 #> CDM names: Synthea synthetic health database.
 #> Settings: package_name, package_version, result_type, timing, table_name,
-#> cohort_definition_id, cdm_version, vocabulary_version, type, and analysis.
+#> cohort_definition_id, cdm_version, vocabulary_version,
+#> analysis_outcome_washout, analysis_repeated_events, analysis_interval,
+#> analysis_complete_database_intervals, denominator_age_group, denominator_sex,
+#> denominator_days_prior_observation, denominator_start_date,
+#> denominator_end_date, denominator_time_at_risk, …, type, and analysis.
 ```
 
 Once we have our results we can quickly view them in an interactive
