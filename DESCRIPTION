@@ -23,7 +23,7 @@ Suggests:
     gt,
     omock,
     OmopSketch,
-    omopViewer,
+    OmopViewer,
     testthat (>= 3.0.0),
     knitr,
     RPostgres,
@@ -55,4 +55,4 @@ Imports:
 URL: https://ohdsi.github.io/phenotypeR/
 VignetteBuilder: knitr
 Remotes: 
-    oxford-pharmacoepi/omopViewer
+    OHDSI/OmopViewer
