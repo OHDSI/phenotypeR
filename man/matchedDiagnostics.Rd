@@ -9,8 +9,8 @@ matchedDiagnostics(cohort, matchedSample = 1000)
 \arguments{
 \item{cohort}{Cohort table in a cdm reference}
 
-\item{matchedSample}{The number of people to take a random sample for matching. If
-NULL, no sampling will be performed.}
+\item{matchedSample}{The number of people to take a random sample for
+matching. If NULL, no sampling will be performed.}
 }
 \value{
 A summarised result

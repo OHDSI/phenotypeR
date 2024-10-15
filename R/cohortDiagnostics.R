@@ -1,6 +1,6 @@
 #' Run cohort-level diagnostics
 #'
-#' @param cohort Cohort table in a cdm reference
+#' @inheritParams cohortDoc
 #' @param strata A list of variables to stratify results. These variables must
 #' have been added as additional columns in the cohort table.
 #'

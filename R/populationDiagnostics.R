@@ -2,9 +2,8 @@
 
 #' Population-level diagnostics
 #'
-#' @param cohort Cohort
-#' @param populationSample N of people from the cdm to sample. If NULL no
-#' sampling will be performed
+#' @inheritParams cohortDoc
+#' @inheritParams populationSampleDoc
 #'
 #' @return
 #' @export

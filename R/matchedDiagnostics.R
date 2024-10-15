@@ -1,8 +1,7 @@
 #' Compare characteristics of cohort matched to database population
 #'
-#' @param cohort Cohort table in a cdm reference
-#' @param matchedSample The number of people to take a random sample for matching. If
-#' NULL, no sampling will be performed.
+#' @inheritParams cohortDoc
+#' @inheritParams matchedSampleDoc
 #'
 #' @return A summarised result
 #' @export
