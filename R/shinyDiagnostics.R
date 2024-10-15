@@ -1,8 +1,8 @@
 
 #' Create a shiny app summarising your phenotyping results
 #'
-#' @param result A summarised result
-#' @param directory Directory where to save report
+#' @inheritParams resultDoc
+#' @inheritParams directoryDoc
 #'
 #' @return A shiny app
 #' @export

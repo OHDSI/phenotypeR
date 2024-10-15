@@ -7,9 +7,9 @@
 populationDiagnostics(cohort, populationSample = 1e+06)
 }
 \arguments{
-\item{cohort}{Cohort}
+\item{cohort}{Cohort table in a cdm reference}
 
-\item{populationSample}{N of people from the cdm to sample. If NULL no
+\item{populationSample}{Number of people from the cdm to sample. If NULL no
 sampling will be performed}
 }
 \description{

@@ -1,18 +1,15 @@
 
 #' Phenotype a cohort
 #'
-#' @param cohort Cohort
+#' @inheritParams cohortDoc
 #' @param databaseDiagnostics If TRUE, database diagnostics will be run.
 #' @param codelistDiagnostics If TRUE, codelist diagnostics will be run.
 #' @param cohortDiagnostics If TRUE, cohort diagnostics will be run.
 #' @param populationDiagnostics If TRUE, population diagnostics will be run.
-#' @param populationSample N of people from the cdm to sample. If NULL no
-#' sampling will be performed
+#' @inheritParams populationSampleDoc
 #' @param matchedDiagnostics If TRUE, cohort to population
 #' diagnostics will be run.
-#' @param matchedSample The number of people to take a random sample for matching to
-#' the database population. If NULL, no sampling will be performed and the
-#' entire cohorts will be used.
+#' @inheritParams matchedSampleDoc
 #'
 #' @return A summarised result
 #' @export

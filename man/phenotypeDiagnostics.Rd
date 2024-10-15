@@ -16,7 +16,7 @@ phenotypeDiagnostics(
 )
 }
 \arguments{
-\item{cohort}{Cohort}
+\item{cohort}{Cohort table in a cdm reference}
 
 \item{databaseDiagnostics}{If TRUE, database diagnostics will be run.}
 
@@ -26,15 +26,14 @@ phenotypeDiagnostics(
 
 \item{populationDiagnostics}{If TRUE, population diagnostics will be run.}
 
-\item{populationSample}{N of people from the cdm to sample. If NULL no
+\item{populationSample}{Number of people from the cdm to sample. If NULL no
 sampling will be performed}
 
 \item{matchedDiagnostics}{If TRUE, cohort to population
 diagnostics will be run.}
 
-\item{matchedSample}{The number of people to take a random sample for matching to
-the database population. If NULL, no sampling will be performed and the
-entire cohorts will be used.}
+\item{matchedSample}{The number of people to take a random sample for
+matching. If NULL, no sampling will be performed.}
 }
 \value{
 A summarised result

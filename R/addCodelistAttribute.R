@@ -1,6 +1,6 @@
 #' Adds the cohort_codelist attribute to a cohort
 #'
-#' @param cohort Cohort table in a cdm reference
+#' @inheritParams cohortDoc
 #' @param codelist Named list of concepts
 #' @param cohortName For each element of the codelist, the name of the cohort in
 #' `cohort` to which the codelist refers
