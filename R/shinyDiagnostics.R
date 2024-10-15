@@ -11,10 +11,10 @@
 shinyDiagnostics <- function(result,
                              directory = here::here()){
 
-  rlang::check_installed("omopViewer")
+  rlang::check_installed("OmopViewer")
 
   result |>
-    omopViewer::exportStaticApp(
+    OmopViewer::exportStaticApp(
       directory = directory,
       # background = getBackground(result),
       summary = FALSE,
