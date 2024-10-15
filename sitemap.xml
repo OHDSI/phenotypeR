@@ -12,14 +12,19 @@
 <url><loc>https://ohdsi.github.io/phenotypeR/reference/addCodelistAttribute.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/reference/codelistDiagnostics.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/reference/cohortDiagnostics.html</loc></url>
+<url><loc>https://ohdsi.github.io/phenotypeR/reference/cohortDoc.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/reference/databaseDiagnostics.html</loc></url>
+<url><loc>https://ohdsi.github.io/phenotypeR/reference/directoryDoc.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/reference/index.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/reference/matchedDiagnostics.html</loc></url>
+<url><loc>https://ohdsi.github.io/phenotypeR/reference/matchedSampleDoc.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/reference/phenotypeDiagnostics.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/reference/phenotypeR-package.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/reference/pipe.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/reference/populationDiagnostics.html</loc></url>
+<url><loc>https://ohdsi.github.io/phenotypeR/reference/populationSampleDoc.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/reference/reexports.html</loc></url>
+<url><loc>https://ohdsi.github.io/phenotypeR/reference/resultDoc.html</loc></url>
 <url><loc>https://ohdsi.github.io/phenotypeR/reference/shinyDiagnostics.html</loc></url>
 </urlset>
 
