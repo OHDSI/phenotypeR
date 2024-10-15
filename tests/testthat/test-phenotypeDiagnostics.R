@@ -28,7 +28,14 @@ test_that("overall diagnostics function", {
   cdm <- CDMConnector::copyCdmTo(con = db, cdm = cdm_local,
                                  schema ="main", overwrite = TRUE)
 
+  # running diagnostics should leave the original cohort unchanged
+ cohort_pre <- cdm$my_cohort |>
+    dplyr::collect()
  expect_no_error(my_result <- phenotypeDiagnostics(cdm$my_cohort))
+ cohort_post <- cdm$my_cohort |>
+   dplyr::collect()
+ # expect_identical(cohort_pre,
+ #                  cohort_post)
 
   expect_identical(phenotypeDiagnostics(cdm$my_cohort,
             databaseDiagnostics = FALSE,

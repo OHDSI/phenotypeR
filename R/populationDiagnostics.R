@@ -63,8 +63,8 @@ populationDiagnostics <- function(cohort,
     omopgenerics::bind() |>
     omopgenerics::newSummarisedResult()
 
-  attr(my_result, "settings") <- attr(my_result, "settings") |>
-    dplyr::select(dplyr::any_of("min_cell_count"))
+  attr(results, "settings") <- attr(results, "settings") |>
+    dplyr::select(!dplyr::any_of(c("min_cell_count")))
 
   results
 
