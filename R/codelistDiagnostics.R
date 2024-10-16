@@ -29,7 +29,8 @@ codelistDiagnostics <- function(cohort){
   }
 
   cli::cli_bullets(c("*" = "Getting codelists from cohorts"))
-  # get all cohort codelists
+
+   # get all cohort codelists
   all_codelists <- omopgenerics::emptyCodelist()
   for(i in seq_along(cohortIds)){
     all_codelists <- purrr::flatten(list(

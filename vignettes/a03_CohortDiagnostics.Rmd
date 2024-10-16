@@ -73,38 +73,12 @@ Our results will include a summary of the overlap between our cohorts. We could 
 plotCohortOverlap(cohort_diag, uniqueCombinations = TRUE)
 ```
 
-Moreover, our results will also include a summary of the characteristics of each cohort
+Moreover, our results will also include a summary of the characteristics of each cohort, stratified by age group and sex.
 ```{r}
-tableCharacteristics(cohort_diag)
+tableCharacteristics(cohort_diag, groupColumn = c("age_group", "sex"))
 ```
 
-
-## Cohort diagnostics - stratified by age and sex
-
-Say we wanted the same analyses to be performed, but stratified by age and sex. We can do this by first adding these characteristics to our cohort table.
-
+You can also visualise the age distribution:
 ```{r}
-cdm$injuries <- cdm$injuries |> 
-  addDemographics(ageGroup = list(c(0, 17),
-                                  c(18, 65),
-                                  c(66, Inf))) |> 
-  compute(name = "injuries") |> 
-  omopgenerics::newCohortTable()
-
-cdm$injuries |> 
-  dplyr::glimpse()
-```
-
-Now we can include these additional variables for stratification when running our analyses.
-```{r}
-cohort_diag <- cohortDiagnostics(cdm$injuries, strata = c("sex", "age_group"))
-```
-
-Again we can visualise our results, but this time we have both stratified and overall results.
-```{r}
-plotCohortOverlap(cohort_diag, uniqueCombinations = TRUE, facet = c("age_group", "sex"))
-```
-
-```{r}
-tableCharacteristics(cohort_diag)
+tableCharacteristics(cohort_diag, groupColumn = c("age_group", "sex"))
 ```

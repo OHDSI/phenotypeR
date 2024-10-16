@@ -26,11 +26,18 @@ test_that("run with a single cohort", {
   db <- DBI::dbConnect(duckdb::duckdb())
   cdm <- CDMConnector::copyCdmTo(con = db, cdm = cdm_local,
                           schema ="main", overwrite = TRUE)
+
   expect_no_error(result <- cdm$my_cohort |>
     cohortDiagnostics())
 
+  # check density is being calculated
+  expect_true(any(stringr::str_detect(
+    omopgenerics::settings(result) |>
+      dplyr::pull("result_type"),
+    "table")))
+
   # cohort and timing and overlap should have been skipped
-  expect_false(any("cohort_overlap" ==
+  expect_false(any("summarise_cohort_overlap" ==
    omopgenerics::settings(result) |>
     dplyr::pull("result_type")))
 
@@ -65,6 +72,12 @@ test_that("run with multiple cohorts", {
                                  schema ="main", overwrite = TRUE)
   expect_no_error(result <- cdm$my_cohort |>
                     cohortDiagnostics())
+
+  # check density is being calculated
+  expect_true(any(stringr::str_detect(
+    omopgenerics::settings(result) |>
+      dplyr::pull("result_type"),
+    "table")))
 
   # cohort and timing and overlap should have been estimated now we have more than one cohort
   expect_true(any(stringr::str_detect(

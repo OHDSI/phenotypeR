@@ -1,15 +1,11 @@
 #' Run cohort-level diagnostics
 #'
 #' @inheritParams cohortDoc
-#' @param strata A list of variables to stratify results. These variables must
-#' have been added as additional columns in the cohort table.
 #'
 #' @return A summarised result
 #' @export
 #'
-#' @examples
-cohortDiagnostics <- function(cohort,
-                              strata = list()){
+cohortDiagnostics <- function(cohort){
 
   cdm <- omopgenerics::cdmReference(cohort)
   cohortName <- omopgenerics::tableName(cohort)
@@ -17,12 +13,19 @@ cohortDiagnostics <- function(cohort,
     dplyr::select("cohort_definition_id") |>
     dplyr::pull()
 
+  prefix <- omopgenerics::tmpPrefix()
+  tempCohortName  <- paste0(prefix, cohortName)
   results <- list()
 
+  cdm[[tempCohortName]]  <- cdm[[cohortName]] |>
+    PatientProfiles::addAge(ageGroup = list(c(0, 17), c(18, 64), c(65, 150))) |>
+    PatientProfiles::addSex() |>
+    CDMConnector::compute(name = tempCohortName, temporary = FALSE)
+
   cli::cli_bullets(c("*" = "Getting cohort summary"))
-  results[["cohort_summary"]] <- cdm[[cohortName]] |>
+  results[["cohort_summary"]] <- cdm[[tempCohortName]] |>
     CohortCharacteristics::summariseCharacteristics(
-      strata = strata,
+      strata = list("age_group", "sex"),
       tableIntersectCount = list(
         "Number visits prior year" = list(
           tableName = "visit_occurrence",
@@ -31,6 +34,17 @@ cohortDiagnostics <- function(cohort,
       )
     )
 
+  cli::cli_bullets(c("*" = "Getting age density"))
+  results[["cohort_density"]] <- cdm[[tempCohortName]] |>
+    PatientProfiles::summariseResult(
+      strata    = "sex",
+      includeOverallStrata = FALSE,
+      variables = "age",
+      estimates = "density") |>
+    suppressMessages()
+
+  omopgenerics::dropTable(cdm, dplyr::starts_with(prefix))
+
   cli::cli_bullets(c("*" = "Getting cohort attrition"))
   results[["cohort_attrition"]] <- cdm[[cohortName]] |>
     CohortCharacteristics::summariseCohortAttrition()
@@ -38,12 +52,11 @@ cohortDiagnostics <- function(cohort,
   if(length(cohortIds) > 1){
     cli::cli_bullets(c("*" = "Getting cohort overlap"))
     results[["cohort_overlap"]] <-  cdm[[cohortName]] |>
-      CohortCharacteristics::summariseCohortOverlap(strata = strata)
+      CohortCharacteristics::summariseCohortOverlap()
 
     cli::cli_bullets(c("*" = "Getting cohort timing"))
     results[["cohort_timing"]] <- cdm[[cohortName]] |>
-      CohortCharacteristics::summariseCohortTiming(strata = strata,
-                                                   density = TRUE)
+      CohortCharacteristics::summariseCohortTiming(estimates = "density")
     }
 
   results <- results |>
