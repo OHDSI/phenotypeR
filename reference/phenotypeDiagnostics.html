@@ -98,6 +98,159 @@ matching. If NULL, no sampling will be performed.</p></dd>
     <p>A summarised result</p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span>  <span class="va">cdm_local</span> <span class="op">&lt;-</span> <span class="fu">omock</span><span class="fu">::</span><span class="fu"><a href="https://ohdsi.github.io/omock/reference/mockCdmReference.html" class="external-link">mockCdmReference</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>    <span class="fu">omock</span><span class="fu">::</span><span class="fu"><a href="https://ohdsi.github.io/omock/reference/mockPerson.html" class="external-link">mockPerson</a></span><span class="op">(</span>nPerson <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>    <span class="fu">omock</span><span class="fu">::</span><span class="fu"><a href="https://ohdsi.github.io/omock/reference/mockObservationPeriod.html" class="external-link">mockObservationPeriod</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>    <span class="fu">omock</span><span class="fu">::</span><span class="fu"><a href="https://ohdsi.github.io/omock/reference/mockConditionOccurrence.html" class="external-link">mockConditionOccurrence</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>    <span class="fu">omock</span><span class="fu">::</span><span class="fu"><a href="https://ohdsi.github.io/omock/reference/mockDrugExposure.html" class="external-link">mockDrugExposure</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>    <span class="fu">omock</span><span class="fu">::</span><span class="fu"><a href="https://ohdsi.github.io/omock/reference/mockObservation.html" class="external-link">mockObservation</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>    <span class="fu">omock</span><span class="fu">::</span><span class="fu"><a href="https://ohdsi.github.io/omock/reference/mockMeasurement.html" class="external-link">mockMeasurement</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>    <span class="fu">omock</span><span class="fu">::</span><span class="fu"><a href="https://ohdsi.github.io/omock/reference/mockCohort.html" class="external-link">mockCohort</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"my_cohort"</span>,</span></span>
+<span class="r-in"><span>                      numberCohorts <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cdm_local</span><span class="op">$</span><span class="va">visit_occurrence</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    person_id <span class="op">=</span> <span class="fl">1L</span>,</span></span>
+<span class="r-in"><span>    visit_occurrence_id <span class="op">=</span> <span class="fl">1L</span>,</span></span>
+<span class="r-in"><span>    visit_concept_id <span class="op">=</span> <span class="fl">1L</span>,</span></span>
+<span class="r-in"><span>    visit_start_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"2000-01-01"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    visit_end_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"2000-01-01"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    visit_type_concept_id <span class="op">=</span> <span class="fl">1L</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cdm_local</span><span class="op">$</span><span class="va">procedure_occurrence</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    person_id <span class="op">=</span> <span class="fl">1L</span>,</span></span>
+<span class="r-in"><span>    procedure_occurrence_id <span class="op">=</span> <span class="fl">1L</span>,</span></span>
+<span class="r-in"><span>    procedure_concept_id <span class="op">=</span> <span class="fl">1L</span>,</span></span>
+<span class="r-in"><span>    procedure_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"2000-01-01"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    procedure_type_concept_id <span class="op">=</span> <span class="fl">1L</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="va">db</span> <span class="op">&lt;-</span> <span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html" class="external-link">dbConnect</a></span><span class="op">(</span><span class="fu">duckdb</span><span class="fu">::</span><span class="fu"><a href="https://r.duckdb.org/reference/duckdb.html" class="external-link">duckdb</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cdm</span> <span class="op">&lt;-</span> <span class="fu">CDMConnector</span><span class="fu">::</span><span class="fu"><a href="https://darwin-eu.github.io/CDMConnector/reference/copy_cdm_to.html" class="external-link">copyCdmTo</a></span><span class="op">(</span>con <span class="op">=</span> <span class="va">db</span>,</span></span>
+<span class="r-in"><span>                                 cdm <span class="op">=</span> <span class="va">cdm_local</span>,</span></span>
+<span class="r-in"><span>                                 schema <span class="op">=</span><span class="st">"main"</span>,</span></span>
+<span class="r-in"><span>                                 overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">phenotypeDiagnostics</span><span class="op">(</span><span class="va">cdm</span><span class="op">$</span><span class="va">my_cohort</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Getting codelists from cohorts</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>No codelists found for the specified cohorts</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>No codelists found for the specified cohorts</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Empty cohort_codelist attribute for cohort</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Returning an empty summarised result</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Getting cohort summary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> adding demographics columns</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> adding tableIntersectCount 1/1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> summarising data</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> summariseCharacteristics finished!</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Getting age density</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Getting cohort attrition</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Getting cohort overlap</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Getting cohort timing</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> The following estimates will be computed:</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> days_between_cohort_entries: density</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → Start summary of data, at 2024-10-18 12:22:58.673534</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Summary finished, at 2024-10-18 12:22:58.752043</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> <span style="font-weight: bold;">Creating denominator for incidence and prevalence</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Creating denominator cohorts</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  -- getting cohort dates for <span style="color: #00BB00;">■■■■■■■■■■■■■■■■                </span> 3 of 6 cohorts</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  -- getting cohort dates for <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span> 6 of 6 cohorts</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Cohorts created in 0 min and 7 sec</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> <span style="font-weight: bold;">Estimating incidence</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting incidence for analysis 1 of 24</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting incidence for analysis 2 of 24</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting incidence for analysis 3 of 24</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting incidence for analysis 4 of 24</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting incidence for analysis 5 of 24</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting incidence for analysis 6 of 24</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting incidence for analysis 7 of 24</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting incidence for analysis 8 of 24</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting incidence for analysis 9 of 24</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting incidence for analysis 10 of 24</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting incidence for analysis 11 of 24</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting incidence for analysis 12 of 24</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting incidence for analysis 13 of 24</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting incidence for analysis 14 of 24</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting incidence for analysis 15 of 24</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting incidence for analysis 16 of 24</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting incidence for analysis 17 of 24</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting incidence for analysis 18 of 24</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting incidence for analysis 19 of 24</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting incidence for analysis 20 of 24</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting incidence for analysis 21 of 24</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting incidence for analysis 22 of 24</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting incidence for analysis 23 of 24</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting incidence for analysis 24 of 24</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Overall time taken: 0 mins and 19 secs</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> <span style="font-weight: bold;">Estimating prevalence</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting prevalence for analysis 1 of 12</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting prevalence for analysis 2 of 12</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting prevalence for analysis 3 of 12</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting prevalence for analysis 4 of 12</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting prevalence for analysis 5 of 12</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting prevalence for analysis 6 of 12</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting prevalence for analysis 7 of 12</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting prevalence for analysis 8 of 12</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting prevalence for analysis 9 of 12</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting prevalence for analysis 10 of 12</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting prevalence for analysis 11 of 12</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting prevalence for analysis 12 of 12</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Time taken: 0 mins and 6 secs</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> <span style="font-weight: bold;">Taking 1000 person sample of cohorts</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> <span style="font-weight: bold;">Generating a age and sex matched cohorts</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Starting matching</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Multiple records per person detected. The matchCohorts() function is designed</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> to operate under the assumption that there is only one record per person within</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> each cohort. If this assumption is not met, each record will be treated</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> independently. As a result, the same individual may be matched multiple times,</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> leading to inconsistent and potentially misleading results.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Creating copy of target cohort.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> 2 cohorts to be matched.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Creating controls cohorts.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Excluding cases from controls</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Matching by gender_concept_id and year_of_birth</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Removing controls that were not in observation at index date</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Excluding target records whose pair is not in observation</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Adjusting ratio</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Binding cohorts</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Done</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> adding demographics columns</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> adding tableIntersectCount 1/1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> summarising data</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> summariseCharacteristics finished!</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> <span style="font-weight: bold;">Running large scale characterisation</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Summarising large scale characteristics </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - getting characteristics from table condition_occurrence (1 of 6)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - getting characteristics from table visit_occurrence (2 of 6)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - getting characteristics from table measurement (3 of 6)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - getting characteristics from table procedure_occurrence (4 of 6)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - getting characteristics from table observation (5 of 6)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - getting characteristics from table drug_exposure (6 of 6)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 19,362 × 13</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    result_id cdm_name      group_name group_level strata_name strata_level</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>         1 mock database overall    overall     overall     overall     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>         1 mock database overall    overall     overall     overall     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>         1 mock database overall    overall     overall     overall     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>         1 mock database overall    overall     overall     overall     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>         1 mock database overall    overall     overall     overall     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>         1 mock database overall    overall     overall     overall     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>         1 mock database overall    overall     overall     overall     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>         1 mock database overall    overall     overall     overall     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>         1 mock database overall    overall     overall     overall     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>         1 mock database overall    overall     overall     overall     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 19,352 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 7 more variables: variable_name &lt;chr&gt;, variable_level &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   estimate_name &lt;chr&gt;, estimate_type &lt;chr&gt;, estimate_value &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   additional_name &lt;chr&gt;, additional_level &lt;chr&gt;</span></span>
+<span class="r-in"><span>  <span class="fu">CDMConnector</span><span class="fu">::</span><span class="fu"><a href="https://darwin-eu.github.io/CDMConnector/reference/cdmDisconnect.html" class="external-link">cdm_disconnect</a></span><span class="op">(</span><span class="va">cdm</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 
