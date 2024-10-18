@@ -4,13 +4,10 @@
 \alias{cohortDiagnostics}
 \title{Run cohort-level diagnostics}
 \usage{
-cohortDiagnostics(cohort, strata = list())
+cohortDiagnostics(cohort)
 }
 \arguments{
 \item{cohort}{Cohort table in a cdm reference}
-
-\item{strata}{A list of variables to stratify results. These variables must
-have been added as additional columns in the cohort table.}
 }
 \value{
 A summarised result
