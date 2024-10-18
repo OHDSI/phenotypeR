@@ -73,8 +73,8 @@ result <- cdm$gibleed |>
 
 ``` r
 summary(result)
-#> A summarised_result object with 13334 rows, 48 different result_id, 1 different
-#> cdm names, and 25 settings.
+#> A summarised_result object with 16025 rows, 49 different result_id, 1 different
+#> cdm names, and 24 settings.
 #> CDM names: Synthea synthetic health database.
 #> Settings: package_name, package_version, result_type, timing, table_name,
 #> cohort_definition_id, cdm_version, vocabulary_version,
