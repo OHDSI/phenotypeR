@@ -35,7 +35,7 @@
 #'                                 cdm = cdm_local,
 #'                                 schema ="main",
 #'                                 overwrite = TRUE)
-#'  result <- cdm$my_cohort |> matchedDiagnostics())
+#'  result <- cdm$my_cohort |> matchedDiagnostics()
 #'  CDMConnector::cdm_disconnect(cdm)
 #' }
 matchedDiagnostics <- function(cohort,
