@@ -128,11 +128,11 @@ getBackground <- function(result) {
   }
 
   c(
-    "header" = "phenotypeR Diagnostics",
+    "header" = "PhenotypeR Diagnostics",
     cohorts,
     codelists,
     databases,
     resTypes,
-    "footer" = "This Shiny App presents results generated using the [phenotypeR](https://ohdsi.github.io/phenotypeR/) package (version {as.character(utils::packageVersion('phenotypeR'))})." |> glue::glue()
+    "footer" = "This Shiny App presents results generated using the [PhenotypeR](https://ohdsi.github.io/PhenotypeR/) package (version {as.character(utils::packageVersion('PhenotypeR'))})." |> glue::glue()
   )
 }

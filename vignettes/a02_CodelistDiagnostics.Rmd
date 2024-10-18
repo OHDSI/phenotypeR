@@ -30,7 +30,7 @@ We'll begin by creating our study cohorts.
 library(CDMConnector)
 library(CohortConstructor)
 library(CodelistGenerator)
-library(phenotypeR)
+library(PhenotypeR)
 library(dplyr)
 library(ggplot2)
 

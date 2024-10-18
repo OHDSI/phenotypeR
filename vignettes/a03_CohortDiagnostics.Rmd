@@ -38,7 +38,7 @@ library(CohortConstructor)
 library(CodelistGenerator)
 library(PatientProfiles)
 library(CohortCharacteristics)
-library(phenotypeR)
+library(PhenotypeR)
 library(dplyr)
 library(ggplot2)
 

@@ -1,18 +1,18 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# phenotypeR <img src="man/figures/logo.png" align="right" height="180"/>
+# PhenotypeR <img src="man/figures/logo.png" align="right" height="180"/>
 
 <!-- badges: start -->
 
 > **This package is under development and not yet ready for use.**
 
-[![R-CMD-check](https://github.com/ohdsi/phenotypeR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ohdsi/phenotypeR/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/ohdsi/PhenotypeR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ohdsi/PhenotypeR/actions/workflows/R-CMD-check.yaml)
 [![Lifecycle:Experimental](https://img.shields.io/badge/Lifecycle-Experimental-339999)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 
 <!-- badges: end -->
 
-The phenotypeR package helps us to assess the research-readiness of a
+The PhenotypeR package helps us to assess the research-readiness of a
 set of cohorts we have defined. This assessment includes:
 
 - ***Database diagnostics*** which help us to better understand the
@@ -42,11 +42,11 @@ set of cohorts we have defined. This assessment includes:
 
 ## Installation
 
-You can install phenotypeR from GitHub:
+You can install PhenotypeR from GitHub:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("ohdsi/phenotypeR")
+remotes::install_github("ohdsi/PhenotypeR")
 ```
 
 ## Example usage
@@ -54,7 +54,7 @@ remotes::install_github("ohdsi/phenotypeR")
 ``` r
 library(omopgenerics)
 library(CDMConnector)
-library(phenotypeR)
+library(PhenotypeR)
 library(CohortConstructor)
 library(dplyr)
 
@@ -73,8 +73,8 @@ result <- cdm$gibleed |>
 
 ``` r
 summary(result)
-#> A summarised_result object with 13334 rows, 48 different result_id, 1 different
-#> cdm names, and 25 settings.
+#> A summarised_result object with 16025 rows, 49 different result_id, 1 different
+#> cdm names, and 24 settings.
 #> CDM names: Synthea synthetic health database.
 #> Settings: package_name, package_version, result_type, timing, table_name,
 #> cohort_definition_id, cdm_version, vocabulary_version,

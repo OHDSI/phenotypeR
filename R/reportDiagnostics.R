@@ -10,7 +10,7 @@ reportDiagnostics <- function(result,
                               directory = here::here()){
 
     input <- system.file("rmd", "phenotype_report.Rmd",
-                         package = "phenotypeR")
+                         package = "PhenotypeR")
 
     cohortNames <- result |>
       visOmopResults::addSettings() |>
@@ -20,7 +20,7 @@ reportDiagnostics <- function(result,
       dplyr::distinct() |>
       dplyr::pull()
     cohortNames <- paste0(cohortNames, collapse = "; ")
-    workingTitle <- paste('phenotypeR results for cohort', cohortNames)
+    workingTitle <- paste('PhenotypeR results for cohort', cohortNames)
 
     rmarkdown::render(input = input,
                       params = list(title = workingTitle,
