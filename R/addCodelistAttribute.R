@@ -5,10 +5,16 @@
 #' @param cohortName For each element of the codelist, the name of the cohort in
 #' `cohort` to which the codelist refers
 #'
+#' @return A cohort
 #' @export
 #'
 #' @examples
-#'
+#' \donttest{
+#' library(IncidencePrevalence)
+#' cdm <- mockIncidencePrevalenceRef(sampleSize = 1000)
+#' cohort <- addCodelistAttribute(cohort = cdm$outcome, codelist = list("cohort_1" = 1L))
+#' CDMConnector::cdm_disconnect(cdm)
+#' }
 
 addCodelistAttribute <- function(cohort,
                                  codelist,

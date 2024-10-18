@@ -1,14 +1,20 @@
-
-
 #' Population-level diagnostics
 #'
 #' @inheritParams cohortDoc
 #' @inheritParams populationSampleDoc
 #'
-#' @return
+#' @return A summarised result
 #' @export
 #'
 #' @examples
+#' \donttest{
+#' library(IncidencePrevalence)
+#' cdm <- mockIncidencePrevalenceRef(sampleSize = 1000)
+#' cdm <- generateDenominatorCohortSet(cdm, name = "denom")
+#' pop_diag <- populationDiagnostics(cohort = cdm$outcome,
+#'                                   populationSample = 250)
+#' CDMConnector::cdm_disconnect(cdm)
+#' }
 populationDiagnostics <- function(cohort,
                                   populationSample = 1000000) {
 

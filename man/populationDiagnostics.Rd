@@ -12,6 +12,19 @@ populationDiagnostics(cohort, populationSample = 1e+06)
 \item{populationSample}{Number of people from the cdm to sample. If NULL no
 sampling will be performed}
 }
+\value{
+A summarised result
+}
 \description{
 Population-level diagnostics
+}
+\examples{
+\donttest{
+library(IncidencePrevalence)
+cdm <- mockIncidencePrevalenceRef(sampleSize = 1000)
+cdm <- generateDenominatorCohortSet(cdm, name = "denom")
+pop_diag <- populationDiagnostics(cohort = cdm$outcome,
+                                  populationSample = 250)
+CDMConnector::cdm_disconnect(cdm)
+}
 }
