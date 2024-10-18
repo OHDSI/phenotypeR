@@ -1,4 +1,4 @@
-Package: phenotypeR
+Package: PhenotypeR
 Type: Package
 Title: Assess Study Cohorts Using a Common Data Model
 Version: 0.0.900
@@ -52,7 +52,7 @@ Imports:
     vctrs,
     visOmopResults,
     glue
-URL: https://ohdsi.github.io/phenotypeR/
+URL: https://ohdsi.github.io/PhenotypeR/
 VignetteBuilder: knitr
 Remotes: 
     OHDSI/OmopViewer,

@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(phenotypeR)
+library(PhenotypeR)
 
-test_check("phenotypeR")
+test_check("PhenotypeR")
