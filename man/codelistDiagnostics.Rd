@@ -17,3 +17,25 @@ A summarised result
 \description{
 Run codelist-level diagnostics
 }
+\examples{
+\donttest{
+  cdm_local <- omock::mockCdmReference() |>
+  omock::mockPerson(nPerson = 100) |>
+  omock::mockObservationPeriod() |>
+  omock::mockConditionOccurrence() |>
+  omock::mockDrugExposure() |>
+  omock::mockCohort(name = "my_cohort")
+
+  db <- DBI::dbConnect(duckdb::duckdb())
+
+  cdm <- CDMConnector::copyCdmTo(con = db,
+                                 cdm = cdm_local,
+                                 schema ="main",
+                                 overwrite = TRUE)
+
+ result <- cdm$my_cohort |>
+   codelistDiagnostics()
+
+ CDMConnector::cdmDisconnect(cdm = cdm)
+}
+}
